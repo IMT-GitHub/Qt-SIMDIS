@@ -1,0 +1,591 @@
+.TH "SockInet" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockInet \- 
+.PP
+Internet socket socket class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockInet\&.h>\fP
+.PP
+Inherits \fBSockIO\fP\&.
+.PP
+Inherited by \fBSockTCP\fP, and \fBSockUDP\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockInet\fP ()"
+.br
+.RI "\fIDefault socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockInet\fP (uint16_t port, const char *iface=NULL)"
+.br
+.RI "\fISocket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockInet\fP (const \fBSockAddrInet\fP *localaddr)"
+.br
+.RI "\fISocket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockInet\fP (SOCKET sockfd)"
+.br
+.RI "\fISocket constructor\&. \fP"
+.ti -1c
+.RI "virtual \fB~SockInet\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisValid\fP () const "
+.br
+.RI "\fIIndicates the socket handle references a valid kernel socket\&. \fP"
+.ti -1c
+.RI "SOCKET \fBgetDescriptor\fP () const "
+.br
+.RI "\fIRetrieve the socket descriptor\&. \fP"
+.ti -1c
+.RI "int32_t \fBgetFamily\fP () const "
+.br
+.RI "\fIRetrieve the socket address family\&. \fP"
+.ti -1c
+.RI "uint16_t \fBgetLocalPort\fP () const "
+.br
+.RI "\fIRetrieve port value\&. \fP"
+.ti -1c
+.RI "const char * \fBgetIface\fP (char *iface, int32_t len) const "
+.br
+.RI "\fIRetrieve network interface value\&. \fP"
+.ti -1c
+.RI "bool \fBgetSockOpt\fP (int32_t level, int32_t name, void *val, socklen_t *size) const "
+.br
+.RI "\fIGet socket option\&. \fP"
+.ti -1c
+.RI "bool \fBsetSockOpt\fP (int32_t level, int32_t name, const void *val, socklen_t size)"
+.br
+.RI "\fISet socket option\&. \fP"
+.ti -1c
+.RI "bool \fBisBlockingIO\fP () const "
+.br
+.RI "\fIIndicates blocking I/O mode\&. \fP"
+.ti -1c
+.RI "bool \fBsetBlockingIO\fP (bool block)"
+.br
+.RI "\fISet blocking I/O mode\&. \fP"
+.ti -1c
+.RI "int32_t \fBgetLastError\fP () const "
+.br
+.RI "\fIGet socket error code\&. \fP"
+.ti -1c
+.RI "void \fBsetLastError\fP (int32_t error)"
+.br
+.RI "\fISet the socket error code\&. \fP"
+.ti -1c
+.RI "virtual bool \fBopen\fP ()=0"
+.br
+.RI "\fIOpen socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBclose\fP ()"
+.br
+.RI "\fIClose socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBshutdown\fP (int32_t howto)"
+.br
+.RI "\fIShutdown one or both of the socket communication streams (input/output)\&. \fP"
+.ti -1c
+.RI "bool \fBbind\fP (uint16_t port=EPHEMERAL_PORT, const char *iface=NULL)"
+.br
+.RI "\fIBind socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBbind\fP (const \fBSockAddrInet\fP *localaddr)"
+.br
+.RI "\fIBind socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBreadReady\fP (uint32_t sec=0, uint32_t usec=0) const "
+.br
+.RI "\fIIndicates data is available for reading\&. \fP"
+.ti -1c
+.RI "virtual bool \fBwriteReady\fP (uint32_t sec=0, uint32_t usec=0) const "
+.br
+.RI "\fIIndicates space is available for writing\&. \fP"
+.ti -1c
+.RI "virtual bool \fBerrorCheck\fP (uint32_t sec=0, uint32_t usec=0) const "
+.br
+.RI "\fIIndicates that an error was encountered\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBread\fP (void *buffer, int32_t size, int32_t flags=0) const "
+.br
+.RI "\fIRead data\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBwrite\fP (const void *buffer, int32_t size, int32_t flags=0) const "
+.br
+.RI "\fIWrite data\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBblock_\fP"
+.br
+.RI "\fIUse blocking I/O\&. \fP"
+.ti -1c
+.RI "SOCKET \fBsockfd_\fP"
+.br
+.RI "\fISocket handle\&. \fP"
+.ti -1c
+.RI "\fBSockAddrInet\fP * \fBlocaladdr_\fP"
+.br
+.RI "\fILocal socket address settings\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Internet socket socket class\&. 
+
+An abstract class for a socket from the ineternet socket address family\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockInet::SockInet\fP ()"
+.PP
+Default socket constructor\&. Creates an unconnected socket object with default data values\&. 
+.PP
+References SockAddrFactory::create(), and localaddr_\&.
+.SS "\fBSockInet::SockInet\fP (uint16_tport, const char *iface = \fCNULL\fP)"
+.PP
+Socket constructor\&. Creates a socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP an unsigned 16-bit integer specifying the local port with which to bind the socket\&. 
+.br
+\fIiface\fP a character string specifying the network interface to use for network transmission\&. 
+.RE
+.PP
+
+.PP
+References SockAddrFactory::create(), localaddr_, SockAddrInet::setAddress(), and SockAddrInet::setPort()\&.
+.SS "\fBSockInet::SockInet\fP (const \fBSockAddrInet\fP *localaddr)"
+.PP
+Socket constructor\&. Creates a socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlocaladdr\fP a \fBSockAddrInet\fP object specifying the network information to be used when creating the socket\&. 
+.RE
+.PP
+
+.PP
+References SockAddrInet::copy(), SockAddrFactory::create(), and localaddr_\&.
+.SS "\fBSockInet::SockInet\fP (SOCKETsockfd)"
+.PP
+Socket constructor\&. Creates a socket object from the specified data value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsockfd\fP a handle to a previously created socket, to be used by the socket object\&. 
+.RE
+.PP
+
+.PP
+References block_, SockAddrInet::copy(), SockAddrFactory::create(), localaddr_, setBlockingIO(), and sockfd_\&.
+.SS "\fBSockInet::~SockInet\fP ()\fC [virtual]\fP"
+.PP
+Destructor\&. Virtual destructor\&. Will close an open/connected socket\&. 
+.PP
+References close(), isValid(), and localaddr_\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool \fBSockInet::bind\fP (uint16_tport = \fCEPHEMERAL_PORT\fP, const char *iface = \fCNULL\fP)"
+.PP
+Bind socket\&. Bind the socket to the specified port an network interface\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP an unsigned 16-bit integer specifying the port to bind to\&. To let kernel pick the port use 'EPHEMERAL_PORT'\&. 
+.br
+\fIiface\fP a character string specifying the network address of the network interface to use for data transmission\&. To use any network interface (INADDR_ANY), set to NULL\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+References SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), localaddr_, SockAddrInet::setAddress(), SockAddrInet::setPort(), and sockfd_\&.
+.PP
+Referenced by bind(), SockBroadcast::SockBroadcast(), SockClient::SockClient(), SockMulticast::SockMulticast(), SockServer::SockServer(), and SockUnicast::SockUnicast()\&.
+.SS "bool \fBSockInet::bind\fP (const \fBSockAddrInet\fP *localaddr)\fC [virtual]\fP"
+.PP
+Bind socket\&. Bind the socket with the specified socket address data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlocaladdr\fP a socket address object specifying the values to be used when binding the socket\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+References bind(), SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), localaddr_, and sockfd_\&.
+.SS "bool \fBSockInet::close\fP ()\fC [virtual]\fP"
+.PP
+Close socket\&. Close an open socket\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+Reimplemented in \fBSockUDP\fP, \fBSockClient\fP, and \fBSockServer\fP\&.
+.PP
+References block_, and sockfd_\&.
+.PP
+Referenced by ~SockInet()\&.
+.SS "bool \fBSockInet::errorCheck\fP (uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Indicates that an error was encountered\&. Indicates that am error was encountered by the socket object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsec\fP an unsigned integer specifying the number of seconds to wait before returning\&. 
+.br
+\fIusec\fP an unsinged integer specifying the number of milliseconds to wait before returning\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that an error was encountered if true, no error was encountered if false\&. Will always return false if the socket is invalid/not open\&. 
+.RE
+.PP
+
+.PP
+References isValid(), and sockfd_\&.
+.SS "SOCKET \fBSockInet::getDescriptor\fP () const"
+.PP
+Retrieve the socket descriptor\&. Returns the socket descriptor\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a SOCKET specifying the socket descriptor if a valid socket descriptor exists, or INVALID_SOCKET if no valid socket descriptor exists\&. 
+.RE
+.PP
+
+.PP
+References sockfd_\&.
+.PP
+Referenced by SockMonitor::addErrorMonitor(), SockMonitor::addReadMonitor(), SockMonitor::addWriteMonitor(), SockMonitor::removeErrorMonitor(), SockMonitor::removeReadMonitor(), and SockMonitor::removeWriteMonitor()\&.
+.SS "int32_t \fBSockInet::getFamily\fP () const"
+.PP
+Retrieve the socket address family\&. Returns the socket address family type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an integer specifying the socket address family\&. Currently only AF_INET is supported\&. 
+.RE
+.PP
+
+.SS "const char * \fBSockInet::getIface\fP (char *iface, int32_tlen) const"
+.PP
+Retrieve network interface value\&. Returns value of network interface\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiface\fP a character array to be filled with the IPv4 network address associated with the network interface\&. 
+.br
+\fIlen\fP an integer specifying the size, in bytes, of 'addr'\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to an array of characters containing the IPv4 network address for the associated network interface\&. 
+.RE
+.PP
+
+.PP
+References SockAddrInet::getAddress(), and localaddr_\&.
+.SS "int32_t \fBSockInet::getLastError\fP () const"
+.PP
+Get socket error code\&. Returns the last known network error value\&. This function is not specific to any one socket\&. The error value retrieved can be for any socket that is part of the overall application\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an error code indicating the reason for socket failure\&. 
+.RE
+.PP
+
+.SS "uint16_t \fBSockInet::getLocalPort\fP () const"
+.PP
+Retrieve port value\&. Returns value of port\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an unsigned 16-bit integer specifying a TCP port number for the socket object\&. 
+.RE
+.PP
+
+.PP
+References SockAddrInet::getPort(), and localaddr_\&.
+.SS "bool \fBSockInet::getSockOpt\fP (int32_tlevel, int32_tname, void *val, socklen_t *size) const"
+.PP
+Get socket option\&. Retrieves the value associated with a specific socket option\&. This function uses the same arguments as the BSD socket function 'getsockopt'\&. See the 'getsockopt' man pages or MSDN documentation for details\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP an integer specifying the socket protocol level for the desired option\&. 
+.br
+\fIname\fP an integer specifying the name of the desired option\&. 
+.br
+\fIval\fP a void pointer referencing an object to be filled with the desired option's associated value\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'val'\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating success if true, failure if false\&. 
+.RE
+.PP
+
+.PP
+References sockfd_\&.
+.SS "bool \fBSockInet::isBlockingIO\fP () const\fC [virtual]\fP"
+.PP
+Indicates blocking I/O mode\&. Indicates that the socket is or is not using blocking I/O\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that the socket is using blocking I/O if true, is not using blocking I/O if false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References block_\&.
+.SS "bool \fBSockInet::isValid\fP () const\fC [virtual]\fP"
+.PP
+Indicates the socket handle references a valid kernel socket\&. Indicates that the socket object's socket handle is valid\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the socket handle is valid if true, and invalid if false\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBSockIO\fP\&.
+.PP
+References sockfd_\&.
+.PP
+Referenced by errorCheck(), readReady(), setBlockingIO(), writeReady(), SockClient::~SockClient(), ~SockInet(), and SockUDP::~SockUDP()\&.
+.SS "virtual bool \fBSockInet::open\fP ()\fC [pure virtual]\fP"
+.PP
+Open socket\&. Binds socket and, depending on socket type, connects to peer or listens for connections\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+Implemented in \fBSockUDP\fP, \fBSockBroadcast\fP, \fBSockUnicast\fP, \fBSockClient\fP, \fBSockServer\fP, \fBSockMulticast\fP, and \fBSockTCP\fP\&.
+.SS "int32_t \fBSockInet::read\fP (void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Read data\&. Reads data that is available in the socket input buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object to be filled with the data in the socket buffer\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when reading\&. These are the flags used by the BSD socket function 'recv'\&. See the 'recv' man pages or MSDN documentation for more details\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes read\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+Reimplemented in \fBSockUDP\fP\&.
+.PP
+References sockfd_\&.
+.PP
+Referenced by SockTCP::readAll()\&.
+.SS "bool \fBSockInet::readReady\fP (uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Indicates data is available for reading\&. Indicates that data is avialable in the socket buffer for reading\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsec\fP an unsigned integer specifying the number of seconds to wait before returning\&. 
+.br
+\fIusec\fP an unsinged integer specifying the number of microseconds to wait before returning\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that data is available if true, no data is available if false\&. Will always return false if the socket is invalid/not open\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References isValid(), and sockfd_\&.
+.SS "bool \fBSockInet::setBlockingIO\fP (boolblock)\fC [virtual]\fP"
+.PP
+Set blocking I/O mode\&. Sets the socket's I/O mode to blocking or non-blocking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIblock\fP a boolean value indicating that the socket should use blocking I/O if true, non-blocking I/O if false\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that I/O mode was successfully changed if true, was not successfully changed if false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References block_, isValid(), and sockfd_\&.
+.PP
+Referenced by SockInet()\&.
+.SS "void \fBSockInet::setLastError\fP (int32_terror)"
+.PP
+Set the socket error code\&. Sets the socket error code to the specified value\&. All sockets share the same instance of the error code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIerror\fP an integer specifying the value to which the error value is to be set\&. 
+.RE
+.PP
+
+.SS "bool \fBSockInet::setSockOpt\fP (int32_tlevel, int32_tname, const void *val, socklen_tsize)"
+.PP
+Set socket option\&. Sets the value associated with a specific socket option\&. This function uses the same arguments as the BSD socket function 'setsockopt'\&. See the 'setsockopt' man pages or MSDN documentation for details\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP an integer specifying the socket protocol level for the desired option\&. 
+.br
+\fIname\fP an integer specifying the name of the desired option\&. 
+.br
+\fIval\fP a void pointer referencing an object filled with the value for the desired option\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'val'\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating success if true, failure if false\&. 
+.RE
+.PP
+
+.PP
+References sockfd_\&.
+.SS "bool \fBSockInet::shutdown\fP (int32_thowto)\fC [virtual]\fP"
+.PP
+Shutdown one or both of the socket communication streams (input/output)\&. Shutdown either or both of the input and output streams of a socket, without closing the socket\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhowto\fP an integer indicating which stream to shutdown\&. SHUT_RD for input, SHUT_WR for output, SHUTRDWR for both\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+References sockfd_\&.
+.SS "int32_t \fBSockInet::write\fP (const void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Write data\&. Writes data to the network\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object filled with the data to be written\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when writing\&. These are the flags used by the BSD socket function 'send'\&. See the 'send' man pages or MSDN documentation for more details\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes written\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+Reimplemented in \fBSockUDP\fP\&.
+.PP
+References sockfd_\&.
+.SS "bool \fBSockInet::writeReady\fP (uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Indicates space is available for writing\&. Indicates that space in the socket buffer is avialable for writing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsec\fP an unsigned integer specifying the number of seconds to wait before returning\&. 
+.br
+\fIusec\fP an unsinged integer specifying the number of milliseconds to wait before returning\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that space is available if true, no space is available if false\&. Will always return false if the socket is invalid/not open\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References isValid(), and sockfd_\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool \fBSockInet::block_\fP\fC [protected]\fP"
+.PP
+Use blocking I/O\&. A boolean value indicating that the socket is blocking/non-blocking\&. 
+.PP
+Referenced by close(), SockClient::connect(), isBlockingIO(), setBlockingIO(), and SockInet()\&.
+.SS "\fBSockAddrInet\fP* \fBSockInet::localaddr_\fP\fC [protected]\fP"
+.PP
+Local socket address settings\&. A socket address object specifying the local settings for this object\&. 
+.PP
+Referenced by bind(), SockClient::connect(), SockUDP::connect(), getIface(), getLocalPort(), SockBroadcast::SockBroadcast(), SockClient::SockClient(), SockInet(), SockMulticast::SockMulticast(), SockServer::SockServer(), SockUnicast::SockUnicast(), and ~SockInet()\&.
+.SS "SOCKET \fBSockInet::sockfd_\fP\fC [protected]\fP"
+.PP
+Socket handle\&. Handle to the socket used by this object\&. 
+.PP
+Referenced by SockServer::accept(), bind(), close(), SockClient::connect(), SockUDP::connect(), SockUDP::disconnect(), errorCheck(), getDescriptor(), SockMulticast::getMcastIface(), getSockOpt(), isValid(), SockMulticast::joinGroup(), SockMulticast::leaveGroup(), SockServer::listen(), read(), SockTCP::readAll(), SockUDP::readFrom(), readReady(), setBlockingIO(), SockMulticast::setMcastIface(), setSockOpt(), SockMulticast::setTTL(), shutdown(), SockBroadcast::SockBroadcast(), SockClient::SockClient(), SockInet(), SockMulticast::SockMulticast(), SockServer::SockServer(), SockUnicast::SockUnicast(), write(), SockTCP::writeAll(), writeReady(), and SockUDP::writeTo()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

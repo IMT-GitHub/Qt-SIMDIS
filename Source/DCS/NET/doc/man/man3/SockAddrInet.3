@@ -1,0 +1,303 @@
+.TH "SockAddrInet" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockAddrInet \- 
+.PP
+Socket address class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockAddrInet\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockAddrInet\fP (uint16_t port, const char *addr)"
+.br
+.RI "\fISocket address constructor\&. \fP"
+.ti -1c
+.RI "void \fBcopy\fP (const \fBSockAddrInet\fP *source)"
+.br
+.RI "\fICopy socket address object\&. \fP"
+.ti -1c
+.RI "void \fBcopy\fP (const SOCKADDR *source, socklen_t len)"
+.br
+.RI "\fICopy socket address object\&. \fP"
+.ti -1c
+.RI "uint16_t \fBgetPort\fP () const "
+.br
+.RI "\fIRetrieve port value\&. \fP"
+.ti -1c
+.RI "void \fBsetPort\fP (uint16_t port)"
+.br
+.RI "\fISet port value\&. \fP"
+.ti -1c
+.RI "char * \fBgetAddress\fP (char *addr, int32_t len) const "
+.br
+.RI "\fIRetrieve address value\&. \fP"
+.ti -1c
+.RI "void \fBsetAddress\fP (const char *addr)"
+.br
+.RI "\fISet address value\&. \fP"
+.ti -1c
+.RI "int32_t \fBgetFamily\fP () const "
+.br
+.RI "\fIRetrieve the socket address family\&. \fP"
+.ti -1c
+.RI "const SOCKADDR * \fBgetSockAddr\fP () const "
+.br
+.RI "\fIRetrieve the socket address structure\&. \fP"
+.ti -1c
+.RI "int32_t \fBgetSockAddrLen\fP () const "
+.br
+.RI "\fIRetrieve the socket address structure size\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockAddrInet\fP ()"
+.br
+.RI "\fIDefault socket address constructor\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "uint16_t \fBport_\fP"
+.br
+.RI "\fIPort number\&. \fP"
+.ti -1c
+.RI "char \fBaddr_\fP [INET_ADDRSTRLEN]"
+.br
+.RI "\fINetwork address\&. \fP"
+.ti -1c
+.RI "SOCKADDR_IN \fBsa_\fP"
+.br
+.RI "\fISocket address structure\&. \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBSockAddrFactory\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Socket address class\&. 
+
+An internet socket address class containing a network address and a TCP/UDP port number\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockAddrInet::SockAddrInet\fP ()\fC [protected]\fP"
+.PP
+Default socket address constructor\&. Creates an event object with default data values\&. Can not be accessed directly, but is used by \fBSockAddrFactory\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBSockAddrFactory::create\fP 
+.RE
+.PP
+
+.PP
+References addr_, and sa_\&.
+.SS "\fBSockAddrInet::SockAddrInet\fP (uint16_tport, const char *addr)"
+.PP
+Socket address constructor\&. Creates a socket address object with the specified values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP an unsigned 16-bit integer specifying a TCP or UDP port number\&. 
+.br
+\fIaddr\fP a character string specifying an IPv4 network address\&. 
+.RE
+.PP
+
+.PP
+References addr_, sa_, setAddress(), and setPort()\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void \fBSockAddrInet::copy\fP (const \fBSockAddrInet\fP *source)"
+.PP
+Copy socket address object\&. Copies the contents of a socket address object into this socket address object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP a socket address object whose contents are to be copied\&. 
+.RE
+.PP
+
+.PP
+References addr_, getFamily(), port_, and sa_\&.
+.PP
+Referenced by SockInet::bind(), SockClient::connect(), SockUDP::connect(), SockBroadcast::SockBroadcast(), SockClient::SockClient(), SockInet::SockInet(), SockMulticast::SockMulticast(), SockServer::SockServer(), SockUDP::SockUDP(), and SockUnicast::SockUnicast()\&.
+.SS "void \fBSockAddrInet::copy\fP (const SOCKADDR *source, socklen_tlen)"
+.PP
+Copy socket address object\&. Copies the contents of a socket address object into this socket address object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP a standard socket address structure whose contents are to be copied\&. 
+.br
+\fIlen\fP an integer specifying the size of 'source' in bytes\&. 
+.RE
+.PP
+
+.PP
+References addr_, port_, and sa_\&.
+.SS "char * \fBSockAddrInet::getAddress\fP (char *addr, int32_tlen) const"
+.PP
+Retrieve address value\&. Returns value of network address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP a character array to be filled with the IPv4 network address\&. 
+.br
+\fIlen\fP an integer specifying the size, in bytes, of 'addr'\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to an array of characters containing the IPv4 network address\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddr_\fP 
+.RE
+.PP
+
+.PP
+References addr_\&.
+.PP
+Referenced by SockClient::getAddress(), SockUDP::getAddress(), and SockInet::getIface()\&.
+.SS "int32_t \fBSockAddrInet::getFamily\fP () const"
+.PP
+Retrieve the socket address family\&. Returns the socket address family type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an integer specifying the socket address family\&. Currently only AF_INET is supported\&. 
+.RE
+.PP
+
+.PP
+Referenced by copy()\&.
+.SS "uint16_t \fBSockAddrInet::getPort\fP () const"
+.PP
+Retrieve port value\&. Returns value of port\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an unsigned 16-bit integer specifying a TCP or UDP port number\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBport_\fP 
+.RE
+.PP
+
+.PP
+References port_\&.
+.PP
+Referenced by SockInet::getLocalPort(), SockClient::getPort(), and SockUDP::getPort()\&.
+.SS "const SOCKADDR * \fBSockAddrInet::getSockAddr\fP () const"
+.PP
+Retrieve the socket address structure\&. Returns the socket address structure\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the SOCKADDR structure containing socket address information\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsa_\fP 
+.RE
+.PP
+
+.PP
+References sa_\&.
+.PP
+Referenced by SockInet::bind(), SockClient::connect(), SockUDP::connect(), SockBroadcast::SockBroadcast(), SockClient::SockClient(), SockMulticast::SockMulticast(), SockServer::SockServer(), SockUnicast::SockUnicast(), and SockUDP::write()\&.
+.SS "int32_t \fBSockAddrInet::getSockAddrLen\fP () const"
+.PP
+Retrieve the socket address structure size\&. Returns the size of the socket address structure\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an integer specifying the size of the socket address structure\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsa_\fP 
+.RE
+.PP
+
+.PP
+Referenced by SockInet::bind(), SockClient::connect(), SockUDP::connect(), SockBroadcast::SockBroadcast(), SockClient::SockClient(), SockMulticast::SockMulticast(), SockServer::SockServer(), SockUnicast::SockUnicast(), and SockUDP::write()\&.
+.SS "void \fBSockAddrInet::setAddress\fP (const char *addr)"
+.PP
+Set address value\&. Sets value of network address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddr\fP a character string specifying the IPv4 network address with which the network address value is to be set\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddr_\fP 
+.RE
+.PP
+
+.PP
+References addr_, and sa_\&.
+.PP
+Referenced by SockUDP::attach(), SockInet::bind(), SockClient::close(), SockUDP::close(), SockClient::connect(), SockUDP::connect(), SockUDP::detatch(), SockUDP::disconnect(), SockAddrInet(), SockClient::SockClient(), SockInet::SockInet(), SockMulticast::SockMulticast(), and SockUDP::SockUDP()\&.
+.SS "void \fBSockAddrInet::setPort\fP (uint16_tport)"
+.PP
+Set port value\&. Sets value of port\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP an unsigned 16-bit integer specifying the TCP or UDP port number with which the port value is to be set\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBport_\fP 
+.RE
+.PP
+
+.PP
+References port_, and sa_\&.
+.PP
+Referenced by SockUDP::attach(), SockInet::bind(), SockClient::close(), SockUDP::close(), SockClient::connect(), SockUDP::connect(), SockUDP::detatch(), SockUDP::disconnect(), SockAddrInet(), SockClient::SockClient(), SockInet::SockInet(), and SockUDP::SockUDP()\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "char \fBSockAddrInet::addr_\fP[INET_ADDRSTRLEN]\fC [protected]\fP"
+.PP
+Network address\&. IPv4 network address, represented as a string (eg 132\&.250\&.132\&.147)\&. 
+.PP
+Referenced by copy(), getAddress(), setAddress(), and SockAddrInet()\&.
+.SS "uint16_t \fBSockAddrInet::port_\fP\fC [protected]\fP"
+.PP
+Port number\&. A 16-bit TCP od UDP port number\&. 
+.PP
+Referenced by copy(), getPort(), and setPort()\&.
+.SS "SOCKADDR_IN \fBSockAddrInet::sa_\fP\fC [protected]\fP"
+.PP
+Socket address structure\&. IPv4 socket address structure used by BSD socket routines\&. 
+.PP
+Referenced by copy(), getSockAddr(), setAddress(), setPort(), and SockAddrInet()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

@@ -1,0 +1,44 @@
+/**
+ *  @page manual DCS User's Manual
+ *
+ *  @htmlinclude DCS_Manual.html
+ *
+ */
+
+/**
+ *  @page sserver A simple server example
+ *
+ *  This is a simple example intended to illustrate the 
+ *  usage of the raw DCS API server components.  
+ *
+ *  <br>
+ *  @include sserver.cpp
+ *
+ */
+
+/**
+ *  @page scserver A simple DCSServer example
+ *
+ *  Simple server program implemented from the DCSServer extension 
+ *  class API.  The extension class makes using the DCS API much 
+ *  simpler, but also introduces implementation limitations that
+ *  require the DCS server to work in a single-threaded/serial 
+ *  processing mode.  This type of server may not handle multiple 
+ *  connections very well.  A concurrent/multi-threaded server can 
+ *  be implemented from the raw DCS API for handling multiple 
+ *  simultaneous connections.   
+ *
+ *  <br>
+ *  @include scserver.cpp
+ *
+ */
+
+/**
+ *  @page sclient A simple client example
+ *
+ *  This is a simple example intended to illustrate the 
+ *  usage of the raw DCS API client components.  
+ *
+ *  <br>
+ *  @include sclient.cpp
+ */

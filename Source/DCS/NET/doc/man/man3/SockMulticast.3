@@ -1,0 +1,246 @@
+.TH "SockMulticast" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockMulticast \- 
+.PP
+UDP multicast socket class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockMulticast\&.h>\fP
+.PP
+Inherits \fBSockUDP\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockMulticast\fP ()"
+.br
+.RI "\fIDefault multicast socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockMulticast\fP (uint16_t port, TTL_T ttl=1)"
+.br
+.RI "\fIMulticast socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockMulticast\fP (uint16_t port, const char *group, const char *mciface=NULL, TTL_T ttl=1, bool \fBattach\fP=true)"
+.br
+.RI "\fIMulticast socket constructor\&. \fP"
+.ti -1c
+.RI "bool \fBopen\fP ()"
+.br
+.RI "\fIOpen socket connection\&. \fP"
+.ti -1c
+.RI "TTL_T \fBgetTTL\fP () const "
+.br
+.RI "\fIRetrieve TTL\&. \fP"
+.ti -1c
+.RI "bool \fBsetTTL\fP (TTL_T ttl)"
+.br
+.RI "\fISet TTL\&. \fP"
+.ti -1c
+.RI "char * \fBgetMcastIface\fP (char *iface, int32_t len) const "
+.br
+.RI "\fIRetrieve network interface value\&. \fP"
+.ti -1c
+.RI "bool \fBsetMcastIface\fP (const char *iface)"
+.br
+.RI "\fISet network interface value\&. \fP"
+.ti -1c
+.RI "bool \fBjoinGroup\fP (const char *group)"
+.br
+.RI "\fIJoin multicast group\&. \fP"
+.ti -1c
+.RI "bool \fBleaveGroup\fP (const char *group)"
+.br
+.RI "\fILeave multicast group\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "TTL_T \fBttl_\fP"
+.br
+.RI "\fITime to live\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+UDP multicast socket class\&. 
+
+A socket that utilizes the network multicast protocol for data transmission\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockMulticast::SockMulticast\fP ()"
+.PP
+Default multicast socket constructor\&. Creates a multicast socket object with default data values\&. 
+.SS "\fBSockMulticast::SockMulticast\fP (uint16_tport, TTL_Tttl = \fC1\fP)"
+.PP
+Multicast socket constructor\&. Creates a multicast socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP an unsigned 16-bit integer specifying the port to bind the multicast socket to\&. 
+.br
+\fIttl\fP an integer value specifying the time to live value to use for network transmission\&. 
+.RE
+.PP
+
+.PP
+References SockInet::bind(), SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), SockInet::localaddr_, and SockInet::sockfd_\&.
+.SS "\fBSockMulticast::SockMulticast\fP (uint16_tport, const char *group, const char *mciface = \fCNULL\fP, TTL_Tttl = \fC1\fP, boolattach = \fCtrue\fP)"
+.PP
+Multicast socket constructor\&. Creates a multicast socket object with the specified data values, and connects it to a specified multicast address\&. When a multicast socket object is connected to a multicast address, data can be sent to that address with calls to 'write' rather than calls to 'writeTo'\&. When a multicast socket is connected it can only communicate on that multicast address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP an unsigned 16-bit integer specifying the port to which the multicast socket should bind\&. 
+.br
+\fIgroup\fP a character string specifying the multicast address to which the multicast socket should bind\&. 
+.br
+\fImciface\fP a character string specifying the network interface to use for network transmission\&. 
+.br
+\fIttl\fP an integer value specifying the time to live value to use for network transmission\&. 
+.br
+\fIattach\fP a boolean value specifying whether the broadcast socket is to be attached to the peer or connected to the peer\&. When the socket is attached, the broadcast socket object stores the peerport and peeraddr values and uses them to call 'sendto'\&. If the socket is connected, the broadcast socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data witn 'send'\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBSockUDP::attached_\fP 
+.PP
+\fBSockUDP::write\fP 
+.PP
+\fBSockUDP::writeTo\fP 
+.RE
+.PP
+
+.PP
+References SockInet::bind(), SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), joinGroup(), SockInet::localaddr_, SockAddrInet::setAddress(), setMcastIface(), and SockInet::sockfd_\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "char * \fBSockMulticast::getMcastIface\fP (char *iface, int32_tlen) const"
+.PP
+Retrieve network interface value\&. Returns value of network interface\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiface\fP a character array to be filled with the IPv4 network address associated with the network interface\&. 
+.br
+\fIlen\fP an integer specifying the size, in bytes, of 'addr'\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to an array of characters containing the IPv4 network address for the associated network interface\&. 
+.RE
+.PP
+
+.PP
+References SockInet::sockfd_\&.
+.SS "TTL_T \fBSockMulticast::getTTL\fP () const"
+.PP
+Retrieve TTL\&. Returns the current multicast socket object's time to live value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an integer specifying the socket's TTL\&. 
+.RE
+.PP
+
+.PP
+References ttl_\&.
+.SS "bool \fBSockMulticast::joinGroup\fP (const char *group)"
+.PP
+Join multicast group\&. Joins a specified multicast group\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgroup\fP a character string specifying the multicast address for the group to join\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that the operation succeeded if true, failed if false\&. 
+.RE
+.PP
+
+.PP
+References SockInet::sockfd_\&.
+.PP
+Referenced by SockMulticast()\&.
+.SS "bool \fBSockMulticast::leaveGroup\fP (const char *group)"
+.PP
+Leave multicast group\&. Leaves a specified multicast group\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgroup\fP a character string specifying the multicast address for the group to leave\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that the operation succeeded if true, failed if false\&. 
+.RE
+.PP
+
+.PP
+References SockInet::sockfd_\&.
+.SS "bool \fBSockMulticast::open\fP ()\fC [virtual]\fP"
+.PP
+Open socket connection\&. \fBSee also:\fP
+.RS 4
+\fBSockInet::open\fP 
+.RE
+.PP
+
+.PP
+Implements \fBSockUDP\fP\&.
+.SS "bool \fBSockMulticast::setMcastIface\fP (const char *iface)"
+.PP
+Set network interface value\&. Sets the value of the network interface\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiface\fP a character string specifying the network interface to use for network transmission\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that the operation succeeded if true, failed if false\&. 
+.RE
+.PP
+
+.PP
+References SockInet::sockfd_\&.
+.PP
+Referenced by SockMulticast()\&.
+.SS "bool \fBSockMulticast::setTTL\fP (TTL_Tttl)"
+.PP
+Set TTL\&. Sets the current multicast socket object's time to live value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIttl\fP an integer specifying the new TTL value to be used\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that the operation succeeded if true, failed if false\&. 
+.RE
+.PP
+
+.PP
+References SockInet::sockfd_, and ttl_\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "TTL_T \fBSockMulticast::ttl_\fP\fC [protected]\fP"
+.PP
+Time to live\&. The time to live value for data transmissions\&. 
+.PP
+Referenced by getTTL(), and setTTL()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

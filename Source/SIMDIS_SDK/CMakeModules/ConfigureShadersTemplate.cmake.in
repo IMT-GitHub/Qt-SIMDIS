@@ -1,0 +1,21 @@
+# ConfigureShaders.cmake.in
+#
+# Generates CMAKE_CURRENT_BINARY_DIR/ConfigureShaders.cmake.
+#
+# Script run at build time to package Shader files into a single shader package file.
+#
+
+set(SOURCE_DIR "@CMAKE_CURRENT_SOURCE_DIR@")
+set(SHADER_FILES "@SHADER_FILES@")
+set(TEMPLATE_FILE "@TEMPLATE_FILE@")
+set(OUTPUT_CPP_FILE "@OUTPUT_CPP_FILE@")
+
+foreach(FILE ${SHADER_FILES})
+    file(READ "${SOURCE_DIR}/${FILE}" CONTENTS)
+    # Compress whitespace
+    string(REGEX REPLACE "\n\n+" "\n" TEMP_STR "${CONTENTS}")
+    set(${FILE} "\nR\"shader(${TEMP_STR})shader\"")
+endforeach()
+
+# Next configure the template .in file with all of our variables
+configure_file("${TEMPLATE_FILE}" "${OUTPUT_CPP_FILE}" @ONLY)

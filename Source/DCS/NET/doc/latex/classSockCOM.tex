@@ -1,0 +1,568 @@
+\section{\-Sock\-C\-O\-M \-Class \-Reference}
+\label{classSockCOM}\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}}
+
+
+{\ttfamily \#include $<$\-Sock\-C\-O\-M.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-C\-O\-M\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSockCOM}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-C\-O\-M} (const std\-::string \&com\-Port, unsigned int baud\-Rate=\-S\-O\-C\-K\-C\-O\-M\-\_\-\-B\-R9600, unsigned int data\-Bits=\-S\-O\-C\-K\-C\-O\-M\-\_\-\-B\-I\-T\-S8, unsigned int parity=\-S\-O\-C\-K\-C\-O\-M\-\_\-\-P\-A\-R\-I\-T\-Y\-N\-O\-N\-E, unsigned int stop\-Bits=\-S\-O\-C\-K\-C\-O\-M\-\_\-\-S\-T\-O\-P\-B\-I\-T\-S1, unsigned int flow\-Control=\-S\-O\-C\-K\-C\-O\-M\-\_\-\-F\-C\-N\-O\-N\-E)
+\begin{DoxyCompactList}\small\item\em \-Create a new \doxyref{\-Sock\-C\-O\-M}{p.}{classSockCOM} object bound to the specified device. \end{DoxyCompactList}\item 
+{\bf \-Sock\-C\-O\-M} (unsigned int com\-Port=1, unsigned int baud\-Rate=\-S\-O\-C\-K\-C\-O\-M\-\_\-\-B\-R9600, unsigned int data\-Bits=\-S\-O\-C\-K\-C\-O\-M\-\_\-\-B\-I\-T\-S8, unsigned int parity=\-S\-O\-C\-K\-C\-O\-M\-\_\-\-P\-A\-R\-I\-T\-Y\-N\-O\-N\-E, unsigned int stop\-Bits=\-S\-O\-C\-K\-C\-O\-M\-\_\-\-S\-T\-O\-P\-B\-I\-T\-S1, unsigned int flow\-Control=\-S\-O\-C\-K\-C\-O\-M\-\_\-\-F\-C\-N\-O\-N\-E)
+\begin{DoxyCompactList}\small\item\em \-Create a new \doxyref{\-Sock\-C\-O\-M}{p.}{classSockCOM} object bound to the specific port. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Sock\-C\-O\-M} ()\label{classSockCOM_a022ebac4c0cbae78f7ebdd24a9b27be0}
+
+\begin{DoxyCompactList}\small\item\em \-Virtual destructor. \end{DoxyCompactList}\item 
+\-Sock\-C\-O\-M\-I\-O\-Handle {\bf get\-Descriptor} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve handle to serial device. \end{DoxyCompactList}\item 
+std\-::string {\bf get\-C\-O\-M\-Port} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve name of serial device. \end{DoxyCompactList}\item 
+unsigned int {\bf get\-Baud\-Rate} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve baud rate setting for the serial device. \end{DoxyCompactList}\item 
+unsigned int {\bf get\-Data\-Bits} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve number of data bits setting for the serial device. \end{DoxyCompactList}\item 
+unsigned int {\bf get\-Parity} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve parity setting for the serial device. \end{DoxyCompactList}\item 
+unsigned int {\bf get\-Stop\-Bits} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve number of stop bits setting for the serial device. \end{DoxyCompactList}\item 
+unsigned int {\bf get\-Flow\-Control} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve flow control setting for the serial device. \end{DoxyCompactList}\item 
+virtual bool {\bf is\-Valid} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates the handle references a valid (open) serial device. \end{DoxyCompactList}\item 
+bool {\bf is\-Blocking\-I\-O} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates blocking \-I/\-O mode. \end{DoxyCompactList}\item 
+bool {\bf set\-Blocking\-I\-O} (bool block)
+\begin{DoxyCompactList}\small\item\em \-Set blocking \-I/\-O mode. \end{DoxyCompactList}\item 
+int32\-\_\-t {\bf get\-Last\-Error} () const 
+\begin{DoxyCompactList}\small\item\em \-Get system error code. \end{DoxyCompactList}\item 
+void {\bf set\-Last\-Error} (int32\-\_\-t error)
+\begin{DoxyCompactList}\small\item\em \-Set the system error code. \end{DoxyCompactList}\item 
+virtual bool {\bf open} ()
+\begin{DoxyCompactList}\small\item\em \-Open serial device. \end{DoxyCompactList}\item 
+virtual bool {\bf close} ()
+\begin{DoxyCompactList}\small\item\em \-Close serial device. \end{DoxyCompactList}\item 
+virtual bool {\bf read\-Ready} (uint32\-\_\-t sec=0, uint32\-\_\-t usec=0) const 
+\begin{DoxyCompactList}\small\item\em \-Indicates data is available for reading. \end{DoxyCompactList}\item 
+virtual bool {\bf write\-Ready} (uint32\-\_\-t sec=0, uint32\-\_\-t usec=0) const 
+\begin{DoxyCompactList}\small\item\em \-Indicates space is available for writing. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf read} (void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const 
+\begin{DoxyCompactList}\small\item\em \-Read data. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf write} (const void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const 
+\begin{DoxyCompactList}\small\item\em \-Write data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string {\bf com\-Port\-\_\-}\label{classSockCOM_a70cafdba517c6c6ac2c3683eff380275}
+
+\begin{DoxyCompactList}\small\item\em \-Current \-C\-O\-M port. \end{DoxyCompactList}\item 
+unsigned int {\bf baud\-Rate\-\_\-}\label{classSockCOM_a9ad36ba6f1a2812b2be2b1809ba46cc1}
+
+\begin{DoxyCompactList}\small\item\em \-Baud rate. \end{DoxyCompactList}\item 
+unsigned int {\bf data\-Bits\-\_\-}\label{classSockCOM_a5a7554cf9788a7982478c5a946a27d19}
+
+\begin{DoxyCompactList}\small\item\em \-Data bits. \end{DoxyCompactList}\item 
+unsigned int {\bf parity\-\_\-}\label{classSockCOM_a82f0fd24fd26f820598f36b87c076bad}
+
+\begin{DoxyCompactList}\small\item\em \-Parity. \end{DoxyCompactList}\item 
+unsigned int {\bf stop\-Bits\-\_\-}\label{classSockCOM_a95e64032c0493e8be2ad261194e7f8ed}
+
+\begin{DoxyCompactList}\small\item\em \-Stop bits. \end{DoxyCompactList}\item 
+unsigned int {\bf flow\-Control\-\_\-}\label{classSockCOM_a29796ca1161ea736353b8bccb1990498}
+
+\begin{DoxyCompactList}\small\item\em \-Flow control. \end{DoxyCompactList}\item 
+\-Sock\-C\-O\-M\-I\-O\-Handle {\bf io\-Handle\-\_\-}\label{classSockCOM_a2feb289381b567870c1768d4def7a85d}
+
+\begin{DoxyCompactList}\small\item\em \-Handle to the current port. \end{DoxyCompactList}\item 
+int {\bf current\-State\-\_\-}\label{classSockCOM_a3894b21660dcededd0f42d204c1fe0b5}
+
+\begin{DoxyCompactList}\small\item\em \-Current state of the object. \end{DoxyCompactList}\item 
+int {\bf last\-Error\-\_\-}\label{classSockCOM_a20a9f8a41b128de6b7849f27567c6749}
+
+\begin{DoxyCompactList}\small\item\em \-Last error reported. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Cross-\/platform library for reading and writing to \-C\-O\-M ports. \-Can read and write to \-C\-O\-M 1-\/n. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}}
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{\-Sock\-C\-O\-M}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-C\-O\-M\-::\-Sock\-C\-O\-M} (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{com\-Port, }
+\item[{unsigned int}]{baud\-Rate = {\ttfamily \-S\-O\-C\-K\-C\-O\-M\-\_\-\-B\-R9600}, }
+\item[{unsigned int}]{data\-Bits = {\ttfamily \-S\-O\-C\-K\-C\-O\-M\-\_\-\-B\-I\-T\-S8}, }
+\item[{unsigned int}]{parity = {\ttfamily \-S\-O\-C\-K\-C\-O\-M\-\_\-\-P\-A\-R\-I\-T\-Y\-N\-O\-N\-E}, }
+\item[{unsigned int}]{stop\-Bits = {\ttfamily \-S\-O\-C\-K\-C\-O\-M\-\_\-\-S\-T\-O\-P\-B\-I\-T\-S1}, }
+\item[{unsigned int}]{flow\-Control = {\ttfamily \-S\-O\-C\-K\-C\-O\-M\-\_\-\-F\-C\-N\-O\-N\-E}}
+\end{DoxyParamCaption}
+)}\label{classSockCOM_a93a0832e7a357d48409e6acdb55d2ab7}
+
+
+\-Create a new \doxyref{\-Sock\-C\-O\-M}{p.}{classSockCOM} object bound to the specified device. 
+
+\-Create a new \doxyref{\-Sock\-C\-O\-M}{p.}{classSockCOM} object bound to the specified device. \-Intended for use with \-R\-S-\/232 devices with names that do not match the common pattern for an operating system, such as \-U\-S\-B to serial adapter cables which are assigned names such as '/dev/tty\-U\-S\-B0' on \-Linux systems 
+
+\-References open().
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}}
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{\-Sock\-C\-O\-M}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-C\-O\-M\-::\-Sock\-C\-O\-M} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{com\-Port = {\ttfamily 1}, }
+\item[{unsigned int}]{baud\-Rate = {\ttfamily \-S\-O\-C\-K\-C\-O\-M\-\_\-\-B\-R9600}, }
+\item[{unsigned int}]{data\-Bits = {\ttfamily \-S\-O\-C\-K\-C\-O\-M\-\_\-\-B\-I\-T\-S8}, }
+\item[{unsigned int}]{parity = {\ttfamily \-S\-O\-C\-K\-C\-O\-M\-\_\-\-P\-A\-R\-I\-T\-Y\-N\-O\-N\-E}, }
+\item[{unsigned int}]{stop\-Bits = {\ttfamily \-S\-O\-C\-K\-C\-O\-M\-\_\-\-S\-T\-O\-P\-B\-I\-T\-S1}, }
+\item[{unsigned int}]{flow\-Control = {\ttfamily \-S\-O\-C\-K\-C\-O\-M\-\_\-\-F\-C\-N\-O\-N\-E}}
+\end{DoxyParamCaption}
+)}\label{classSockCOM_a303ae0484728a28bc9d1ebc57c17f11b}
+
+
+\-Create a new \doxyref{\-Sock\-C\-O\-M}{p.}{classSockCOM} object bound to the specific port. 
+
+\-Create a new \doxyref{\-Sock\-C\-O\-M}{p.}{classSockCOM} object bound to the specific port. \-The device name is determind by appending the specified port number to the following strings\-: '\-C\-O\-M' + com\-Port for the \-Microsoft \-Windows operating system '/dev/tty\-S' + com\-Port for \-Linux systems '/dev/term/' + (com\-Port + 'a') for \-Sun\-O\-S systems '/dev/ttyf' + com\-Port for other \-U\-N\-I\-X systems 
+
+\-References com\-Port\-\_\-, and open().
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!close@{close}}
+\index{close@{close}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-C\-O\-M\-::close} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockCOM_ac194f4606bc169d6a0f07f007c4673ce}
+
+
+\-Close serial device. 
+
+\-Close an open serial device. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_af7e42882b6c0ac62e20aa71d37980125}.
+
+
+
+\-References current\-State\-\_\-, io\-Handle\-\_\-, and is\-Valid().
+
+
+
+\-Referenced by open(), and $\sim$\-Sock\-C\-O\-M().
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!get\-Baud\-Rate@{get\-Baud\-Rate}}
+\index{get\-Baud\-Rate@{get\-Baud\-Rate}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{get\-Baud\-Rate}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf \-Sock\-C\-O\-M\-::get\-Baud\-Rate} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockCOM_a07ba30625d61aed0743cc614b7c902b8}
+
+
+\-Retrieve baud rate setting for the serial device. 
+
+\-Returns the baud rate associated with the serial device. \begin{DoxyReturn}{\-Returns}
+an unsigned integer specifying the baud rate selected for the serial device. 
+\end{DoxyReturn}
+
+
+\-References baud\-Rate\-\_\-.
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!get\-C\-O\-M\-Port@{get\-C\-O\-M\-Port}}
+\index{get\-C\-O\-M\-Port@{get\-C\-O\-M\-Port}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{get\-C\-O\-M\-Port}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string {\bf \-Sock\-C\-O\-M\-::get\-C\-O\-M\-Port} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockCOM_a45bd87ae53d8db3dd5bc32c6ad6f95bf}
+
+
+\-Retrieve name of serial device. 
+
+\-Returns the name of the associated serial device. \begin{DoxyReturn}{\-Returns}
+a string containing an operating system specific name of the associated serial device. 
+\end{DoxyReturn}
+
+
+\-References com\-Port\-\_\-.
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!get\-Data\-Bits@{get\-Data\-Bits}}
+\index{get\-Data\-Bits@{get\-Data\-Bits}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{get\-Data\-Bits}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf \-Sock\-C\-O\-M\-::get\-Data\-Bits} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockCOM_ab519e1d35e7f9d4eda9bd8f67da0c234}
+
+
+\-Retrieve number of data bits setting for the serial device. 
+
+\-Returns the number of data bits per byte associated with the serial device. \begin{DoxyReturn}{\-Returns}
+an unsigned integer specifying the number of data bits per byte specified for the serial device. 
+\end{DoxyReturn}
+
+
+\-References data\-Bits\-\_\-.
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!get\-Descriptor@{get\-Descriptor}}
+\index{get\-Descriptor@{get\-Descriptor}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{get\-Descriptor}]{\setlength{\rightskip}{0pt plus 5cm}\-Sock\-C\-O\-M\-I\-O\-Handle {\bf \-Sock\-C\-O\-M\-::get\-Descriptor} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockCOM_ac10fec34060e86bafb251acb76c61d09}
+
+
+\-Retrieve handle to serial device. 
+
+\-Returns the file handle for the serial device. \begin{DoxyReturn}{\-Returns}
+an operating system specific handle to the file descriptor associated with the serial device, or 0 if the device is closed. 
+\end{DoxyReturn}
+
+
+\-References io\-Handle\-\_\-.
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!get\-Flow\-Control@{get\-Flow\-Control}}
+\index{get\-Flow\-Control@{get\-Flow\-Control}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{get\-Flow\-Control}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf \-Sock\-C\-O\-M\-::get\-Flow\-Control} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockCOM_ae91755f91bd960935882ed1f6c1a49be}
+
+
+\-Retrieve flow control setting for the serial device. 
+
+\-Returns the clow control setting associated with the serial device. \begin{DoxyReturn}{\-Returns}
+an unsigned integer specifying the flow control setting selected for the serial device. 
+\end{DoxyReturn}
+
+
+\-References flow\-Control\-\_\-.
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!get\-Last\-Error@{get\-Last\-Error}}
+\index{get\-Last\-Error@{get\-Last\-Error}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{get\-Last\-Error}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-C\-O\-M\-::get\-Last\-Error} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockCOM_a79c24d3fe8ac3ea7a0c7095c66de56d1}
+
+
+\-Get system error code. 
+
+\-Returns the last known system error value. \-This function is not specific to any one serial device. \-The error value retrieved can be for any socket that is part of the overall application. \begin{DoxyReturn}{\-Returns}
+an error code indicating the reason for serial device failure. 
+\end{DoxyReturn}
+
+
+\-References last\-Error\-\_\-.
+
+
+
+\-Referenced by open().
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!get\-Parity@{get\-Parity}}
+\index{get\-Parity@{get\-Parity}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{get\-Parity}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf \-Sock\-C\-O\-M\-::get\-Parity} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockCOM_a6596a66e725ac39b82528260679ebeac}
+
+
+\-Retrieve parity setting for the serial device. 
+
+\-Returns the parity setting associated with the serial device. \begin{DoxyReturn}{\-Returns}
+an unsigned integer specifying the parity setting selected for the serial device. 
+\end{DoxyReturn}
+
+
+\-References parity\-\_\-.
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!get\-Stop\-Bits@{get\-Stop\-Bits}}
+\index{get\-Stop\-Bits@{get\-Stop\-Bits}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{get\-Stop\-Bits}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf \-Sock\-C\-O\-M\-::get\-Stop\-Bits} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockCOM_a1ed0920a98e31590e8cddf802611aa86}
+
+
+\-Retrieve number of stop bits setting for the serial device. 
+
+\-Returns the number of stop bits associated with the serial device. \begin{DoxyReturn}{\-Returns}
+an unsigned integer specifying the number of stop bits specified for the serial device. 
+\end{DoxyReturn}
+
+
+\-References stop\-Bits\-\_\-.
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!is\-Blocking\-I\-O@{is\-Blocking\-I\-O}}
+\index{is\-Blocking\-I\-O@{is\-Blocking\-I\-O}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{is\-Blocking\-I\-O}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-C\-O\-M\-::is\-Blocking\-I\-O} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockCOM_aa334d7633913af88142ef0cc1c626b31}
+
+
+\-Indicates blocking \-I/\-O mode. 
+
+\-Indicates that the serial device is or is not using blocking \-I/\-O. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the serial device is using blocking \-I/\-O if true, is not using blocking \-I/\-O if false. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a29e5ca054cf2d89ee521b27cce592f86}.
+
+
+
+\-References io\-Handle\-\_\-.
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!is\-Valid@{is\-Valid}}
+\index{is\-Valid@{is\-Valid}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{is\-Valid}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-C\-O\-M\-::is\-Valid} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockCOM_ac2bc78f466bade5384c2889a391ce513}
+
+
+\-Indicates the handle references a valid (open) serial device. 
+
+\-Indicates that the serial object's handle is valid (open). \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the serial device handle is valid if true, and invalid if false. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a1a0f99ab5bf56b8d60bc82b969e35373}.
+
+
+
+\-References io\-Handle\-\_\-.
+
+
+
+\-Referenced by close(), read(), read\-Ready(), write(), write\-Ready(), and $\sim$\-Sock\-C\-O\-M().
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!open@{open}}
+\index{open@{open}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-C\-O\-M\-::open} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockCOM_a264d8109d62865cbc974073b4818fce8}
+
+
+\-Open serial device. 
+
+\-Opens the serial device for communication. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a96b4a0d00839ca8ec607882f6719a31a}.
+
+
+
+\-References baud\-Rate\-\_\-, close(), com\-Port\-\_\-, current\-State\-\_\-, data\-Bits\-\_\-, flow\-Control\-\_\-, get\-Last\-Error(), io\-Handle\-\_\-, parity\-\_\-, set\-Last\-Error(), and stop\-Bits\-\_\-.
+
+
+
+\-Referenced by \-Sock\-C\-O\-M().
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!read@{read}}
+\index{read@{read}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-C\-O\-M\-::read} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockCOM_a08a5b23f2fd9ea0a07c804648c7ebd5b}
+
+
+\-Read data. 
+
+\-Reads data that is available in the serial device's input buffer. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object to be filled with the data in the socket buffer. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to network sockets when reading. \-Unused by serial devices. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes read. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a349b8ac90fc7ed97bd8c9ecbd37baefe}.
+
+
+
+\-References io\-Handle\-\_\-, and is\-Valid().
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!read\-Ready@{read\-Ready}}
+\index{read\-Ready@{read\-Ready}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{read\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-C\-O\-M\-::read\-Ready} (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockCOM_a1ef27a549bd59986046d56ada2caf8d7}
+
+
+\-Indicates data is available for reading. 
+
+\-Indicates that data is avialable in the seral device's buffer for reading. 
+\begin{DoxyParams}{\-Parameters}
+{\em sec} & an unsigned integer specifying the number of seconds to wait before returning. \\
+\hline
+{\em usec} & an unsinged integer specifying the number of microseconds to wait before returning. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that data is available if true, no data is available if false. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a20fabcd804f965e6bc87b334c711614f}.
+
+
+
+\-References io\-Handle\-\_\-, and is\-Valid().
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!set\-Blocking\-I\-O@{set\-Blocking\-I\-O}}
+\index{set\-Blocking\-I\-O@{set\-Blocking\-I\-O}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{set\-Blocking\-I\-O}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-C\-O\-M\-::set\-Blocking\-I\-O} (
+\begin{DoxyParamCaption}
+\item[{bool}]{block}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockCOM_a69a4a49d20dad7a1cf0a04d3d15102ed}
+
+
+\-Set blocking \-I/\-O mode. 
+
+\-Sets the serial device's \-I/\-O mode to blocking or non-\/blocking. 
+\begin{DoxyParams}{\-Parameters}
+{\em block} & a boolean value indicating that the serial device should use blocking \-I/\-O if true, non-\/blocking \-I/\-O if false. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that \-I/\-O mode was successfully changed if true, was not successfully changed if false. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_abe48a2e10dcf3356738be94caf6c86cd}.
+
+
+
+\-References io\-Handle\-\_\-.
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!set\-Last\-Error@{set\-Last\-Error}}
+\index{set\-Last\-Error@{set\-Last\-Error}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{set\-Last\-Error}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Sock\-C\-O\-M\-::set\-Last\-Error} (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{error}
+\end{DoxyParamCaption}
+)}\label{classSockCOM_a2cd507817e1df2678483b3aff7caf729}
+
+
+\-Set the system error code. 
+
+\-Sets the serial device's error code to the specified value. \-All serial devices share the same instance of the error code. 
+\begin{DoxyParams}{\-Parameters}
+{\em error} & an integer specifying the value to which the error value is to be set. \\
+\hline
+\end{DoxyParams}
+
+
+\-References last\-Error\-\_\-.
+
+
+
+\-Referenced by open().
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!write@{write}}
+\index{write@{write}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-C\-O\-M\-::write} (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockCOM_a8a28a9d56da1676d21e8e56e3d5a9625}
+
+
+\-Write data. 
+
+\-Writes data to the network. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object filled with the data to be written. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to network sockets when writing. \-Unused by serial devices. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes written. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a05a074dd6e2350ff47eaed13e3e2579b}.
+
+
+
+\-References io\-Handle\-\_\-, and is\-Valid().
+
+\index{\-Sock\-C\-O\-M@{\-Sock\-C\-O\-M}!write\-Ready@{write\-Ready}}
+\index{write\-Ready@{write\-Ready}!SockCOM@{\-Sock\-C\-O\-M}}
+\subsubsection[{write\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-C\-O\-M\-::write\-Ready} (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockCOM_abd136425b2dcdbbe3bb6bc00e8f51e11}
+
+
+\-Indicates space is available for writing. 
+
+\-Indicates that space in the serial device's buffer is avialable for writing. 
+\begin{DoxyParams}{\-Parameters}
+{\em sec} & an unsigned integer specifying the number of seconds to wait before returning. \\
+\hline
+{\em usec} & an unsinged integer specifying the number of milliseconds to wait before returning. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that space is available if true, no space is available if false. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a8f5cf3db545874b17ff9101e79ef8a1f}.
+
+
+
+\-References io\-Handle\-\_\-, and is\-Valid().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-C\-O\-M.\-h\item 
+\-Sock\-C\-O\-M.\-cpp\end{DoxyCompactItemize}

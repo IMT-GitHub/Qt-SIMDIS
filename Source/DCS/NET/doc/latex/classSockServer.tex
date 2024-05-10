@@ -1,0 +1,316 @@
+\section{\-Sock\-Server \-Class \-Reference}
+\label{classSockServer}\index{\-Sock\-Server@{\-Sock\-Server}}
+
+
+\-T\-C\-P server socket class.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-Server.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-Server\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classSockServer}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-Server} ()
+\begin{DoxyCompactList}\small\item\em \-Default server socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Server} (uint16\-\_\-t port, const char $\ast$iface=\-N\-U\-L\-L, int32\-\_\-t backlog=32)
+\begin{DoxyCompactList}\small\item\em \-Server socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Server} (const {\bf \-Sock\-Addr\-Inet} $\ast$localaddr, int32\-\_\-t backlog=32)
+\begin{DoxyCompactList}\small\item\em \-Server socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Server} (\-S\-O\-C\-K\-E\-T sockfd)
+\begin{DoxyCompactList}\small\item\em \-Server socket constructor. \end{DoxyCompactList}\item 
+bool {\bf is\-Active} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates an active socket. \end{DoxyCompactList}\item 
+bool {\bf is\-Listening} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates a listening socket. \end{DoxyCompactList}\item 
+int32\-\_\-t {\bf get\-Backlog} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve server's backlog value. \end{DoxyCompactList}\item 
+virtual bool {\bf open} ()
+\begin{DoxyCompactList}\small\item\em \-Start server socket. \end{DoxyCompactList}\item 
+virtual bool {\bf close} ()
+\begin{DoxyCompactList}\small\item\em \-Close server socket. \end{DoxyCompactList}\item 
+bool {\bf listen} (int32\-\_\-t backlog=32)
+\begin{DoxyCompactList}\small\item\em \-Listen for connections. \end{DoxyCompactList}\item 
+\-S\-O\-C\-K\-E\-T {\bf accept} ()
+\begin{DoxyCompactList}\small\item\em \-Accept client connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf listening\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Listening for connections. \end{DoxyCompactList}\item 
+int32\-\_\-t {\bf backlog\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Connection backlog. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-T\-C\-P server socket class. 
+
+\-A \-T\-C\-P server socket that utilizes the \-T\-C\-P network protocol for reliable two-\/way network communication. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-Server@{\-Sock\-Server}!\-Sock\-Server@{\-Sock\-Server}}
+\index{\-Sock\-Server@{\-Sock\-Server}!SockServer@{\-Sock\-Server}}
+\subsubsection[{\-Sock\-Server}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Server\-::\-Sock\-Server} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockServer_aaa347dc2b781a6e1d483c49b4bc6e72f}
+
+
+\-Default server socket constructor. 
+
+\-Creates an inactive server socket object with default data values. \index{\-Sock\-Server@{\-Sock\-Server}!\-Sock\-Server@{\-Sock\-Server}}
+\index{\-Sock\-Server@{\-Sock\-Server}!SockServer@{\-Sock\-Server}}
+\subsubsection[{\-Sock\-Server}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Server\-::\-Sock\-Server} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{port, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}, }
+\item[{int32\-\_\-t}]{backlog = {\ttfamily 32}}
+\end{DoxyParamCaption}
+)}\label{classSockServer_ae702d83fd548da4262750e634f279679}
+
+
+\-Server socket constructor. 
+
+\-Creates an actively listening server socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em port} & an unsigned 16-\/bit integer specifying the local port with which to bind the server socket. \-This is the port on which client connections shall be accepted. \\
+\hline
+{\em iface} & a character string specifying the network interface to use for network communication. \\
+\hline
+{\em backlog} & an integer specifying the server backlog. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{backlog\-\_\-}{p.}{classSockServer_a6109c4020c54270ac9d6d010fc0a2815} 
+\end{DoxySeeAlso}
+
+
+\-References backlog\-\_\-, \-Sock\-Inet\-::bind(), \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), listen(), listening\-\_\-, \-Sock\-Inet\-::localaddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Server@{\-Sock\-Server}!\-Sock\-Server@{\-Sock\-Server}}
+\index{\-Sock\-Server@{\-Sock\-Server}!SockServer@{\-Sock\-Server}}
+\subsubsection[{\-Sock\-Server}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Server\-::\-Sock\-Server} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr, }
+\item[{int32\-\_\-t}]{backlog = {\ttfamily 32}}
+\end{DoxyParamCaption}
+)}\label{classSockServer_a4b07e54330cdaa55a30b7e39514a687b}
+
+
+\-Server socket constructor. 
+
+\-Creates an actively listening server socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em localaddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information to be used when creating the server socket. \\
+\hline
+{\em backlog} & an integer specifying the server backlog. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{backlog\-\_\-}{p.}{classSockServer_a6109c4020c54270ac9d6d010fc0a2815} 
+\end{DoxySeeAlso}
+
+
+\-References backlog\-\_\-, \-Sock\-Inet\-::bind(), \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), listen(), listening\-\_\-, \-Sock\-Inet\-::localaddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Server@{\-Sock\-Server}!\-Sock\-Server@{\-Sock\-Server}}
+\index{\-Sock\-Server@{\-Sock\-Server}!SockServer@{\-Sock\-Server}}
+\subsubsection[{\-Sock\-Server}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Server\-::\-Sock\-Server} (
+\begin{DoxyParamCaption}
+\item[{\-S\-O\-C\-K\-E\-T}]{sockfd}
+\end{DoxyParamCaption}
+)}\label{classSockServer_ab06933d757f3b5133760f4a6db9eaa96}
+
+
+\-Server socket constructor. 
+
+\-Creates a server socket object from the specified data value. 
+\begin{DoxyParams}{\-Parameters}
+{\em sockfd} & a handle to a previously created socket, to be used by the server socket object. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-Server@{\-Sock\-Server}!accept@{accept}}
+\index{accept@{accept}!SockServer@{\-Sock\-Server}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}\-S\-O\-C\-K\-E\-T {\bf \-Sock\-Server\-::accept} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockServer_aa65beb5251486434252361486a8b4ac3}
+
+
+\-Accept client connection. 
+
+\-Accepts a connection from a client socket. \begin{DoxyReturn}{\-Returns}
+a handle to the connected clietn socket. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Server@{\-Sock\-Server}!close@{close}}
+\index{close@{close}!SockServer@{\-Sock\-Server}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Server\-::close} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockServer_aaf79ee6a8f4ae887da6726da240af5e5}
+
+
+\-Close server socket. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::close}{p.}{classSockInet_a447db3597dc6769696667f5a1b079571} 
+\end{DoxySeeAlso}
+
+
+\-Reimplemented from {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a447db3597dc6769696667f5a1b079571}.
+
+
+
+\-References listening\-\_\-.
+
+\index{\-Sock\-Server@{\-Sock\-Server}!get\-Backlog@{get\-Backlog}}
+\index{get\-Backlog@{get\-Backlog}!SockServer@{\-Sock\-Server}}
+\subsubsection[{get\-Backlog}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-Server\-::get\-Backlog} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockServer_ae305c04c0bb848e86378c0f0c5b98fc2}
+
+
+\-Retrieve server's backlog value. 
+
+\-Returns the server's curretn backlog value. \begin{DoxyReturn}{\-Returns}
+an integer specifying the server socket's backlog. 
+\end{DoxyReturn}
+
+
+\-References backlog\-\_\-.
+
+\index{\-Sock\-Server@{\-Sock\-Server}!is\-Active@{is\-Active}}
+\index{is\-Active@{is\-Active}!SockServer@{\-Sock\-Server}}
+\subsubsection[{is\-Active}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Server\-::is\-Active} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockServer_adbe456c90dd06e33d1a53b03371a0f3c}
+
+
+\-Indicates an active socket. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-T\-C\-P\-::is\-Active}{p.}{classSockTCP_af58644657d004a04ca84a669a4ed3cf9} 
+\end{DoxySeeAlso}
+
+
+\-Implements {\bf \-Sock\-T\-C\-P} \doxyref{}{p.}{classSockTCP_af58644657d004a04ca84a669a4ed3cf9}.
+
+
+
+\-References listening\-\_\-.
+
+\index{\-Sock\-Server@{\-Sock\-Server}!is\-Listening@{is\-Listening}}
+\index{is\-Listening@{is\-Listening}!SockServer@{\-Sock\-Server}}
+\subsubsection[{is\-Listening}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Server\-::is\-Listening} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockServer_a5f78908fb9858ebbf0acf786030c8c74}
+
+
+\-Indicates a listening socket. 
+
+\-Indicates that the server socket object is listening for connections. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the socket is listening if true, not listening if false. 
+\end{DoxyReturn}
+
+
+\-References listening\-\_\-.
+
+\index{\-Sock\-Server@{\-Sock\-Server}!listen@{listen}}
+\index{listen@{listen}!SockServer@{\-Sock\-Server}}
+\subsubsection[{listen}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Server\-::listen} (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{backlog = {\ttfamily 32}}
+\end{DoxyParamCaption}
+)}\label{classSockServer_a0aaf0f5147d237755201197709e7179e}
+
+
+\-Listen for connections. 
+
+\-Starts server socket object listening for client connections. 
+\begin{DoxyParams}{\-Parameters}
+{\em backlog} & an integer specifying the server socket object's backlog. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-References backlog\-\_\-, listening\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+
+
+\-Referenced by \-Sock\-Server().
+
+\index{\-Sock\-Server@{\-Sock\-Server}!open@{open}}
+\index{open@{open}!SockServer@{\-Sock\-Server}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Server\-::open} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockServer_a20da4b5e09b3236cbf9213d614c6e074}
+
+
+\-Start server socket. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::open}{p.}{classSockInet_a17d1128404b0d246c0fe70ec3cb82058} 
+\end{DoxySeeAlso}
+
+
+\-Implements {\bf \-Sock\-T\-C\-P} \doxyref{}{p.}{classSockTCP_a4e40c3d6c6ac9cb240ed68d0eed2143b}.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\index{\-Sock\-Server@{\-Sock\-Server}!backlog\-\_\-@{backlog\-\_\-}}
+\index{backlog\-\_\-@{backlog\-\_\-}!SockServer@{\-Sock\-Server}}
+\subsubsection[{backlog\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-Server\-::backlog\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockServer_a6109c4020c54270ac9d6d010fc0a2815}
+
+
+\-Connection backlog. 
+
+\-The connection backlog specifying the number of unaccepted connections may be present at a time. 
+
+\-Referenced by get\-Backlog(), listen(), and \-Sock\-Server().
+
+\index{\-Sock\-Server@{\-Sock\-Server}!listening\-\_\-@{listening\-\_\-}}
+\index{listening\-\_\-@{listening\-\_\-}!SockServer@{\-Sock\-Server}}
+\subsubsection[{listening\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Server\-::listening\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockServer_ae9a758a2b983e86ac20aa9896f3e8717}
+
+
+\-Listening for connections. 
+
+\-Indicates that the server socket is listening for client socket connections. 
+
+\-Referenced by close(), is\-Active(), is\-Listening(), listen(), and \-Sock\-Server().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-Server.\-h\item 
+\-Sock\-Server.\-cpp\end{DoxyCompactItemize}

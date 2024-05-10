@@ -1,0 +1,168 @@
+.TH "SockUnicast" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockUnicast \- 
+.PP
+UDP unicast socket class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockUnicast\&.h>\fP
+.PP
+Inherits \fBSockUDP\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockUnicast\fP ()"
+.br
+.RI "\fIDefault unicast socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockUnicast\fP (uint16_t port, const char *iface=NULL)"
+.br
+.RI "\fIUnicast socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockUnicast\fP (uint16_t peerport, const char *peeraddr, uint16_t port, const char *iface=NULL, bool \fBattach\fP=true)"
+.br
+.RI "\fIUnicast socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockUnicast\fP (const \fBSockAddrInet\fP *localaddr)"
+.br
+.RI "\fIUnicast socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockUnicast\fP (const \fBSockAddrInet\fP *peeraddr, const \fBSockAddrInet\fP *localaddr, bool \fBattach\fP=true)"
+.br
+.RI "\fIUnicast socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockUnicast\fP (SOCKET sockfd)"
+.br
+.RI "\fIUnicast socket constructor\&. \fP"
+.ti -1c
+.RI "virtual bool \fBopen\fP ()"
+.br
+.RI "\fIOpen socket connection\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+UDP unicast socket class\&. 
+
+A UDP socket that utilizes network unicast for data transmission\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockUnicast::SockUnicast\fP ()"
+.PP
+Default unicast socket constructor\&. Creates a unicast socket object with default data values\&. 
+.SS "\fBSockUnicast::SockUnicast\fP (uint16_tport, const char *iface = \fCNULL\fP)"
+.PP
+Unicast socket constructor\&. Creates a unicast socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP an unsigned 16-bit integer specifying the port to bind the socket to\&. 
+.br
+\fIiface\fP a character string specifying the network interface to use for network transmission\&. 
+.RE
+.PP
+
+.PP
+References SockInet::bind(), SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), SockInet::localaddr_, and SockInet::sockfd_\&.
+.SS "\fBSockUnicast::SockUnicast\fP (uint16_tpeerport, const char *peeraddr, uint16_tport, const char *iface = \fCNULL\fP, boolattach = \fCtrue\fP)"
+.PP
+Unicast socket constructor\&. Creates a unicast socket object with the specified data values, and connects it to a specified peer\&. When a unicast socket object is connected to a peer, data can be sent to that peer with calls to 'write' rather than calls to 'writeTo'\&. When a UDP socket is connected it can only communicate with the peer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeerport\fP a 16-bit integer specifying the port of the peer that the socket is to be connected/attached to\&. 
+.br
+\fIpeeraddr\fP a character string specifying the network address of the peer that the socket is connected/attached to\&. 
+.br
+\fIport\fP an unsigned 16-bit integer specifying the port to bind the socket to\&. 
+.br
+\fIiface\fP a character string specifying the network interface to use for network transmission\&. 
+.br
+\fIattach\fP a boolean value specifying whether the socket is to be attached to the peer or connected to the peer\&. When the socket is attached, the socket object stores the peerport and peeraddr values and uses them to call 'sendto'\&. If the socket is connected, the socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data with 'send'\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBSockUDP::attached_\fP 
+.PP
+\fBSockUDP::write\fP 
+.PP
+\fBSockUDP::writeTo\fP 
+.RE
+.PP
+
+.PP
+References SockUDP::attached_, SockInet::bind(), SockUDP::connect(), SockUDP::connected_, SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), SockInet::localaddr_, SockUDP::peeraddr_, and SockInet::sockfd_\&.
+.SS "\fBSockUnicast::SockUnicast\fP (const \fBSockAddrInet\fP *localaddr)"
+.PP
+Unicast socket constructor\&. Creates a unicast socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlocaladdr\fP a \fBSockAddrInet\fP object specifying the network information to be used when creating the socket\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBSockAddrInet\fP 
+.RE
+.PP
+
+.PP
+References SockInet::bind(), SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), SockInet::localaddr_, and SockInet::sockfd_\&.
+.SS "\fBSockUnicast::SockUnicast\fP (const \fBSockAddrInet\fP *peeraddr, const \fBSockAddrInet\fP *localaddr, boolattach = \fCtrue\fP)"
+.PP
+Unicast socket constructor\&. Creates a unicast socket object with the specified data values, and connects it to a specified peer\&. When a unicast socket object is connected to a peer, data can be sent to that peer with calls to 'write' rather than calls to 'writeTo'\&. When a UDP socket is connected it can only communicate with the peer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeeraddr\fP a \fBSockAddrInet\fP object specifying the network information for the peer to connect with when creating the socket\&. 
+.br
+\fIlocaladdr\fP a \fBSockAddrInet\fP object specifying the network information to be used when creating the socket\&. 
+.br
+\fIattach\fP a boolean value specifying whether the socket is to be attached to the peer or connected to the peer\&. When the socket is attached, the socket object stores the peerport and peeraddr values and uses them to call 'sendto'\&. If the socket is connected, the socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data with 'send'\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBSockUDP::attached_\fP 
+.PP
+\fBSockUDP::write\fP 
+.PP
+\fBSockUDP::writeTo\fP 
+.RE
+.PP
+
+.PP
+References SockUDP::attached_, SockInet::bind(), SockUDP::connect(), SockUDP::connected_, SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), SockInet::localaddr_, SockUDP::peeraddr_, and SockInet::sockfd_\&.
+.SS "\fBSockUnicast::SockUnicast\fP (SOCKETsockfd)"
+.PP
+Unicast socket constructor\&. Creates a socket object from the specified data value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsockfd\fP a handle to a previously created socket, to be used by the socket object\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool \fBSockUnicast::open\fP ()\fC [virtual]\fP"
+.PP
+Open socket connection\&. \fBSee also:\fP
+.RS 4
+\fBSockInet::open\fP 
+.RE
+.PP
+
+.PP
+Implements \fBSockUDP\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

@@ -1,0 +1,52 @@
+\section{\-Sock\-Addr\-Factory \-Class \-Reference}
+\label{classSockAddrFactory}\index{\-Sock\-Addr\-Factory@{\-Sock\-Addr\-Factory}}
+
+
+\-Socket address creator.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-Addr\-Factory.\-h$>$}
+
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf \-Sock\-Addr\-Inet} $\ast$ {\bf create} (int32\-\_\-t family)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Socket address creator. 
+
+\-A class to create a socket address object for a desired socket address family. \-Currently only \-A\-F\-\_\-\-I\-N\-E\-T is supporter. 
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-Addr\-Factory@{\-Sock\-Addr\-Factory}!create@{create}}
+\index{create@{create}!SockAddrFactory@{\-Sock\-Addr\-Factory}}
+\subsubsection[{create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Addr\-Inet} $\ast$ {\bf \-Sock\-Addr\-Factory\-::create} (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{family}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classSockAddrFactory_ae9ab2927d0e2b7788374929720323e40}
+\-Creates a new \-Socket\-Addr\-Inet object. 
+\begin{DoxyParams}{\-Parameters}
+{\em family} & an integer specifying the desired socket address family for the object to be created. \-Currently only \-A\-F\-\_\-\-I\-N\-E\-T is supported. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a newly created \-Socket\-Addr\-Inet object. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} 
+\end{DoxySeeAlso}
+
+
+\-Referenced by \-Sock\-Broadcast\-::open(), \-Sock\-Broadcast\-::\-Sock\-Broadcast(), \-Sock\-Client\-::\-Sock\-Client(), \-Sock\-Inet\-::\-Sock\-Inet(), and \-Sock\-U\-D\-P\-::\-Sock\-U\-D\-P().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-Addr\-Factory.\-h\item 
+\-Sock\-Addr\-Factory.\-cpp\end{DoxyCompactItemize}

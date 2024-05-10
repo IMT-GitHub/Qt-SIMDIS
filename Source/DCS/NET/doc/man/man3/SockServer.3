@@ -1,0 +1,242 @@
+.TH "SockServer" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockServer \- 
+.PP
+TCP server socket class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockServer\&.h>\fP
+.PP
+Inherits \fBSockTCP\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockServer\fP ()"
+.br
+.RI "\fIDefault server socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockServer\fP (uint16_t port, const char *iface=NULL, int32_t backlog=32)"
+.br
+.RI "\fIServer socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockServer\fP (const \fBSockAddrInet\fP *localaddr, int32_t backlog=32)"
+.br
+.RI "\fIServer socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockServer\fP (SOCKET sockfd)"
+.br
+.RI "\fIServer socket constructor\&. \fP"
+.ti -1c
+.RI "bool \fBisActive\fP () const "
+.br
+.RI "\fIIndicates an active socket\&. \fP"
+.ti -1c
+.RI "bool \fBisListening\fP () const "
+.br
+.RI "\fIIndicates a listening socket\&. \fP"
+.ti -1c
+.RI "int32_t \fBgetBacklog\fP () const "
+.br
+.RI "\fIRetrieve server's backlog value\&. \fP"
+.ti -1c
+.RI "virtual bool \fBopen\fP ()"
+.br
+.RI "\fIStart server socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBclose\fP ()"
+.br
+.RI "\fIClose server socket\&. \fP"
+.ti -1c
+.RI "bool \fBlisten\fP (int32_t backlog=32)"
+.br
+.RI "\fIListen for connections\&. \fP"
+.ti -1c
+.RI "SOCKET \fBaccept\fP ()"
+.br
+.RI "\fIAccept client connection\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBlistening_\fP"
+.br
+.RI "\fIListening for connections\&. \fP"
+.ti -1c
+.RI "int32_t \fBbacklog_\fP"
+.br
+.RI "\fIConnection backlog\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+TCP server socket class\&. 
+
+A TCP server socket that utilizes the TCP network protocol for reliable two-way network communication\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockServer::SockServer\fP ()"
+.PP
+Default server socket constructor\&. Creates an inactive server socket object with default data values\&. 
+.SS "\fBSockServer::SockServer\fP (uint16_tport, const char *iface = \fCNULL\fP, int32_tbacklog = \fC32\fP)"
+.PP
+Server socket constructor\&. Creates an actively listening server socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP an unsigned 16-bit integer specifying the local port with which to bind the server socket\&. This is the port on which client connections shall be accepted\&. 
+.br
+\fIiface\fP a character string specifying the network interface to use for network communication\&. 
+.br
+\fIbacklog\fP an integer specifying the server backlog\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBbacklog_\fP 
+.RE
+.PP
+
+.PP
+References backlog_, SockInet::bind(), SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), listen(), listening_, SockInet::localaddr_, and SockInet::sockfd_\&.
+.SS "\fBSockServer::SockServer\fP (const \fBSockAddrInet\fP *localaddr, int32_tbacklog = \fC32\fP)"
+.PP
+Server socket constructor\&. Creates an actively listening server socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlocaladdr\fP a \fBSockAddrInet\fP object specifying the network information to be used when creating the server socket\&. 
+.br
+\fIbacklog\fP an integer specifying the server backlog\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBbacklog_\fP 
+.RE
+.PP
+
+.PP
+References backlog_, SockInet::bind(), SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), listen(), listening_, SockInet::localaddr_, and SockInet::sockfd_\&.
+.SS "\fBSockServer::SockServer\fP (SOCKETsockfd)"
+.PP
+Server socket constructor\&. Creates a server socket object from the specified data value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsockfd\fP a handle to a previously created socket, to be used by the server socket object\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "SOCKET \fBSockServer::accept\fP ()"
+.PP
+Accept client connection\&. Accepts a connection from a client socket\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a handle to the connected clietn socket\&. 
+.RE
+.PP
+
+.PP
+References SockInet::sockfd_\&.
+.SS "bool \fBSockServer::close\fP ()\fC [virtual]\fP"
+.PP
+Close server socket\&. \fBSee also:\fP
+.RS 4
+\fBSockInet::close\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBSockInet\fP\&.
+.PP
+References listening_\&.
+.SS "int32_t \fBSockServer::getBacklog\fP () const"
+.PP
+Retrieve server's backlog value\&. Returns the server's curretn backlog value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an integer specifying the server socket's backlog\&. 
+.RE
+.PP
+
+.PP
+References backlog_\&.
+.SS "bool \fBSockServer::isActive\fP () const\fC [virtual]\fP"
+.PP
+Indicates an active socket\&. \fBSee also:\fP
+.RS 4
+\fBSockTCP::isActive\fP 
+.RE
+.PP
+
+.PP
+Implements \fBSockTCP\fP\&.
+.PP
+References listening_\&.
+.SS "bool \fBSockServer::isListening\fP () const"
+.PP
+Indicates a listening socket\&. Indicates that the server socket object is listening for connections\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that the socket is listening if true, not listening if false\&. 
+.RE
+.PP
+
+.PP
+References listening_\&.
+.SS "bool \fBSockServer::listen\fP (int32_tbacklog = \fC32\fP)"
+.PP
+Listen for connections\&. Starts server socket object listening for client connections\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbacklog\fP an integer specifying the server socket object's backlog\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+References backlog_, listening_, and SockInet::sockfd_\&.
+.PP
+Referenced by SockServer()\&.
+.SS "bool \fBSockServer::open\fP ()\fC [virtual]\fP"
+.PP
+Start server socket\&. \fBSee also:\fP
+.RS 4
+\fBSockInet::open\fP 
+.RE
+.PP
+
+.PP
+Implements \fBSockTCP\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int32_t \fBSockServer::backlog_\fP\fC [protected]\fP"
+.PP
+Connection backlog\&. The connection backlog specifying the number of unaccepted connections may be present at a time\&. 
+.PP
+Referenced by getBacklog(), listen(), and SockServer()\&.
+.SS "bool \fBSockServer::listening_\fP\fC [protected]\fP"
+.PP
+Listening for connections\&. Indicates that the server socket is listening for client socket connections\&. 
+.PP
+Referenced by close(), isActive(), isListening(), listen(), and SockServer()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

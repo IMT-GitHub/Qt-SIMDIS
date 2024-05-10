@@ -1,0 +1,245 @@
+.TH "SockIO" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockIO \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockIO\&.h>\fP
+.PP
+Inherited by \fBSockCOM\fP, and \fBSockInet\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockIO\fP ()"
+.br
+.RI "\fICreates an empty \fBSockIO\fP object\&. \fP"
+.ti -1c
+.RI "virtual \fB~SockIO\fP ()"
+.br
+.RI "\fIDestroys a \fBSockIO\fP object\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisValid\fP () const "
+.br
+.RI "\fIIndicates the socket handle references a valid kernel socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisBlockingIO\fP () const =0"
+.br
+.RI "\fIIndicates blocking I/O mode\&. \fP"
+.ti -1c
+.RI "virtual bool \fBsetBlockingIO\fP (bool block)=0"
+.br
+.RI "\fISet blocking I/O mode\&. \fP"
+.ti -1c
+.RI "virtual bool \fBopen\fP ()=0"
+.br
+.RI "\fIOpen socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBclose\fP ()=0"
+.br
+.RI "\fIClose socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBreadReady\fP (uint32_t sec=0, uint32_t usec=0) const =0"
+.br
+.RI "\fIIndicates data is available for reading\&. \fP"
+.ti -1c
+.RI "virtual bool \fBwriteReady\fP (uint32_t sec=0, uint32_t usec=0) const =0"
+.br
+.RI "\fIIndicates space is available for writing\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBread\fP (void *buffer, int32_t size, int32_t flags=0) const =0"
+.br
+.RI "\fIRead data\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBwrite\fP (const void *buffer, int32_t size, int32_t flags=0) const =0"
+.br
+.RI "\fIWrite data\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBwriteAll\fP (const void *buffer, int32_t size, int32_t flags=0) const "
+.br
+.RI "\fIWrite a fixed amount of data\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Pure virtual class for writing to i/o sockets and devices 
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool \fBSockIO::close\fP ()\fC [pure virtual]\fP"
+.PP
+Close socket\&. Close an open socket\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBSockCOM\fP, \fBSockUDP\fP, \fBSockInet\fP, \fBSockClient\fP, and \fBSockServer\fP\&.
+.SS "virtual bool \fBSockIO::isBlockingIO\fP () const\fC [pure virtual]\fP"
+.PP
+Indicates blocking I/O mode\&. Indicates that the socket is or is not using blocking I/O\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that the socket is using blocking I/O if true, is not using blocking I/O if false\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBSockCOM\fP, and \fBSockInet\fP\&.
+.SS "virtual bool \fBSockIO::isValid\fP () const\fC [inline, virtual]\fP"
+.PP
+Indicates the socket handle references a valid kernel socket\&. Indicates that the socket object's socket handle is valid\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the socket handle is valid if true, and invalid if false\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBSockCOM\fP, and \fBSockInet\fP\&.
+.PP
+Referenced by writeAll()\&.
+.SS "virtual bool \fBSockIO::open\fP ()\fC [pure virtual]\fP"
+.PP
+Open socket\&. Binds socket and, depending on socket type, connects to peer or listens for connections\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBSockCOM\fP, \fBSockUDP\fP, \fBSockInet\fP, \fBSockBroadcast\fP, \fBSockUnicast\fP, \fBSockClient\fP, \fBSockServer\fP, \fBSockMulticast\fP, and \fBSockTCP\fP\&.
+.SS "virtual int32_t \fBSockIO::read\fP (void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [pure virtual]\fP"
+.PP
+Read data\&. Reads data that is available in the socket input buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object to be filled with the data in the socket buffer\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when reading\&. These are the flags used by the BSD socket function 'recv'\&. See the 'recv' man pages or MSDN documentation for more details\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes read\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBSockCOM\fP, \fBSockInet\fP, and \fBSockUDP\fP\&.
+.SS "virtual bool \fBSockIO::readReady\fP (uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP) const\fC [pure virtual]\fP"
+.PP
+Indicates data is available for reading\&. Indicates that data is avialable in the socket buffer for reading\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsec\fP an unsigned integer specifying the number of seconds to wait before returning\&. 
+.br
+\fIusec\fP an unsinged integer specifying the number of microseconds to wait before returning\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that data is available if true, no data is available if false\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBSockCOM\fP, and \fBSockInet\fP\&.
+.SS "virtual bool \fBSockIO::setBlockingIO\fP (boolblock)\fC [pure virtual]\fP"
+.PP
+Set blocking I/O mode\&. Sets the sockets I/O mode to blocking or non-blocking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIblock\fP a boolean value indicating that the socket should use blocking I/O if true, non-blocking I/O if false\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that I/O mode was successfully changed if true, was not successfully changed if false\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBSockCOM\fP, and \fBSockInet\fP\&.
+.SS "virtual int32_t \fBSockIO::write\fP (const void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [pure virtual]\fP"
+.PP
+Write data\&. Writes data to the network\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object filled with the data to be written\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when writing\&. These are the flags used by the BSD socket function 'send'\&. See the 'send' man pages or MSDN documentation for more details\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes written\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBSockCOM\fP, \fBSockInet\fP, and \fBSockUDP\fP\&.
+.PP
+Referenced by writeAll()\&.
+.SS "int32_t \fBSockIO::writeAll\fP (const void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Write a fixed amount of data\&. Writes the total number of bytes specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object filled with the data to be written\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. The function will not return until exactly this number of bytes has been written, or an error has been encountered\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when writing\&. These are the flags used by the BSD socket function 'send'\&. See the 'send' man pages or MSDN documentation for more details\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes written\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBSockTCP\fP\&.
+.PP
+References isValid(), and write()\&.
+.SS "virtual bool \fBSockIO::writeReady\fP (uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP) const\fC [pure virtual]\fP"
+.PP
+Indicates space is available for writing\&. Indicates that space in the socket buffer is avialable for writing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsec\fP an unsigned integer specifying the number of seconds to wait before returning\&. 
+.br
+\fIusec\fP an unsinged integer specifying the number of milliseconds to wait before returning\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that space is available if true, no space is available if false\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBSockCOM\fP, and \fBSockInet\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

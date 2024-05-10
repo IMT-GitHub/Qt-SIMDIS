@@ -1,0 +1,51 @@
+.TH "SockAddrFactory" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockAddrFactory \- 
+.PP
+Socket address creator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockAddrFactory\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBSockAddrInet\fP * \fBcreate\fP (int32_t family)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Socket address creator\&. 
+
+A class to create a socket address object for a desired socket address family\&. Currently only AF_INET is supporter\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSockAddrInet\fP * \fBSockAddrFactory::create\fP (int32_tfamily)\fC [static]\fP"Creates a new SocketAddrInet object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfamily\fP an integer specifying the desired socket address family for the object to be created\&. Currently only AF_INET is supported\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a newly created SocketAddrInet object\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBSockAddrInet\fP 
+.RE
+.PP
+
+.PP
+Referenced by SockBroadcast::open(), SockBroadcast::SockBroadcast(), SockClient::SockClient(), SockInet::SockInet(), and SockUDP::SockUDP()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

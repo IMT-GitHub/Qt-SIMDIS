@@ -1,0 +1,214 @@
+\section{\-Sock\-Unicast \-Class \-Reference}
+\label{classSockUnicast}\index{\-Sock\-Unicast@{\-Sock\-Unicast}}
+
+
+\-U\-D\-P unicast socket class.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-Unicast.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-Unicast\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classSockUnicast}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-Unicast} ()
+\begin{DoxyCompactList}\small\item\em \-Default unicast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Unicast} (uint16\-\_\-t port, const char $\ast$iface=\-N\-U\-L\-L)
+\begin{DoxyCompactList}\small\item\em \-Unicast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Unicast} (uint16\-\_\-t peerport, const char $\ast$peeraddr, uint16\-\_\-t port, const char $\ast$iface=\-N\-U\-L\-L, bool {\bf attach}=true)
+\begin{DoxyCompactList}\small\item\em \-Unicast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Unicast} (const {\bf \-Sock\-Addr\-Inet} $\ast$localaddr)
+\begin{DoxyCompactList}\small\item\em \-Unicast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Unicast} (const {\bf \-Sock\-Addr\-Inet} $\ast$peeraddr, const {\bf \-Sock\-Addr\-Inet} $\ast$localaddr, bool {\bf attach}=true)
+\begin{DoxyCompactList}\small\item\em \-Unicast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Unicast} (\-S\-O\-C\-K\-E\-T sockfd)
+\begin{DoxyCompactList}\small\item\em \-Unicast socket constructor. \end{DoxyCompactList}\item 
+virtual bool {\bf open} ()
+\begin{DoxyCompactList}\small\item\em \-Open socket connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-U\-D\-P unicast socket class. 
+
+\-A \-U\-D\-P socket that utilizes network unicast for data transmission. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!\-Sock\-Unicast@{\-Sock\-Unicast}}
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!SockUnicast@{\-Sock\-Unicast}}
+\subsubsection[{\-Sock\-Unicast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Unicast\-::\-Sock\-Unicast} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockUnicast_adaeeb1a0b52973542d38f4a0e1f4fd15}
+
+
+\-Default unicast socket constructor. 
+
+\-Creates a unicast socket object with default data values. \index{\-Sock\-Unicast@{\-Sock\-Unicast}!\-Sock\-Unicast@{\-Sock\-Unicast}}
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!SockUnicast@{\-Sock\-Unicast}}
+\subsubsection[{\-Sock\-Unicast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Unicast\-::\-Sock\-Unicast} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{port, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}\label{classSockUnicast_a3e3e5f8d23d24be6cfa6c192bac6d1f3}
+
+
+\-Unicast socket constructor. 
+
+\-Creates a unicast socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em port} & an unsigned 16-\/bit integer specifying the port to bind the socket to. \\
+\hline
+{\em iface} & a character string specifying the network interface to use for network transmission. \\
+\hline
+\end{DoxyParams}
+
+
+\-References \-Sock\-Inet\-::bind(), \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!\-Sock\-Unicast@{\-Sock\-Unicast}}
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!SockUnicast@{\-Sock\-Unicast}}
+\subsubsection[{\-Sock\-Unicast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Unicast\-::\-Sock\-Unicast} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{peerport, }
+\item[{const char $\ast$}]{peeraddr, }
+\item[{uint16\-\_\-t}]{port, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}, }
+\item[{bool}]{attach = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classSockUnicast_a8ce7c821580c27e0f7e8f04df3d6cd83}
+
+
+\-Unicast socket constructor. 
+
+\-Creates a unicast socket object with the specified data values, and connects it to a specified peer. \-When a unicast socket object is connected to a peer, data can be sent to that peer with calls to 'write' rather than calls to 'write\-To'. \-When a \-U\-D\-P socket is connected it can only communicate with the peer. 
+\begin{DoxyParams}{\-Parameters}
+{\em peerport} & a 16-\/bit integer specifying the port of the peer that the socket is to be connected/attached to. \\
+\hline
+{\em peeraddr} & a character string specifying the network address of the peer that the socket is connected/attached to. \\
+\hline
+{\em port} & an unsigned 16-\/bit integer specifying the port to bind the socket to. \\
+\hline
+{\em iface} & a character string specifying the network interface to use for network transmission. \\
+\hline
+{\em attach} & a boolean value specifying whether the socket is to be attached to the peer or connected to the peer. \-When the socket is attached, the socket object stores the peerport and peeraddr values and uses them to call 'sendto'. \-If the socket is connected, the socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data with 'send'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-U\-D\-P\-::attached\-\_\-}{p.}{classSockUDP_aecd05663c9dc5ec0bb6112d563b819fb} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write}{p.}{classSockUDP_a4cf17cab6ebb6c3f0762c56aba40d158} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write\-To}{p.}{classSockUDP_a6719fdc01c4227ba9152a07ba9caf052} 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-U\-D\-P\-::attached\-\_\-, \-Sock\-Inet\-::bind(), \-Sock\-U\-D\-P\-::connect(), \-Sock\-U\-D\-P\-::connected\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, \-Sock\-U\-D\-P\-::peeraddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!\-Sock\-Unicast@{\-Sock\-Unicast}}
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!SockUnicast@{\-Sock\-Unicast}}
+\subsubsection[{\-Sock\-Unicast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Unicast\-::\-Sock\-Unicast} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr}
+\end{DoxyParamCaption}
+)}\label{classSockUnicast_a0705a213734dc10077e5b9dc243c5414}
+
+
+\-Unicast socket constructor. 
+
+\-Creates a unicast socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em localaddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information to be used when creating the socket. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-Inet\-::bind(), \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!\-Sock\-Unicast@{\-Sock\-Unicast}}
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!SockUnicast@{\-Sock\-Unicast}}
+\subsubsection[{\-Sock\-Unicast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Unicast\-::\-Sock\-Unicast} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{peeraddr, }
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr, }
+\item[{bool}]{attach = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classSockUnicast_a1c57c933f248507ac1b0ad0a1afbe7f1}
+
+
+\-Unicast socket constructor. 
+
+\-Creates a unicast socket object with the specified data values, and connects it to a specified peer. \-When a unicast socket object is connected to a peer, data can be sent to that peer with calls to 'write' rather than calls to 'write\-To'. \-When a \-U\-D\-P socket is connected it can only communicate with the peer. 
+\begin{DoxyParams}{\-Parameters}
+{\em peeraddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information for the peer to connect with when creating the socket. \\
+\hline
+{\em localaddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information to be used when creating the socket. \\
+\hline
+{\em attach} & a boolean value specifying whether the socket is to be attached to the peer or connected to the peer. \-When the socket is attached, the socket object stores the peerport and peeraddr values and uses them to call 'sendto'. \-If the socket is connected, the socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data with 'send'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-U\-D\-P\-::attached\-\_\-}{p.}{classSockUDP_aecd05663c9dc5ec0bb6112d563b819fb} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write}{p.}{classSockUDP_a4cf17cab6ebb6c3f0762c56aba40d158} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write\-To}{p.}{classSockUDP_a6719fdc01c4227ba9152a07ba9caf052} 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-U\-D\-P\-::attached\-\_\-, \-Sock\-Inet\-::bind(), \-Sock\-U\-D\-P\-::connect(), \-Sock\-U\-D\-P\-::connected\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, \-Sock\-U\-D\-P\-::peeraddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!\-Sock\-Unicast@{\-Sock\-Unicast}}
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!SockUnicast@{\-Sock\-Unicast}}
+\subsubsection[{\-Sock\-Unicast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Unicast\-::\-Sock\-Unicast} (
+\begin{DoxyParamCaption}
+\item[{\-S\-O\-C\-K\-E\-T}]{sockfd}
+\end{DoxyParamCaption}
+)}\label{classSockUnicast_aeb7a4103a4d028d96c8e9da24c4bd9f8}
+
+
+\-Unicast socket constructor. 
+
+\-Creates a socket object from the specified data value. 
+\begin{DoxyParams}{\-Parameters}
+{\em sockfd} & a handle to a previously created socket, to be used by the socket object. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-Unicast@{\-Sock\-Unicast}!open@{open}}
+\index{open@{open}!SockUnicast@{\-Sock\-Unicast}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Unicast\-::open} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockUnicast_a7fc8972dcb38faad7d8a6ceed16d3daa}
+
+
+\-Open socket connection. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::open}{p.}{classSockInet_a17d1128404b0d246c0fe70ec3cb82058} 
+\end{DoxySeeAlso}
+
+
+\-Implements {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_ac41fca14afb19f09e86e4fd45ceeed24}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-Unicast.\-h\item 
+\-Sock\-Unicast.\-cpp\end{DoxyCompactItemize}

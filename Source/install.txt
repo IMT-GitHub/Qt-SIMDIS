@@ -1,0 +1,44 @@
+
+Operating systems officially supported :
+===========================
+* Windows 10
+* Red Hat Enterprise Linux 7
+
+
+
+Developer Tools and Versions
+========================
+Visual Studio 2019 
+tool : Visual Code 1.88.1
+Visual Code Extensions 
+   - CMake v0.0.17
+   - CMake Toolsv1.17.17
+   - cmake-format v0.6.11
+   - C/C++ v1.20.5
+   - C/C++ Extension Pack v1.3.0
+
+SIMDIS SDK Intall
+======================
+SIMDIS SDK SR13
+   
+- SIMDIS SDK Install 방법
+  -> Source/SIMDIS_SDK/install.md 참조 
+
+QT Install
+====================
+QT 5.12.9 방법 
+ http://qt.io 설치 참조 
+
+
+Configure Visual Studio and Build
+==========================
+Visual Studio code Folder Open 
+  -> Source/
+
+Select Kit and build
+-> hot Key(Show All Commands) : Ctrl+shift+p  
+-> cmake: select a kit   select
+-> Visual Studio Professional 2019 Release - amd64
+-> hot Key(Show All Commands) : Ctrl+shift+p   or F7
+-> Cmake: Build select 
+

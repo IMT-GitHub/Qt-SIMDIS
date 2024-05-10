@@ -1,0 +1,222 @@
+\section{\-Sock\-Broadcast \-Class \-Reference}
+\label{classSockBroadcast}\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}}
+
+
+\-U\-D\-P boroadcast socket class.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-Broadcast.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-Broadcast\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classSockBroadcast}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-Broadcast} ()
+\begin{DoxyCompactList}\small\item\em \-Default broadcast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Broadcast} (uint16\-\_\-t port, const char $\ast$iface=\-N\-U\-L\-L)
+\begin{DoxyCompactList}\small\item\em \-Broadcast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Broadcast} (uint16\-\_\-t peerport, const char $\ast$peeraddr, uint16\-\_\-t port, const char $\ast$iface=\-N\-U\-L\-L, bool {\bf attach}=true)
+\begin{DoxyCompactList}\small\item\em \-Broadcast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Broadcast} (const {\bf \-Sock\-Addr\-Inet} $\ast$localaddr)
+\begin{DoxyCompactList}\small\item\em \-Broadcast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Broadcast} (const {\bf \-Sock\-Addr\-Inet} $\ast$peeraddr, const {\bf \-Sock\-Addr\-Inet} $\ast$localaddr, bool {\bf attach}=true)
+\begin{DoxyCompactList}\small\item\em \-Broadcast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Broadcast} (\-S\-O\-C\-K\-E\-T sockfd)
+\begin{DoxyCompactList}\small\item\em \-Broadcast socket constructor. \end{DoxyCompactList}\item 
+virtual bool {\bf open} ()
+\begin{DoxyCompactList}\small\item\em \-Open socket connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-U\-D\-P boroadcast socket class. 
+
+\-A socket that utilizes the network broadcast protocol for data transmission. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!\-Sock\-Broadcast@{\-Sock\-Broadcast}}
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!SockBroadcast@{\-Sock\-Broadcast}}
+\subsubsection[{\-Sock\-Broadcast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Broadcast\-::\-Sock\-Broadcast} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockBroadcast_a4a220e3c9bda3ef95c5343c1123f5b18}
+
+
+\-Default broadcast socket constructor. 
+
+\-Creates a broadcast socket object with default data values. 
+
+\-References \-Sock\-Addr\-Factory\-::create().
+
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!\-Sock\-Broadcast@{\-Sock\-Broadcast}}
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!SockBroadcast@{\-Sock\-Broadcast}}
+\subsubsection[{\-Sock\-Broadcast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Broadcast\-::\-Sock\-Broadcast} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{port, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}\label{classSockBroadcast_aff70477c284ea98268aa349223776626}
+
+
+\-Broadcast socket constructor. 
+
+\-Creates a broadcast socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em port} & an unsigned 16-\/bit integer specifying the port to bind the broadcast socket to. \\
+\hline
+{\em iface} & a character string specifying the network interface to use for network transmission. \-When reading data with a broadcast socket, it is best not to set the interface unless you really know what you are doing. \\
+\hline
+\end{DoxyParams}
+
+
+\-References \-Sock\-Inet\-::bind(), \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!\-Sock\-Broadcast@{\-Sock\-Broadcast}}
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!SockBroadcast@{\-Sock\-Broadcast}}
+\subsubsection[{\-Sock\-Broadcast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Broadcast\-::\-Sock\-Broadcast} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{peerport, }
+\item[{const char $\ast$}]{peeraddr, }
+\item[{uint16\-\_\-t}]{port, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}, }
+\item[{bool}]{attach = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classSockBroadcast_a878a05ba9a74dce633c462ce7b3b9bf7}
+
+
+\-Broadcast socket constructor. 
+
+\-Creates a broadcast socket object with the specified data values, and connects it to a specified broadcast address. \-When a broadcast socket object is connected to an address, data can be sent to that address with calls to 'write' rather than calls to 'write\-To'. \-When a broadcast socket is connected it can only communicate with that address. \-Connecting a broadcast socket to a specific broadcast address can cause problems when attempting to read from that socket, because a number of systems read all broadcast data on \char`\"{}0.\-0.\-0.\-0\char`\"{} or \char`\"{}255.\-255.\-255.\-255\char`\"{}, so if the broadcast socket is connected to a specific address it may never receive any information. 
+\begin{DoxyParams}{\-Parameters}
+{\em peerport} & a 16-\/bit integer specifying the port of the peer that the broadcast socket is to be connected/attached to. \\
+\hline
+{\em peeraddr} & a character string specifying the network broadcast address that the broadcast socket is connected/attached to. \\
+\hline
+{\em port} & an unsigned 16-\/bit integer specifying the port to bind the broadcast socket to. \\
+\hline
+{\em iface} & a character string specifying the network interface to use for network transmission. \-When reading data with a broadcast socket, it is best not to set the interface unless you really know what you are doing. \\
+\hline
+{\em attach} & a boolean value specifying whether the broadcast socket is to be attached to the peer or connected to the peer. \-When the socket is attached, the broadcast socket object stores the peerport and peeraddr values and uses them to call 'sendto'. \-If the socket is connected, the broadcast socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data with 'send'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-U\-D\-P\-::attached\-\_\-}{p.}{classSockUDP_aecd05663c9dc5ec0bb6112d563b819fb} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write}{p.}{classSockUDP_a4cf17cab6ebb6c3f0762c56aba40d158} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write\-To}{p.}{classSockUDP_a6719fdc01c4227ba9152a07ba9caf052} 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-U\-D\-P\-::attached\-\_\-, \-Sock\-Inet\-::bind(), \-Sock\-U\-D\-P\-::connect(), \-Sock\-U\-D\-P\-::connected\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, \-Sock\-U\-D\-P\-::peeraddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!\-Sock\-Broadcast@{\-Sock\-Broadcast}}
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!SockBroadcast@{\-Sock\-Broadcast}}
+\subsubsection[{\-Sock\-Broadcast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Broadcast\-::\-Sock\-Broadcast} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr}
+\end{DoxyParamCaption}
+)}\label{classSockBroadcast_a57491acdeeb26850fac281c5df1acabf}
+
+
+\-Broadcast socket constructor. 
+
+\-Creates a broadcast socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em localaddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information to be used when creating the broadcast socket. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-Inet\-::bind(), \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!\-Sock\-Broadcast@{\-Sock\-Broadcast}}
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!SockBroadcast@{\-Sock\-Broadcast}}
+\subsubsection[{\-Sock\-Broadcast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Broadcast\-::\-Sock\-Broadcast} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{peeraddr, }
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr, }
+\item[{bool}]{attach = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classSockBroadcast_a09dfe62d2eb55a3f99a593328a7710a3}
+
+
+\-Broadcast socket constructor. 
+
+\-Creates a broadcast socket object with the specified data values, and connects it to a specified broadcast address. \-When a broadcast socket object is connected to an address, data can be sent to that address with calls to 'write' rather than calls to 'write\-To'. \-When a broadcast socket is connected it can only communicate with that address. \-Connecting a broadcast socket to a specific broadcast address can cause problems when attempting to read from that socket, because a number of systems read all broadcast data on \char`\"{}0.\-0.\-0.\-0\char`\"{} or \char`\"{}255.\-255.\-255.\-255\char`\"{}, so if the broadcast socket is connected to a specific address it may never receive any information. 
+\begin{DoxyParams}{\-Parameters}
+{\em peeraddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information for the broadcast address to connect with when creating the broadcast socket. \\
+\hline
+{\em localaddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information to be used when creating the broadcast socket. \\
+\hline
+{\em attach} & a boolean value specifying whether the broadcast socket is to be attached to the peer or connected to the peer. \-When the socket is attached, the broadcast socket object stores the peerport and peeraddr values and uses them to call 'sendto'. \-If the socket is connected, the broadcast socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data with 'send'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-U\-D\-P\-::attached\-\_\-}{p.}{classSockUDP_aecd05663c9dc5ec0bb6112d563b819fb} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write}{p.}{classSockUDP_a4cf17cab6ebb6c3f0762c56aba40d158} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write\-To}{p.}{classSockUDP_a6719fdc01c4227ba9152a07ba9caf052} 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-U\-D\-P\-::attached\-\_\-, \-Sock\-Inet\-::bind(), \-Sock\-U\-D\-P\-::connect(), \-Sock\-U\-D\-P\-::connected\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, \-Sock\-U\-D\-P\-::peeraddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!\-Sock\-Broadcast@{\-Sock\-Broadcast}}
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!SockBroadcast@{\-Sock\-Broadcast}}
+\subsubsection[{\-Sock\-Broadcast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Broadcast\-::\-Sock\-Broadcast} (
+\begin{DoxyParamCaption}
+\item[{\-S\-O\-C\-K\-E\-T}]{sockfd}
+\end{DoxyParamCaption}
+)}\label{classSockBroadcast_a1371f13036f836a13e150c80b2768e20}
+
+
+\-Broadcast socket constructor. 
+
+\-Creates a broadcast socket object from the specified data value. 
+\begin{DoxyParams}{\-Parameters}
+{\em sockfd} & a handle to a previously created socket, to be used by the broadcast socket object. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-Broadcast@{\-Sock\-Broadcast}!open@{open}}
+\index{open@{open}!SockBroadcast@{\-Sock\-Broadcast}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Broadcast\-::open} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockBroadcast_afbe9cb1436da01e56131ac378535e50b}
+
+
+\-Open socket connection. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::open}{p.}{classSockInet_a17d1128404b0d246c0fe70ec3cb82058} 
+\end{DoxySeeAlso}
+
+
+\-Implements {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_ac41fca14afb19f09e86e4fd45ceeed24}.
+
+
+
+\-References \-Sock\-Addr\-Factory\-::create().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-Broadcast.\-h\item 
+\-Sock\-Broadcast.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,656 @@
+\section{\-Sock\-U\-D\-P \-Class \-Reference}
+\label{classSockUDP}\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}}
+
+
+\-U\-D\-P socket class.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-U\-D\-P.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-U\-D\-P\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classSockUDP}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-U\-D\-P} ()
+\begin{DoxyCompactList}\small\item\em \-Default \-U\-D\-P socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-U\-D\-P} (uint16\-\_\-t port, const char $\ast$iface=\-N\-U\-L\-L)
+\begin{DoxyCompactList}\small\item\em \-U\-D\-P socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-U\-D\-P} (uint16\-\_\-t peerport, const char $\ast$peeraddr, uint16\-\_\-t port, const char $\ast$iface=\-N\-U\-L\-L, bool {\bf attach}=true)
+\begin{DoxyCompactList}\small\item\em \-U\-D\-P socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-U\-D\-P} (const {\bf \-Sock\-Addr\-Inet} $\ast$localaddr)
+\begin{DoxyCompactList}\small\item\em \-U\-D\-P socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-U\-D\-P} (const {\bf \-Sock\-Addr\-Inet} $\ast$peeraddr, const {\bf \-Sock\-Addr\-Inet} $\ast$localaddr, bool {\bf attach}=true)
+\begin{DoxyCompactList}\small\item\em \-U\-D\-P socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-U\-D\-P} (\-S\-O\-C\-K\-E\-T sockfd)
+\begin{DoxyCompactList}\small\item\em \-U\-D\-P socket constructor. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Sock\-U\-D\-P} ()
+\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\item 
+bool {\bf is\-Connected} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates a connected socket. \end{DoxyCompactList}\item 
+bool {\bf is\-Attached} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates an attached socket. \end{DoxyCompactList}\item 
+uint16\-\_\-t {\bf get\-Port} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve attached/connected port value. \end{DoxyCompactList}\item 
+char $\ast$ {\bf get\-Address} (char $\ast$peeraddr, int32\-\_\-t len) const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve attached/connected network address value. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf read} (void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const 
+\begin{DoxyCompactList}\small\item\em \-Read data. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf write} (const void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const 
+\begin{DoxyCompactList}\small\item\em \-Write data. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf read\-From} (void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0, \-S\-O\-C\-K\-A\-D\-D\-R $\ast$from=\-N\-U\-L\-L, socklen\-\_\-t $\ast$addrlen=\-N\-U\-L\-L) const 
+\begin{DoxyCompactList}\small\item\em \-Read data. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf write\-To} (const void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0, const \-S\-O\-C\-K\-A\-D\-D\-R $\ast$to=\-N\-U\-L\-L, socklen\-\_\-t addrlen=0) const 
+\begin{DoxyCompactList}\small\item\em \-Write to specified destination. \end{DoxyCompactList}\item 
+virtual bool {\bf open} ()=0
+\begin{DoxyCompactList}\small\item\em \-Open connected socket. \end{DoxyCompactList}\item 
+virtual bool {\bf close} ()
+\begin{DoxyCompactList}\small\item\em \-Close connected socket. \end{DoxyCompactList}\item 
+bool {\bf connect} (uint16\-\_\-t peerport, const char $\ast$peeraddr)
+\begin{DoxyCompactList}\small\item\em \-Connect socket. \end{DoxyCompactList}\item 
+bool {\bf attach} (uint16\-\_\-t peerport, const char $\ast$peeraddr)
+\begin{DoxyCompactList}\small\item\em \-Attach socket. \end{DoxyCompactList}\item 
+bool {\bf disconnect} ()
+\begin{DoxyCompactList}\small\item\em \-Disconnect socket. \end{DoxyCompactList}\item 
+bool {\bf detatch} ()
+\begin{DoxyCompactList}\small\item\em \-Detach socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf attached\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Socket is attached. \end{DoxyCompactList}\item 
+bool {\bf connected\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Socket is connected. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Addr\-Inet} $\ast$ {\bf peeraddr\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Peer network address information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-U\-D\-P socket class. 
+
+\-An abstract class specifying a \-U\-D\-P internet socket. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}}
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{\-Sock\-U\-D\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-U\-D\-P\-::\-Sock\-U\-D\-P} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockUDP_a23fc8ab7b4a4ea83ccf78f75473fc380}
+
+
+\-Default \-U\-D\-P socket constructor. 
+
+\-Creates a \-U\-D\-P socket object with default data values. 
+
+\-References \-Sock\-Addr\-Factory\-::create(), and peeraddr\-\_\-.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}}
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{\-Sock\-U\-D\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-U\-D\-P\-::\-Sock\-U\-D\-P} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{port, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}\label{classSockUDP_ab9facb3b930756ce4bb648260dc5a57b}
+
+
+\-U\-D\-P socket constructor. 
+
+\-Creates a \-U\-D\-P socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em port} & an unsigned 16-\/bit integer specifying the port to bind the socket to. \\
+\hline
+{\em iface} & a character string specifying the network interface to use for network transmission. \\
+\hline
+\end{DoxyParams}
+
+
+\-References \-Sock\-Addr\-Factory\-::create(), and peeraddr\-\_\-.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}}
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{\-Sock\-U\-D\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-U\-D\-P\-::\-Sock\-U\-D\-P} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{peerport, }
+\item[{const char $\ast$}]{peeraddr, }
+\item[{uint16\-\_\-t}]{port, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}, }
+\item[{bool}]{attach = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classSockUDP_a20e039d191dd2425e41b4a0e4782133b}
+
+
+\-U\-D\-P socket constructor. 
+
+\-Creates a \-U\-D\-P socket object with the specified data values, and connects it to a specified peer. \-When a \-U\-D\-P socket object is connected to a peer, data can be sent to that peer with calls to 'write' rather than calls to 'write\-To'. \-When a \-U\-D\-P socket is connected it can only communicate with the peer. 
+\begin{DoxyParams}{\-Parameters}
+{\em peerport} & a 16-\/bit integer specifying the port of the peer to which the socket is to be connected/attached. \\
+\hline
+{\em peeraddr} & a character string specifying the network address of the peer to which the socket is to be connected/attached. \\
+\hline
+{\em port} & an unsigned 16-\/bit integer specifying the port to which the socket is to bind. \\
+\hline
+{\em iface} & a character string specifying the network interface to use for network transmission. \\
+\hline
+{\em attach} & a boolean value specifying whether the socket is to be attached to the peer or connected to the peer. \-When the socket is attached, the socket object stores the peerport and peeraddr values and uses them to call 'sendto'. \-If the socket is connected, the socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data with 'send'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-U\-D\-P\-::attached\-\_\-}{p.}{classSockUDP_aecd05663c9dc5ec0bb6112d563b819fb} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write}{p.}{classSockUDP_a4cf17cab6ebb6c3f0762c56aba40d158} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write\-To}{p.}{classSockUDP_a6719fdc01c4227ba9152a07ba9caf052} 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-Addr\-Factory\-::create(), peeraddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), and \-Sock\-Addr\-Inet\-::set\-Port().
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}}
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{\-Sock\-U\-D\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-U\-D\-P\-::\-Sock\-U\-D\-P} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr}
+\end{DoxyParamCaption}
+)}\label{classSockUDP_aff67a83723c2e0b57bfae0a1ec9d202b}
+
+
+\-U\-D\-P socket constructor. 
+
+\-Creates a \-U\-D\-P socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em localaddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information to be used when creating the socket. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-Addr\-Factory\-::create(), and peeraddr\-\_\-.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}}
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{\-Sock\-U\-D\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-U\-D\-P\-::\-Sock\-U\-D\-P} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{peeraddr, }
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr, }
+\item[{bool}]{attach = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classSockUDP_a1ce4a89ae60b97fe1bcf9f7d9ad19910}
+
+
+\-U\-D\-P socket constructor. 
+
+\-Creates a \-U\-D\-P socket object with the specified data values, and connects it to a specified peer. \-When a \-U\-D\-P socket object is connected to a peer, data can be sent to that peer with calls to 'write' rather than calls to 'write\-To'. \-When a \-U\-D\-P socket is connected it can only communicate with the peer. 
+\begin{DoxyParams}{\-Parameters}
+{\em peeraddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information for the peer to connect with when creating the socket. \\
+\hline
+{\em localaddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information to be used when creating the socket. \\
+\hline
+{\em attach} & a boolean value specifying whether the socket is to be attached to the peer or connected to the peer. \-When the socket is attached, the socket object stores the peerport and peeraddr values and uses them to call 'sendto'. \-If the socket is connected, the socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data with 'send'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-U\-D\-P\-::attached\-\_\-}{p.}{classSockUDP_aecd05663c9dc5ec0bb6112d563b819fb} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write}{p.}{classSockUDP_a4cf17cab6ebb6c3f0762c56aba40d158} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write\-To}{p.}{classSockUDP_a6719fdc01c4227ba9152a07ba9caf052} 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), and peeraddr\-\_\-.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}}
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{\-Sock\-U\-D\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-U\-D\-P\-::\-Sock\-U\-D\-P} (
+\begin{DoxyParamCaption}
+\item[{\-S\-O\-C\-K\-E\-T}]{sockfd}
+\end{DoxyParamCaption}
+)}\label{classSockUDP_ac218113229c257a019e23e45360c1474}
+
+
+\-U\-D\-P socket constructor. 
+
+\-Creates a socket object from the specified data value. 
+\begin{DoxyParams}{\-Parameters}
+{\em sockfd} & a handle to a previously created socket, to be used by the socket object. \\
+\hline
+\end{DoxyParams}
+
+
+\-References connected\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), and peeraddr\-\_\-.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!$\sim$\-Sock\-U\-D\-P@{$\sim$\-Sock\-U\-D\-P}}
+\index{$\sim$\-Sock\-U\-D\-P@{$\sim$\-Sock\-U\-D\-P}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{$\sim$\-Sock\-U\-D\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-U\-D\-P\-::$\sim$\-Sock\-U\-D\-P} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockUDP_ad32b0b63c99986ccb44e2c423b41717f}
+
+
+\-Destructor. 
+
+\-Virtual destructor. \-Will close an open/connected socket. 
+
+\-References close(), \-Sock\-Inet\-::is\-Valid(), and peeraddr\-\_\-.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!attach@{attach}}
+\index{attach@{attach}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{attach}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-U\-D\-P\-::attach} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{peerport, }
+\item[{const char $\ast$}]{peeraddr}
+\end{DoxyParamCaption}
+)}\label{classSockUDP_a3ee9e7f4c0e08ed652cbdf49a5a48dea}
+
+
+\-Attach socket. 
+
+\-Attach the socket to a specified port and address. 
+\begin{DoxyParams}{\-Parameters}
+{\em peerport} & an unsigned 16-\/bit integer specifying the port with which to attach. \\
+\hline
+{\em peeraddr} & a character string specifying the \-U\-D\-P network address with which to attach. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-References attached\-\_\-, peeraddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), and \-Sock\-Addr\-Inet\-::set\-Port().
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!close@{close}}
+\index{close@{close}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-U\-D\-P\-::close} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockUDP_a2eaa291b4aea136e2a73908991b7055f}
+
+
+\-Close connected socket. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::close}{p.}{classSockInet_a447db3597dc6769696667f5a1b079571} 
+\end{DoxySeeAlso}
+
+
+\-Reimplemented from {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a447db3597dc6769696667f5a1b079571}.
+
+
+
+\-References attached\-\_\-, connected\-\_\-, peeraddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), and \-Sock\-Addr\-Inet\-::set\-Port().
+
+
+
+\-Referenced by $\sim$\-Sock\-U\-D\-P().
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!connect@{connect}}
+\index{connect@{connect}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{connect}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-U\-D\-P\-::connect} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{peerport, }
+\item[{const char $\ast$}]{peeraddr}
+\end{DoxyParamCaption}
+)}\label{classSockUDP_a5141d1e46153e1e654b38b85f77d5e3f}
+
+
+\-Connect socket. 
+
+\-Connect the socket to a specified port and address. 
+\begin{DoxyParams}{\-Parameters}
+{\em peerport} & an unsigned 16-\/bit integer specifying the port with which to connect. \\
+\hline
+{\em peeraddr} & a character string specifying the \-U\-D\-P network address with which to connect. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-References connected\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, peeraddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), \-Sock\-Addr\-Inet\-::set\-Port(), and \-Sock\-Inet\-::sockfd\-\_\-.
+
+
+
+\-Referenced by disconnect(), \-Sock\-Broadcast\-::\-Sock\-Broadcast(), and \-Sock\-Unicast\-::\-Sock\-Unicast().
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!detatch@{detatch}}
+\index{detatch@{detatch}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{detatch}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-U\-D\-P\-::detatch} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockUDP_a9a369e0affcf408c7e340fb9146fd2c9}
+
+
+\-Detach socket. 
+
+\-Detach an attached socket. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-References attached\-\_\-, peeraddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), and \-Sock\-Addr\-Inet\-::set\-Port().
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{disconnect}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-U\-D\-P\-::disconnect} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockUDP_aea2d93fb916bbba8891dce56e98de420}
+
+
+\-Disconnect socket. 
+
+\-Disconnect a connected socket. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-References connect(), connected\-\_\-, peeraddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), \-Sock\-Addr\-Inet\-::set\-Port(), and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!get\-Address@{get\-Address}}
+\index{get\-Address@{get\-Address}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{get\-Address}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ {\bf \-Sock\-U\-D\-P\-::get\-Address} (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{peeraddr, }
+\item[{int32\-\_\-t}]{len}
+\end{DoxyParamCaption}
+) const}\label{classSockUDP_acaaa479388c87ff9dafc15eeae696061}
+
+
+\-Retrieve attached/connected network address value. 
+
+\-Returns value of the network address that the socket is attached or connected to. 
+\begin{DoxyParams}{\-Parameters}
+{\em peeraddr} & a character array to be filled with the \-I\-Pv4 network address. \\
+\hline
+{\em len} & an integer specifying the size, in bytes, of 'addr'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pointer to an array of characters containing the \-T\-C\-P server socket's \-I\-Pv4 network address. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Addr\-Inet\-::get\-Address(), and peeraddr\-\_\-.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!get\-Port@{get\-Port}}
+\index{get\-Port@{get\-Port}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{get\-Port}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf \-Sock\-U\-D\-P\-::get\-Port} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockUDP_a2e251474891d1cca03dda7e0af611fcd}
+
+
+\-Retrieve attached/connected port value. 
+
+\-Returns value of the port that the socket is attached or connected to. \begin{DoxyReturn}{\-Returns}
+an unsigned 16-\/bit integer specifying the \-U\-D\-P port number. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Addr\-Inet\-::get\-Port(), and peeraddr\-\_\-.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!is\-Attached@{is\-Attached}}
+\index{is\-Attached@{is\-Attached}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{is\-Attached}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-U\-D\-P\-::is\-Attached} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockUDP_a900aa9709a1106d3ad48332a2260e035}
+
+
+\-Indicates an attached socket. 
+
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the socket is attached if true, and is not attached if false. 
+\end{DoxyReturn}
+
+
+\-References attached\-\_\-.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!is\-Connected@{is\-Connected}}
+\index{is\-Connected@{is\-Connected}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{is\-Connected}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-U\-D\-P\-::is\-Connected} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockUDP_a254c2702aaf60a2b4b71a22a09e942e5}
+
+
+\-Indicates a connected socket. 
+
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the socket is connected if true, and is not connected if false. 
+\end{DoxyReturn}
+
+
+\-References connected\-\_\-.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!open@{open}}
+\index{open@{open}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-U\-D\-P\-::open} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockUDP_ac41fca14afb19f09e86e4fd45ceeed24}
+
+
+\-Open connected socket. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::open}{p.}{classSockInet_a17d1128404b0d246c0fe70ec3cb82058} 
+\end{DoxySeeAlso}
+
+
+\-Implements {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a17d1128404b0d246c0fe70ec3cb82058}.
+
+
+
+\-Implemented in {\bf \-Sock\-Broadcast} \doxyref{}{p.}{classSockBroadcast_afbe9cb1436da01e56131ac378535e50b}, {\bf \-Sock\-Unicast} \doxyref{}{p.}{classSockUnicast_a7fc8972dcb38faad7d8a6ceed16d3daa}, and {\bf \-Sock\-Multicast} \doxyref{}{p.}{classSockMulticast_a712eaedc182ee03d10e3d1f45b3bb490}.
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!read@{read}}
+\index{read@{read}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-U\-D\-P\-::read} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockUDP_a2d5da5a41b25abed0b70b2de74e800a2}
+
+
+\-Read data. 
+
+\-Reads data that is available in the socket input buffer. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object to be filled with the data in the socket buffer. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when reading. \-These are the flags used by the \-B\-S\-D socket function 'recv'. \-See the 'recv' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes read. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_ac7382fc320ea9d312a5949a651244ec1}.
+
+
+
+\-References attached\-\_\-, and read\-From().
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!read\-From@{read\-From}}
+\index{read\-From@{read\-From}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{read\-From}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-U\-D\-P\-::read\-From} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}, }
+\item[{\-S\-O\-C\-K\-A\-D\-D\-R $\ast$}]{from = {\ttfamily \-N\-U\-L\-L}, }
+\item[{socklen\-\_\-t $\ast$}]{addrlen = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockUDP_aeb9d4959c2640f5b88c6ee24d1684f2c}
+
+
+\-Read data. 
+
+\-Reads data that is available in the socket input buffer, and reports the address and port of the sender. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object to be filled with the data in the socket buffer. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when reading. \-These are the flags used by the \-B\-S\-D socket function 'recvfrom'. \-See the 'recvfrom' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+{\em from} & a socket address structure specifying the address and port of the peer that sent the data. \\
+\hline
+{\em addrlen} & an integer specifying the size of 'to' in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes read. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Inet\-::sockfd\-\_\-.
+
+
+
+\-Referenced by read().
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!write@{write}}
+\index{write@{write}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-U\-D\-P\-::write} (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockUDP_a4cf17cab6ebb6c3f0762c56aba40d158}
+
+
+\-Write data. 
+
+\-Writes data to the network. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object filled with the data to be written. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when writing. \-These are the flags used by the \-B\-S\-D socket function 'send'. \-See the 'send' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes written. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_aca8ce968725e5e513af0f2628a7cb061}.
+
+
+
+\-References attached\-\_\-, \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), peeraddr\-\_\-, and write\-To().
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!write\-To@{write\-To}}
+\index{write\-To@{write\-To}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{write\-To}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-U\-D\-P\-::write\-To} (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}, }
+\item[{const \-S\-O\-C\-K\-A\-D\-D\-R $\ast$}]{to = {\ttfamily \-N\-U\-L\-L}, }
+\item[{socklen\-\_\-t}]{addrlen = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockUDP_a6719fdc01c4227ba9152a07ba9caf052}
+
+
+\-Write to specified destination. 
+
+\-Writes data to the specified network address. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object filled with the data to be written. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when writing. \-These are the flags used by the \-B\-S\-D socket function 'sendto'. \-See the 'sendto' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+{\em to} & a socket address structure specifying the destination address and port of the data to be written. \\
+\hline
+{\em addrlen} & an integer specifying the size of 'to' in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes written. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Inet\-::sockfd\-\_\-.
+
+
+
+\-Referenced by write().
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!attached\-\_\-@{attached\-\_\-}}
+\index{attached\-\_\-@{attached\-\_\-}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{attached\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-U\-D\-P\-::attached\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockUDP_aecd05663c9dc5ec0bb6112d563b819fb}
+
+
+\-Socket is attached. 
+
+\-Attaching a socket to another address simply means that you no longer have to call 'read\-From' because all reads will use the address from the attach specified address. \-After attaching, 'write' will call 'write\-To' with the specified info. \-This does not actually connect the socket, it merely stores the peer info at the application level. 
+
+\-Referenced by attach(), close(), detatch(), is\-Attached(), read(), \-Sock\-Broadcast\-::\-Sock\-Broadcast(), \-Sock\-Unicast\-::\-Sock\-Unicast(), and write().
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!connected\-\_\-@{connected\-\_\-}}
+\index{connected\-\_\-@{connected\-\_\-}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{connected\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-U\-D\-P\-::connected\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockUDP_ad6244c829cdc636ffdaec67c6fc9044c}
+
+
+\-Socket is connected. 
+
+\-Connectiong a socket to a specific address will produce the same behavior as attaching a socket, but will differ internally. \-Connecting a socket will actually connect the socket to the specified address on the kernel level. \-This can improve performance of \-U\-D\-P write operations a great deal, but means that the connected socket can only communicate with the address to which it is connected. 
+
+\-Referenced by close(), connect(), disconnect(), is\-Connected(), \-Sock\-Broadcast\-::\-Sock\-Broadcast(), \-Sock\-U\-D\-P(), and \-Sock\-Unicast\-::\-Sock\-Unicast().
+
+\index{\-Sock\-U\-D\-P@{\-Sock\-U\-D\-P}!peeraddr\-\_\-@{peeraddr\-\_\-}}
+\index{peeraddr\-\_\-@{peeraddr\-\_\-}!SockUDP@{\-Sock\-U\-D\-P}}
+\subsubsection[{peeraddr\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Addr\-Inet}$\ast$ {\bf \-Sock\-U\-D\-P\-::peeraddr\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockUDP_a6f58041a9dd840f87be1b54b32f93fcc}
+
+
+\-Peer network address information. 
+
+\-Remote port and address for a connected \-U\-D\-P socket \-When sending \-U\-D\-P data to a single host it will be more efficient to \char`\"{}connect\char`\"{} to that host. \-You are not \char`\"{}connecting\char`\"{} as you would with \-T\-C\-P, rather, the kernel is storing the info for the peer. \-This way the kernel does not have to copy the peer's info and issue a temporary connect/disconnect for every datagram sent. \-Connected \-U\-D\-P sockets can only send \-A\-N\-D receive data to/from the connected peer. \-Also with a connected \-U\-D\-P socket, the application will receive \-Asyncronous errors such as \-E\-H\-O\-S\-T\-U\-N\-R\-E\-A\-C\-H that would otherwise not be delivered to an unconnected \-U\-D\-P socket. 
+
+\-Referenced by attach(), close(), connect(), detatch(), disconnect(), get\-Address(), get\-Port(), \-Sock\-Broadcast\-::\-Sock\-Broadcast(), \-Sock\-U\-D\-P(), \-Sock\-Unicast\-::\-Sock\-Unicast(), write(), and $\sim$\-Sock\-U\-D\-P().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-U\-D\-P.\-h\item 
+\-Sock\-U\-D\-P.\-cpp\end{DoxyCompactItemize}

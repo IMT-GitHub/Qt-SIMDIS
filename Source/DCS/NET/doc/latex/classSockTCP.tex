@@ -1,0 +1,217 @@
+\section{\-Sock\-T\-C\-P \-Class \-Reference}
+\label{classSockTCP}\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}}
+
+
+\-T\-C\-P socket class.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-T\-C\-P.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-T\-C\-P\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classSockTCP}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-T\-C\-P} ()
+\begin{DoxyCompactList}\small\item\em \-Default socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-T\-C\-P} (uint16\-\_\-t port, const char $\ast$iface=\-N\-U\-L\-L)
+\begin{DoxyCompactList}\small\item\em \-Socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-T\-C\-P} (const {\bf \-Sock\-Addr\-Inet} $\ast$localaddr)
+\begin{DoxyCompactList}\small\item\em \-Socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-T\-C\-P} (\-S\-O\-C\-K\-E\-T sockfd)
+\begin{DoxyCompactList}\small\item\em \-Socket constructor. \end{DoxyCompactList}\item 
+virtual bool {\bf is\-Active} () const =0
+\begin{DoxyCompactList}\small\item\em \-Indicates an active socket. \end{DoxyCompactList}\item 
+virtual bool {\bf open} ()=0
+\begin{DoxyCompactList}\small\item\em \-Open socket. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf read\-All} (void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const 
+\begin{DoxyCompactList}\small\item\em \-Read a fixed amount of data. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf write\-All} (const void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const 
+\begin{DoxyCompactList}\small\item\em \-Write a fixed amount of data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-T\-C\-P socket class. 
+
+\-An abstract class specifying a \-T\-C\-P internet socket with reliable two-\/way network communication. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}}
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!SockTCP@{\-Sock\-T\-C\-P}}
+\subsubsection[{\-Sock\-T\-C\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-T\-C\-P\-::\-Sock\-T\-C\-P} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockTCP_afa81fbda75630fdeb2179586af49db1c}
+
+
+\-Default socket constructor. 
+
+\-Creates a socket object with default data values. \index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}}
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!SockTCP@{\-Sock\-T\-C\-P}}
+\subsubsection[{\-Sock\-T\-C\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-T\-C\-P\-::\-Sock\-T\-C\-P} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{port, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}\label{classSockTCP_ad31558151e1c657924e916d0ed58d35d}
+
+
+\-Socket constructor. 
+
+\-Creates a socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em port} & an unsigned 16-\/bit integer specifying the local port with which to bind the socket. \\
+\hline
+{\em iface} & a character string specifying the network interface to use for network communication. \\
+\hline
+\end{DoxyParams}
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}}
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!SockTCP@{\-Sock\-T\-C\-P}}
+\subsubsection[{\-Sock\-T\-C\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-T\-C\-P\-::\-Sock\-T\-C\-P} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr}
+\end{DoxyParamCaption}
+)}\label{classSockTCP_a84abcace8cc942321872098eb624c6c9}
+
+
+\-Socket constructor. 
+
+\-Creates a socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em localaddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information to be used when creating the socket. \\
+\hline
+\end{DoxyParams}
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}}
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!SockTCP@{\-Sock\-T\-C\-P}}
+\subsubsection[{\-Sock\-T\-C\-P}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-T\-C\-P\-::\-Sock\-T\-C\-P} (
+\begin{DoxyParamCaption}
+\item[{\-S\-O\-C\-K\-E\-T}]{sockfd}
+\end{DoxyParamCaption}
+)}\label{classSockTCP_aced4796dee0149edd4caf08f5c03ce8d}
+
+
+\-Socket constructor. 
+
+\-Creates a socket object from the specified data value. 
+\begin{DoxyParams}{\-Parameters}
+{\em sockfd} & a handle to a previously created socket, to be used by the socket object. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!is\-Active@{is\-Active}}
+\index{is\-Active@{is\-Active}!SockTCP@{\-Sock\-T\-C\-P}}
+\subsubsection[{is\-Active}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-T\-C\-P\-::is\-Active} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockTCP_af58644657d004a04ca84a669a4ed3cf9}
+
+
+\-Indicates an active socket. 
+
+\-Indicates that the socket is listening if it is a server and is connected if it is a client. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the socket is active if true, inactive if false. 
+\end{DoxyReturn}
+
+
+\-Implemented in {\bf \-Sock\-Client} \doxyref{}{p.}{classSockClient_a2223f9eccd35620b744350487f69dcce}, and {\bf \-Sock\-Server} \doxyref{}{p.}{classSockServer_adbe456c90dd06e33d1a53b03371a0f3c}.
+
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!open@{open}}
+\index{open@{open}!SockTCP@{\-Sock\-T\-C\-P}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-T\-C\-P\-::open} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockTCP_a4e40c3d6c6ac9cb240ed68d0eed2143b}
+
+
+\-Open socket. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::open}{p.}{classSockInet_a17d1128404b0d246c0fe70ec3cb82058} 
+\end{DoxySeeAlso}
+
+
+\-Implements {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a17d1128404b0d246c0fe70ec3cb82058}.
+
+
+
+\-Implemented in {\bf \-Sock\-Client} \doxyref{}{p.}{classSockClient_a150d51c455e4ae9de611066bcedada91}, and {\bf \-Sock\-Server} \doxyref{}{p.}{classSockServer_a20da4b5e09b3236cbf9213d614c6e074}.
+
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!read\-All@{read\-All}}
+\index{read\-All@{read\-All}!SockTCP@{\-Sock\-T\-C\-P}}
+\subsubsection[{read\-All}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-T\-C\-P\-::read\-All} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockTCP_a82aa928e7254197a1982dc7e95f4a715}
+
+
+\-Read a fixed amount of data. 
+
+\-Reads the total number of bytes specified. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object to be filled with the data in the socket buffer. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \-The function will not return until exactly this number of bytes has been read, or an error has been encountered. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when reading. \-These are the flags used by the \-B\-S\-D socket function 'recv'. \-See the 'recv' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes read. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Inet\-::read(), and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-T\-C\-P@{\-Sock\-T\-C\-P}!write\-All@{write\-All}}
+\index{write\-All@{write\-All}!SockTCP@{\-Sock\-T\-C\-P}}
+\subsubsection[{write\-All}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-T\-C\-P\-::write\-All} (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockTCP_a735506ceb3215435397aa3b79bb049ca}
+
+
+\-Write a fixed amount of data. 
+
+\-Writes the total number of bytes specified. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object filled with the data to be written. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \-The function will not return until exactly this number of bytes has been written, or an error has been encountered. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when writing. \-These are the flags used by the \-B\-S\-D socket function 'send'. \-See the 'send' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes written. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a3b34fcce08be5938263733f08f55a38a}.
+
+
+
+\-References \-Sock\-Inet\-::sockfd\-\_\-.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-T\-C\-P.\-h\item 
+\-Sock\-T\-C\-P.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,169 @@
+.TH "SockTCP" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockTCP \- 
+.PP
+TCP socket class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockTCP\&.h>\fP
+.PP
+Inherits \fBSockInet\fP\&.
+.PP
+Inherited by \fBSockClient\fP, and \fBSockServer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockTCP\fP ()"
+.br
+.RI "\fIDefault socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockTCP\fP (uint16_t port, const char *iface=NULL)"
+.br
+.RI "\fISocket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockTCP\fP (const \fBSockAddrInet\fP *localaddr)"
+.br
+.RI "\fISocket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockTCP\fP (SOCKET sockfd)"
+.br
+.RI "\fISocket constructor\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisActive\fP () const =0"
+.br
+.RI "\fIIndicates an active socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBopen\fP ()=0"
+.br
+.RI "\fIOpen socket\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBreadAll\fP (void *buffer, int32_t size, int32_t flags=0) const "
+.br
+.RI "\fIRead a fixed amount of data\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBwriteAll\fP (const void *buffer, int32_t size, int32_t flags=0) const "
+.br
+.RI "\fIWrite a fixed amount of data\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+TCP socket class\&. 
+
+An abstract class specifying a TCP internet socket with reliable two-way network communication\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockTCP::SockTCP\fP ()"
+.PP
+Default socket constructor\&. Creates a socket object with default data values\&. 
+.SS "\fBSockTCP::SockTCP\fP (uint16_tport, const char *iface = \fCNULL\fP)"
+.PP
+Socket constructor\&. Creates a socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP an unsigned 16-bit integer specifying the local port with which to bind the socket\&. 
+.br
+\fIiface\fP a character string specifying the network interface to use for network communication\&. 
+.RE
+.PP
+
+.SS "\fBSockTCP::SockTCP\fP (const \fBSockAddrInet\fP *localaddr)"
+.PP
+Socket constructor\&. Creates a socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlocaladdr\fP a \fBSockAddrInet\fP object specifying the network information to be used when creating the socket\&. 
+.RE
+.PP
+
+.SS "\fBSockTCP::SockTCP\fP (SOCKETsockfd)"
+.PP
+Socket constructor\&. Creates a socket object from the specified data value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsockfd\fP a handle to a previously created socket, to be used by the socket object\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool \fBSockTCP::isActive\fP () const\fC [pure virtual]\fP"
+.PP
+Indicates an active socket\&. Indicates that the socket is listening if it is a server and is connected if it is a client\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that the socket is active if true, inactive if false\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBSockClient\fP, and \fBSockServer\fP\&.
+.SS "virtual bool \fBSockTCP::open\fP ()\fC [pure virtual]\fP"
+.PP
+Open socket\&. \fBSee also:\fP
+.RS 4
+\fBSockInet::open\fP 
+.RE
+.PP
+
+.PP
+Implements \fBSockInet\fP\&.
+.PP
+Implemented in \fBSockClient\fP, and \fBSockServer\fP\&.
+.SS "int32_t \fBSockTCP::readAll\fP (void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Read a fixed amount of data\&. Reads the total number of bytes specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object to be filled with the data in the socket buffer\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. The function will not return until exactly this number of bytes has been read, or an error has been encountered\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when reading\&. These are the flags used by the BSD socket function 'recv'\&. See the 'recv' man pages or MSDN documentation for more details\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes read\&. 
+.RE
+.PP
+
+.PP
+References SockInet::read(), and SockInet::sockfd_\&.
+.SS "int32_t \fBSockTCP::writeAll\fP (const void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Write a fixed amount of data\&. Writes the total number of bytes specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object filled with the data to be written\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. The function will not return until exactly this number of bytes has been written, or an error has been encountered\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when writing\&. These are the flags used by the BSD socket function 'send'\&. See the 'send' man pages or MSDN documentation for more details\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes written\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBSockIO\fP\&.
+.PP
+References SockInet::sockfd_\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

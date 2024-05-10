@@ -1,0 +1,97 @@
+\section{\-Sock\-Exception \-Class \-Reference}
+\label{classSockException}\index{\-Sock\-Exception@{\-Sock\-Exception}}
+
+
+\-Socket exception class.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-Exception.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-Exception\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSockException}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-Exception} ()
+\begin{DoxyCompactList}\small\item\em \-Default socket exception constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Exception} (const char $\ast$msg)
+\begin{DoxyCompactList}\small\item\em \-Socket exception constructor. \end{DoxyCompactList}\item 
+const char $\ast$ {\bf message} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve error message. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Sock\-Exception} ()
+\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Socket exception class. 
+
+\-A generic socket exception class. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-Exception@{\-Sock\-Exception}!\-Sock\-Exception@{\-Sock\-Exception}}
+\index{\-Sock\-Exception@{\-Sock\-Exception}!SockException@{\-Sock\-Exception}}
+\subsubsection[{\-Sock\-Exception}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Exception\-::\-Sock\-Exception} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classSockException_a08aeb17c3a9de706569fbc5fd023711a}
+
+
+\-Default socket exception constructor. 
+
+\-Creates a socket exception object with a default message. \index{\-Sock\-Exception@{\-Sock\-Exception}!\-Sock\-Exception@{\-Sock\-Exception}}
+\index{\-Sock\-Exception@{\-Sock\-Exception}!SockException@{\-Sock\-Exception}}
+\subsubsection[{\-Sock\-Exception}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Exception\-::\-Sock\-Exception} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{msg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classSockException_aba051d2fa5462763d3feb295212e2270}
+
+
+\-Socket exception constructor. 
+
+\-Creates a socket exception object with a user specified error message. 
+\begin{DoxyParams}{\-Parameters}
+{\em msg} & a character string containing an error message. \\
+\hline
+\end{DoxyParams}
+\index{\-Sock\-Exception@{\-Sock\-Exception}!$\sim$\-Sock\-Exception@{$\sim$\-Sock\-Exception}}
+\index{$\sim$\-Sock\-Exception@{$\sim$\-Sock\-Exception}!SockException@{\-Sock\-Exception}}
+\subsubsection[{$\sim$\-Sock\-Exception}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf \-Sock\-Exception\-::$\sim$\-Sock\-Exception} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classSockException_a29e9e5ac1de9ab65891c2310d764c60f}
+
+
+\-Destructor. 
+
+\-Virtual destructor. 
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-Exception@{\-Sock\-Exception}!message@{message}}
+\index{message@{message}!SockException@{\-Sock\-Exception}}
+\subsubsection[{message}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf \-Sock\-Exception\-::message} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [inline]}}\label{classSockException_ab47e7e37b0c13299cd13851cc3025dc9}
+
+
+\-Retrieve error message. 
+
+\-Returns the socket exception's error message. \begin{DoxyReturn}{\-Returns}
+a charcter string containing an error message. 
+\end{DoxyReturn}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-Exception.\-h\item 
+\-Sock\-Exception.\-cpp\end{DoxyCompactItemize}

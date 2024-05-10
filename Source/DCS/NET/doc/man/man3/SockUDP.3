@@ -1,0 +1,499 @@
+.TH "SockUDP" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockUDP \- 
+.PP
+UDP socket class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockUDP\&.h>\fP
+.PP
+Inherits \fBSockInet\fP\&.
+.PP
+Inherited by \fBSockBroadcast\fP, \fBSockMulticast\fP, and \fBSockUnicast\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockUDP\fP ()"
+.br
+.RI "\fIDefault UDP socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockUDP\fP (uint16_t port, const char *iface=NULL)"
+.br
+.RI "\fIUDP socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockUDP\fP (uint16_t peerport, const char *peeraddr, uint16_t port, const char *iface=NULL, bool \fBattach\fP=true)"
+.br
+.RI "\fIUDP socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockUDP\fP (const \fBSockAddrInet\fP *localaddr)"
+.br
+.RI "\fIUDP socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockUDP\fP (const \fBSockAddrInet\fP *peeraddr, const \fBSockAddrInet\fP *localaddr, bool \fBattach\fP=true)"
+.br
+.RI "\fIUDP socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockUDP\fP (SOCKET sockfd)"
+.br
+.RI "\fIUDP socket constructor\&. \fP"
+.ti -1c
+.RI "virtual \fB~SockUDP\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "bool \fBisConnected\fP () const "
+.br
+.RI "\fIIndicates a connected socket\&. \fP"
+.ti -1c
+.RI "bool \fBisAttached\fP () const "
+.br
+.RI "\fIIndicates an attached socket\&. \fP"
+.ti -1c
+.RI "uint16_t \fBgetPort\fP () const "
+.br
+.RI "\fIRetrieve attached/connected port value\&. \fP"
+.ti -1c
+.RI "char * \fBgetAddress\fP (char *peeraddr, int32_t len) const "
+.br
+.RI "\fIRetrieve attached/connected network address value\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBread\fP (void *buffer, int32_t size, int32_t flags=0) const "
+.br
+.RI "\fIRead data\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBwrite\fP (const void *buffer, int32_t size, int32_t flags=0) const "
+.br
+.RI "\fIWrite data\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBreadFrom\fP (void *buffer, int32_t size, int32_t flags=0, SOCKADDR *from=NULL, socklen_t *addrlen=NULL) const "
+.br
+.RI "\fIRead data\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBwriteTo\fP (const void *buffer, int32_t size, int32_t flags=0, const SOCKADDR *to=NULL, socklen_t addrlen=0) const "
+.br
+.RI "\fIWrite to specified destination\&. \fP"
+.ti -1c
+.RI "virtual bool \fBopen\fP ()=0"
+.br
+.RI "\fIOpen connected socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBclose\fP ()"
+.br
+.RI "\fIClose connected socket\&. \fP"
+.ti -1c
+.RI "bool \fBconnect\fP (uint16_t peerport, const char *peeraddr)"
+.br
+.RI "\fIConnect socket\&. \fP"
+.ti -1c
+.RI "bool \fBattach\fP (uint16_t peerport, const char *peeraddr)"
+.br
+.RI "\fIAttach socket\&. \fP"
+.ti -1c
+.RI "bool \fBdisconnect\fP ()"
+.br
+.RI "\fIDisconnect socket\&. \fP"
+.ti -1c
+.RI "bool \fBdetatch\fP ()"
+.br
+.RI "\fIDetach socket\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBattached_\fP"
+.br
+.RI "\fISocket is attached\&. \fP"
+.ti -1c
+.RI "bool \fBconnected_\fP"
+.br
+.RI "\fISocket is connected\&. \fP"
+.ti -1c
+.RI "\fBSockAddrInet\fP * \fBpeeraddr_\fP"
+.br
+.RI "\fIPeer network address information\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+UDP socket class\&. 
+
+An abstract class specifying a UDP internet socket\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockUDP::SockUDP\fP ()"
+.PP
+Default UDP socket constructor\&. Creates a UDP socket object with default data values\&. 
+.PP
+References SockAddrFactory::create(), and peeraddr_\&.
+.SS "\fBSockUDP::SockUDP\fP (uint16_tport, const char *iface = \fCNULL\fP)"
+.PP
+UDP socket constructor\&. Creates a UDP socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP an unsigned 16-bit integer specifying the port to bind the socket to\&. 
+.br
+\fIiface\fP a character string specifying the network interface to use for network transmission\&. 
+.RE
+.PP
+
+.PP
+References SockAddrFactory::create(), and peeraddr_\&.
+.SS "\fBSockUDP::SockUDP\fP (uint16_tpeerport, const char *peeraddr, uint16_tport, const char *iface = \fCNULL\fP, boolattach = \fCtrue\fP)"
+.PP
+UDP socket constructor\&. Creates a UDP socket object with the specified data values, and connects it to a specified peer\&. When a UDP socket object is connected to a peer, data can be sent to that peer with calls to 'write' rather than calls to 'writeTo'\&. When a UDP socket is connected it can only communicate with the peer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeerport\fP a 16-bit integer specifying the port of the peer to which the socket is to be connected/attached\&. 
+.br
+\fIpeeraddr\fP a character string specifying the network address of the peer to which the socket is to be connected/attached\&. 
+.br
+\fIport\fP an unsigned 16-bit integer specifying the port to which the socket is to bind\&. 
+.br
+\fIiface\fP a character string specifying the network interface to use for network transmission\&. 
+.br
+\fIattach\fP a boolean value specifying whether the socket is to be attached to the peer or connected to the peer\&. When the socket is attached, the socket object stores the peerport and peeraddr values and uses them to call 'sendto'\&. If the socket is connected, the socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data with 'send'\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBSockUDP::attached_\fP 
+.PP
+\fBSockUDP::write\fP 
+.PP
+\fBSockUDP::writeTo\fP 
+.RE
+.PP
+
+.PP
+References SockAddrFactory::create(), peeraddr_, SockAddrInet::setAddress(), and SockAddrInet::setPort()\&.
+.SS "\fBSockUDP::SockUDP\fP (const \fBSockAddrInet\fP *localaddr)"
+.PP
+UDP socket constructor\&. Creates a UDP socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlocaladdr\fP a \fBSockAddrInet\fP object specifying the network information to be used when creating the socket\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBSockAddrInet\fP 
+.RE
+.PP
+
+.PP
+References SockAddrFactory::create(), and peeraddr_\&.
+.SS "\fBSockUDP::SockUDP\fP (const \fBSockAddrInet\fP *peeraddr, const \fBSockAddrInet\fP *localaddr, boolattach = \fCtrue\fP)"
+.PP
+UDP socket constructor\&. Creates a UDP socket object with the specified data values, and connects it to a specified peer\&. When a UDP socket object is connected to a peer, data can be sent to that peer with calls to 'write' rather than calls to 'writeTo'\&. When a UDP socket is connected it can only communicate with the peer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeeraddr\fP a \fBSockAddrInet\fP object specifying the network information for the peer to connect with when creating the socket\&. 
+.br
+\fIlocaladdr\fP a \fBSockAddrInet\fP object specifying the network information to be used when creating the socket\&. 
+.br
+\fIattach\fP a boolean value specifying whether the socket is to be attached to the peer or connected to the peer\&. When the socket is attached, the socket object stores the peerport and peeraddr values and uses them to call 'sendto'\&. If the socket is connected, the socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data with 'send'\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBSockUDP::attached_\fP 
+.PP
+\fBSockUDP::write\fP 
+.PP
+\fBSockUDP::writeTo\fP 
+.RE
+.PP
+
+.PP
+References SockAddrInet::copy(), SockAddrFactory::create(), and peeraddr_\&.
+.SS "\fBSockUDP::SockUDP\fP (SOCKETsockfd)"
+.PP
+UDP socket constructor\&. Creates a socket object from the specified data value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsockfd\fP a handle to a previously created socket, to be used by the socket object\&. 
+.RE
+.PP
+
+.PP
+References connected_, SockAddrInet::copy(), SockAddrFactory::create(), and peeraddr_\&.
+.SS "\fBSockUDP::~SockUDP\fP ()\fC [virtual]\fP"
+.PP
+Destructor\&. Virtual destructor\&. Will close an open/connected socket\&. 
+.PP
+References close(), SockInet::isValid(), and peeraddr_\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool \fBSockUDP::attach\fP (uint16_tpeerport, const char *peeraddr)"
+.PP
+Attach socket\&. Attach the socket to a specified port and address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeerport\fP an unsigned 16-bit integer specifying the port with which to attach\&. 
+.br
+\fIpeeraddr\fP a character string specifying the UDP network address with which to attach\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+References attached_, peeraddr_, SockAddrInet::setAddress(), and SockAddrInet::setPort()\&.
+.SS "bool \fBSockUDP::close\fP ()\fC [virtual]\fP"
+.PP
+Close connected socket\&. \fBSee also:\fP
+.RS 4
+\fBSockInet::close\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBSockInet\fP\&.
+.PP
+References attached_, connected_, peeraddr_, SockAddrInet::setAddress(), and SockAddrInet::setPort()\&.
+.PP
+Referenced by ~SockUDP()\&.
+.SS "bool \fBSockUDP::connect\fP (uint16_tpeerport, const char *peeraddr)"
+.PP
+Connect socket\&. Connect the socket to a specified port and address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeerport\fP an unsigned 16-bit integer specifying the port with which to connect\&. 
+.br
+\fIpeeraddr\fP a character string specifying the UDP network address with which to connect\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+References connected_, SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), SockInet::localaddr_, peeraddr_, SockAddrInet::setAddress(), SockAddrInet::setPort(), and SockInet::sockfd_\&.
+.PP
+Referenced by disconnect(), SockBroadcast::SockBroadcast(), and SockUnicast::SockUnicast()\&.
+.SS "bool \fBSockUDP::detatch\fP ()"
+.PP
+Detach socket\&. Detach an attached socket\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+References attached_, peeraddr_, SockAddrInet::setAddress(), and SockAddrInet::setPort()\&.
+.SS "bool \fBSockUDP::disconnect\fP ()"
+.PP
+Disconnect socket\&. Disconnect a connected socket\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+References connect(), connected_, peeraddr_, SockAddrInet::setAddress(), SockAddrInet::setPort(), and SockInet::sockfd_\&.
+.SS "char * \fBSockUDP::getAddress\fP (char *peeraddr, int32_tlen) const"
+.PP
+Retrieve attached/connected network address value\&. Returns value of the network address that the socket is attached or connected to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeeraddr\fP a character array to be filled with the IPv4 network address\&. 
+.br
+\fIlen\fP an integer specifying the size, in bytes, of 'addr'\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to an array of characters containing the TCP server socket's IPv4 network address\&. 
+.RE
+.PP
+
+.PP
+References SockAddrInet::getAddress(), and peeraddr_\&.
+.SS "uint16_t \fBSockUDP::getPort\fP () const"
+.PP
+Retrieve attached/connected port value\&. Returns value of the port that the socket is attached or connected to\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an unsigned 16-bit integer specifying the UDP port number\&. 
+.RE
+.PP
+
+.PP
+References SockAddrInet::getPort(), and peeraddr_\&.
+.SS "bool \fBSockUDP::isAttached\fP () const"
+.PP
+Indicates an attached socket\&. \fBReturns:\fP
+.RS 4
+a boolean value indicating that the socket is attached if true, and is not attached if false\&. 
+.RE
+.PP
+
+.PP
+References attached_\&.
+.SS "bool \fBSockUDP::isConnected\fP () const"
+.PP
+Indicates a connected socket\&. \fBReturns:\fP
+.RS 4
+a boolean value indicating that the socket is connected if true, and is not connected if false\&. 
+.RE
+.PP
+
+.PP
+References connected_\&.
+.SS "virtual bool \fBSockUDP::open\fP ()\fC [pure virtual]\fP"
+.PP
+Open connected socket\&. \fBSee also:\fP
+.RS 4
+\fBSockInet::open\fP 
+.RE
+.PP
+
+.PP
+Implements \fBSockInet\fP\&.
+.PP
+Implemented in \fBSockBroadcast\fP, \fBSockUnicast\fP, and \fBSockMulticast\fP\&.
+.SS "int32_t \fBSockUDP::read\fP (void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Read data\&. Reads data that is available in the socket input buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object to be filled with the data in the socket buffer\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when reading\&. These are the flags used by the BSD socket function 'recv'\&. See the 'recv' man pages or MSDN documentation for more details\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes read\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBSockInet\fP\&.
+.PP
+References attached_, and readFrom()\&.
+.SS "int32_t \fBSockUDP::readFrom\fP (void *buffer, int32_tsize, int32_tflags = \fC0\fP, SOCKADDR *from = \fCNULL\fP, socklen_t *addrlen = \fCNULL\fP) const\fC [virtual]\fP"
+.PP
+Read data\&. Reads data that is available in the socket input buffer, and reports the address and port of the sender\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object to be filled with the data in the socket buffer\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when reading\&. These are the flags used by the BSD socket function 'recvfrom'\&. See the 'recvfrom' man pages or MSDN documentation for more details\&. 
+.br
+\fIfrom\fP a socket address structure specifying the address and port of the peer that sent the data\&. 
+.br
+\fIaddrlen\fP an integer specifying the size of 'to' in bytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes read\&. 
+.RE
+.PP
+
+.PP
+References SockInet::sockfd_\&.
+.PP
+Referenced by read()\&.
+.SS "int32_t \fBSockUDP::write\fP (const void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Write data\&. Writes data to the network\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object filled with the data to be written\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when writing\&. These are the flags used by the BSD socket function 'send'\&. See the 'send' man pages or MSDN documentation for more details\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes written\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBSockInet\fP\&.
+.PP
+References attached_, SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), peeraddr_, and writeTo()\&.
+.SS "int32_t \fBSockUDP::writeTo\fP (const void *buffer, int32_tsize, int32_tflags = \fC0\fP, const SOCKADDR *to = \fCNULL\fP, socklen_taddrlen = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Write to specified destination\&. Writes data to the specified network address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object filled with the data to be written\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to the socket when writing\&. These are the flags used by the BSD socket function 'sendto'\&. See the 'sendto' man pages or MSDN documentation for more details\&. 
+.br
+\fIto\fP a socket address structure specifying the destination address and port of the data to be written\&. 
+.br
+\fIaddrlen\fP an integer specifying the size of 'to' in bytes\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes written\&. 
+.RE
+.PP
+
+.PP
+References SockInet::sockfd_\&.
+.PP
+Referenced by write()\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool \fBSockUDP::attached_\fP\fC [protected]\fP"
+.PP
+Socket is attached\&. Attaching a socket to another address simply means that you no longer have to call 'readFrom' because all reads will use the address from the attach specified address\&. After attaching, 'write' will call 'writeTo' with the specified info\&. This does not actually connect the socket, it merely stores the peer info at the application level\&. 
+.PP
+Referenced by attach(), close(), detatch(), isAttached(), read(), SockBroadcast::SockBroadcast(), SockUnicast::SockUnicast(), and write()\&.
+.SS "bool \fBSockUDP::connected_\fP\fC [protected]\fP"
+.PP
+Socket is connected\&. Connectiong a socket to a specific address will produce the same behavior as attaching a socket, but will differ internally\&. Connecting a socket will actually connect the socket to the specified address on the kernel level\&. This can improve performance of UDP write operations a great deal, but means that the connected socket can only communicate with the address to which it is connected\&. 
+.PP
+Referenced by close(), connect(), disconnect(), isConnected(), SockBroadcast::SockBroadcast(), SockUDP(), and SockUnicast::SockUnicast()\&.
+.SS "\fBSockAddrInet\fP* \fBSockUDP::peeraddr_\fP\fC [protected]\fP"
+.PP
+Peer network address information\&. Remote port and address for a connected UDP socket When sending UDP data to a single host it will be more efficient to 'connect' to that host\&. You are not 'connecting' as you would with TCP, rather, the kernel is storing the info for the peer\&. This way the kernel does not have to copy the peer's info and issue a temporary connect/disconnect for every datagram sent\&. Connected UDP sockets can only send AND receive data to/from the connected peer\&. Also with a connected UDP socket, the application will receive Asyncronous errors such as EHOSTUNREACH that would otherwise not be delivered to an unconnected UDP socket\&. 
+.PP
+Referenced by attach(), close(), connect(), detatch(), disconnect(), getAddress(), getPort(), SockBroadcast::SockBroadcast(), SockUDP(), SockUnicast::SockUnicast(), write(), and ~SockUDP()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

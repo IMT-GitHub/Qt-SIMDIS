@@ -1,0 +1,307 @@
+\section{\-Sock\-Monitor \-Class \-Reference}
+\label{classSockMonitor}\index{\-Sock\-Monitor@{\-Sock\-Monitor}}
+
+
+\-Socket pending read, write, and error event monitoring class.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-Monitor.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-Monitor} ()
+\begin{DoxyCompactList}\small\item\em \-Default socket monitor constructor. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Sock\-Monitor} ()
+\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\item 
+bool {\bf add\-Read\-Monitor} ({\bf \-Sock\-Inet} $\ast$sock)
+\item 
+bool {\bf add\-Write\-Monitor} ({\bf \-Sock\-Inet} $\ast$sock)
+\item 
+bool {\bf add\-Error\-Monitor} ({\bf \-Sock\-Inet} $\ast$sock)
+\item 
+bool {\bf remove\-Read\-Monitor} ({\bf \-Sock\-Inet} $\ast$sock)
+\item 
+bool {\bf remove\-Write\-Monitor} ({\bf \-Sock\-Inet} $\ast$sock)
+\item 
+bool {\bf remove\-Error\-Monitor} ({\bf \-Sock\-Inet} $\ast$sock)
+\item 
+void {\bf get\-Read\-Sockets} (\-Socket\-List \&socks) const 
+\item 
+void {\bf get\-Write\-Sockets} (\-Socket\-List \&socks) const 
+\item 
+void {\bf get\-Error\-Sockets} (\-Socket\-List \&socks) const 
+\item 
+int32\-\_\-t {\bf watch\-Read} (\-Socket\-List \&readsocks, uint32\-\_\-t sec=0, uint32\-\_\-t usec=0)
+\item 
+int32\-\_\-t {\bf watch\-Write} (\-Socket\-List \&writesocks, uint32\-\_\-t sec=0, uint32\-\_\-t usec=0)
+\item 
+int32\-\_\-t {\bf watch\-Error} (\-Socket\-List \&errorsocks, uint32\-\_\-t sec=0, uint32\-\_\-t usec=0)
+\item 
+int32\-\_\-t {\bf watch\-All} (\-Socket\-List \&readsocks, \-Socket\-List \&writesocks, \-Socket\-List \&errorsocks, uint32\-\_\-t sec=0, uint32\-\_\-t usec=0)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\-::map$<$ \-S\-O\-C\-K\-E\-T, \*
+{\bf \-Sock\-Inet} $\ast$ $>$ {\bf \-Socket\-Map}\label{classSockMonitor_a85a550daaf21236ab83c14f24a233d9a}
+
+\begin{DoxyCompactList}\small\item\em \-Maps a \-S\-O\-C\-K\-E\-T structure to a \doxyref{\-Sock\-Inet}{p.}{classSockInet} for internal usage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Socket\-Map} {\bf readsocks\-\_\-}\label{classSockMonitor_a2ca642c04c248fc75b45865271bfc733}
+
+\begin{DoxyCompactList}\small\item\em \-Sockets to observe for read ready on select() \end{DoxyCompactList}\item 
+{\bf \-Socket\-Map} {\bf writesocks\-\_\-}\label{classSockMonitor_a865ce6572adb8550e7b4764bdf284cea}
+
+\begin{DoxyCompactList}\small\item\em \-Sockets to observe for write ready on select() \end{DoxyCompactList}\item 
+{\bf \-Socket\-Map} {\bf errorsocks\-\_\-}\label{classSockMonitor_a430c4166cd216d300d96d7425959e903}
+
+\begin{DoxyCompactList}\small\item\em \-Sockets to observe for errors on select() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Socket pending read, write, and error event monitoring class. 
+
+\-A class for monitoring multiple sockets for pending read, write, and error events. \-This serves as a cross-\/platform method for select() calls on multiple sockets. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!\-Sock\-Monitor@{\-Sock\-Monitor}}
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{\-Sock\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Monitor\-::\-Sock\-Monitor} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_ac40b3d5ab722fbef5a9e6341d29f2d76}
+
+
+\-Default socket monitor constructor. 
+
+\-Creates an empty socket monitor object. \index{\-Sock\-Monitor@{\-Sock\-Monitor}!$\sim$\-Sock\-Monitor@{$\sim$\-Sock\-Monitor}}
+\index{$\sim$\-Sock\-Monitor@{$\sim$\-Sock\-Monitor}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{$\sim$\-Sock\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Monitor\-::$\sim$\-Sock\-Monitor} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockMonitor_a87ed113fbced1eea0a8a202677968834}
+
+
+\-Destructor. 
+
+\-Virtual destructor. 
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!add\-Error\-Monitor@{add\-Error\-Monitor}}
+\index{add\-Error\-Monitor@{add\-Error\-Monitor}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{add\-Error\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Monitor\-::add\-Error\-Monitor} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sock\-Inet} $\ast$}]{sock}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_a7aed890dbb02ccf04ede1d0fdacd5882}
+\-Add a socket to the list of sockets to monitor for errors 
+
+\-References errorsocks\-\_\-, and \-Sock\-Inet\-::get\-Descriptor().
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!add\-Read\-Monitor@{add\-Read\-Monitor}}
+\index{add\-Read\-Monitor@{add\-Read\-Monitor}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{add\-Read\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Monitor\-::add\-Read\-Monitor} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sock\-Inet} $\ast$}]{sock}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_a443c094628a8cc46f81b9370a324b8d8}
+\-Adds a socket to the list of sockets to watch for read ready 
+
+\-References \-Sock\-Inet\-::get\-Descriptor(), and readsocks\-\_\-.
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!add\-Write\-Monitor@{add\-Write\-Monitor}}
+\index{add\-Write\-Monitor@{add\-Write\-Monitor}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{add\-Write\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Monitor\-::add\-Write\-Monitor} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sock\-Inet} $\ast$}]{sock}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_ae3f9556f10121faa7e71318c6aac98fb}
+\-Adds a socket to the list of sockets to watch for write ready 
+
+\-References \-Sock\-Inet\-::get\-Descriptor(), and writesocks\-\_\-.
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!get\-Error\-Sockets@{get\-Error\-Sockets}}
+\index{get\-Error\-Sockets@{get\-Error\-Sockets}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{get\-Error\-Sockets}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Sock\-Monitor\-::get\-Error\-Sockets} (
+\begin{DoxyParamCaption}
+\item[{\-Socket\-List \&}]{socks}
+\end{DoxyParamCaption}
+) const}\label{classSockMonitor_aca0a352a514becd7767a8c8d177e6a29}
+\-Retrieves sockets in the error monitoring list 
+
+\-References errorsocks\-\_\-.
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!get\-Read\-Sockets@{get\-Read\-Sockets}}
+\index{get\-Read\-Sockets@{get\-Read\-Sockets}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{get\-Read\-Sockets}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Sock\-Monitor\-::get\-Read\-Sockets} (
+\begin{DoxyParamCaption}
+\item[{\-Socket\-List \&}]{socks}
+\end{DoxyParamCaption}
+) const}\label{classSockMonitor_af7e4a78cea03ed71aed1d5bd2075ff8d}
+\-Retrieves sockets in the read list 
+
+\-References readsocks\-\_\-.
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!get\-Write\-Sockets@{get\-Write\-Sockets}}
+\index{get\-Write\-Sockets@{get\-Write\-Sockets}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{get\-Write\-Sockets}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Sock\-Monitor\-::get\-Write\-Sockets} (
+\begin{DoxyParamCaption}
+\item[{\-Socket\-List \&}]{socks}
+\end{DoxyParamCaption}
+) const}\label{classSockMonitor_af32ad787cd09bacae476d9510c490b93}
+\-Retrieves sockets in the write list 
+
+\-References writesocks\-\_\-.
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!remove\-Error\-Monitor@{remove\-Error\-Monitor}}
+\index{remove\-Error\-Monitor@{remove\-Error\-Monitor}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{remove\-Error\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Monitor\-::remove\-Error\-Monitor} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sock\-Inet} $\ast$}]{sock}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_a45f3ae7051e7893bff589b7bcf87fc7d}
+\-Removes a socket from the error observation list 
+
+\-References errorsocks\-\_\-, and \-Sock\-Inet\-::get\-Descriptor().
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!remove\-Read\-Monitor@{remove\-Read\-Monitor}}
+\index{remove\-Read\-Monitor@{remove\-Read\-Monitor}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{remove\-Read\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Monitor\-::remove\-Read\-Monitor} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sock\-Inet} $\ast$}]{sock}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_aa84ce7cc6d0aa9c3e2a17b1b512d0418}
+\-Removes a socket from the read list 
+
+\-References \-Sock\-Inet\-::get\-Descriptor(), and readsocks\-\_\-.
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!remove\-Write\-Monitor@{remove\-Write\-Monitor}}
+\index{remove\-Write\-Monitor@{remove\-Write\-Monitor}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{remove\-Write\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Monitor\-::remove\-Write\-Monitor} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sock\-Inet} $\ast$}]{sock}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_a7faf30e4ac8016cad530c3d25e722623}
+\-Removes a socket from the write list 
+
+\-References \-Sock\-Inet\-::get\-Descriptor(), and writesocks\-\_\-.
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!watch\-All@{watch\-All}}
+\index{watch\-All@{watch\-All}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{watch\-All}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-Monitor\-::watch\-All} (
+\begin{DoxyParamCaption}
+\item[{\-Socket\-List \&}]{readsocks, }
+\item[{\-Socket\-List \&}]{writesocks, }
+\item[{\-Socket\-List \&}]{errorsocks, }
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_a7041fe388fa053dd31a29f5d39629972}
+\-Watches read, write, and error sockets for appropriate conditions. \-Selected sockets get returned in appropriate list. 
+\begin{DoxyParams}{\-Parameters}
+{\em readsocks} & \-User supplied list of sockets, that gets filled with sockets ready to read from \\
+\hline
+{\em writesocks} & \-User supplied list of sockets, that gets filled with sockets ready to write to \\
+\hline
+{\em errorsocks} & \-User supplied list of sockets, that gets filled with sockets with pending error conditions \\
+\hline
+{\em sec} & \-Number of seconds to wait \\
+\hline
+{\em usec} & \-Number of microseconds to wait \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Result of select() -\/-\/ total number of bits set in the bit mask, or -\/1 for errors with errno set 
+\end{DoxyReturn}
+
+
+\-References errorsocks\-\_\-, readsocks\-\_\-, and writesocks\-\_\-.
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!watch\-Error@{watch\-Error}}
+\index{watch\-Error@{watch\-Error}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{watch\-Error}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-Monitor\-::watch\-Error} (
+\begin{DoxyParamCaption}
+\item[{\-Socket\-List \&}]{errorsocks, }
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_a044ab31e490d09d6753c3ce690fee4e6}
+\-Watches for error conditions pending on error sockets for up to sec.\-usec time. \-Error-\/ready sockets get returned in errorsocks. 
+\begin{DoxyParams}{\-Parameters}
+{\em errorsocks} & \-User supplied list of sockets, that gets filled with sockets with pending error conditions \\
+\hline
+{\em sec} & \-Number of seconds to wait \\
+\hline
+{\em usec} & \-Number of microseconds to wait \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Result of select() -\/-\/ total number of bits set in the bit mask, or -\/1 for errors with errno set 
+\end{DoxyReturn}
+
+
+\-References errorsocks\-\_\-.
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!watch\-Read@{watch\-Read}}
+\index{watch\-Read@{watch\-Read}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{watch\-Read}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-Monitor\-::watch\-Read} (
+\begin{DoxyParamCaption}
+\item[{\-Socket\-List \&}]{readsocks, }
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_a7a11ea76e7beb9c2590307379cd0682a}
+\-Watches for a read on all read sockets for up to sec.\-usec time. \-Ready sockets get returned in readsocks. 
+\begin{DoxyParams}{\-Parameters}
+{\em readsocks} & \-User supplied list of sockets, that gets filled with sockets ready to read from \\
+\hline
+{\em sec} & \-Number of seconds to wait for read\-Ready \\
+\hline
+{\em usec} & \-Number of microseconds to wait for read\-Ready \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Result of select() -\/-\/ total number of bits set in the bit mask, or -\/1 for errors with errno set 
+\end{DoxyReturn}
+
+
+\-References readsocks\-\_\-.
+
+\index{\-Sock\-Monitor@{\-Sock\-Monitor}!watch\-Write@{watch\-Write}}
+\index{watch\-Write@{watch\-Write}!SockMonitor@{\-Sock\-Monitor}}
+\subsubsection[{watch\-Write}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-Monitor\-::watch\-Write} (
+\begin{DoxyParamCaption}
+\item[{\-Socket\-List \&}]{writesocks, }
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{classSockMonitor_a8d11e3534589a3c1d932164d2dd87840}
+\-Watches for a write ready on all read sockets for up to sec.\-usec time. \-Ready sockets get returned in writesocks. 
+\begin{DoxyParams}{\-Parameters}
+{\em writesocks} & \-User supplied list of sockets, that gets filled with sockets ready to write to \\
+\hline
+{\em sec} & \-Number of seconds to wait for write\-Ready \\
+\hline
+{\em usec} & \-Number of microseconds to wait for write\-Ready \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Result of select() -\/-\/ total number of bits set in the bit mask, or -\/1 for errors with errno set 
+\end{DoxyReturn}
+
+
+\-References writesocks\-\_\-.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-Monitor.\-h\item 
+\-Sock\-Monitor.\-cpp\end{DoxyCompactItemize}

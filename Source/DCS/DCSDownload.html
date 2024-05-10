@@ -1,0 +1,232 @@
+
+<html>
+<head>
+<title>SIMDIS | DCS Software Download</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="css/simdis.css" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="#ffffff" >
+
+<h3>Data Client Server (DCS) Library</h3>
+<table border=0 cellspacing=3 cellpadding=0 align=left width="100%">
+ <tr>
+  <td style='background:#A0A0A0;padding:.75pt .75pt .75pt .75pt'><b><span style='font-size:13.5pt;font-family:Arial;color:white'>News</span></b>
+  </td>
+ </tr>
+</table>
+<br>
+<br>
+<ul type=disc>
+            <li>&nbsp;<b>[August 2011]&nbsp;&nbsp;Updated release of DCS Version 2.4.</b></li>
+</ul>
+
+<table border=0 cellspacing=3 cellpadding=0 width="100%">
+ <tr>
+  <td style='background:#A0A0A0;padding:.75pt .75pt .75pt .75pt'><b><span style='font-size:13.5pt;font-family:Arial;
+  color:white'>Introduction</span></b>
+  </td>
+ </tr>
+</table>
+
+<p>The DCS API is a C++ software library developed by the Tactical Electronic Warfare
+Division at the Naval Research Laboratory.  The API is the software
+implementation of a system for sending data to Simdis for display, distributed
+as part of the Simdis 3D Visualization and Display package.&nbsp; The API
+transmits predefined data types to Simdis using two standard Internet Protocols
+(IP).&nbsp; These Internet Protocols are the Transmission Control Protocol
+(TCP) and the User Datagram Protocol (UDP).</p>
+<p>TCP is a protocol for reliably transmitting data from one
+point to another.&nbsp; All data sent via TCP is guaranteed to arrive at its
+destination, in the order in which it was sent.&nbsp; This protocol requires a
+significant amount of overhead to reliably deliver information in sequence, and
+no one piece of information can be delivered before any of its
+predecessors.&nbsp; Examples of applications that utilize the Transmission
+Control Protocol are web browsers and email programs.&nbsp; DCS uses TCP to
+transmit important information such as initialization and state modification
+data types. &nbsp;</p>
+<p>UDP is a non-reliable Internet Protocol that uses what can
+be described as a &quot;fire and forget&quot; approach to data
+transmittal.&nbsp; UDP data is not guaranteed to arrive at its destination in
+sequence, or even to arrive at its destination at all.&nbsp; Some examples of
+applications that utilize the User Datagram Protocol are network timeservers,
+domain name servers, and network video games.&nbsp; DCS uses UDP to transmit
+information such as position updates, which are only valid during a specific
+time frame.&nbsp; This type of data typically arrives at a very high rate, and
+the infrequent loss of data is negligible when compared with the significant
+amount of overhead required to reliably transmit the data in sequence.</p>
+
+<table border=0 cellspacing=3 cellpadding=0 width="100%">
+ <tr>
+  <td style='background:#A0A0A0;padding:.75pt .75pt .75pt .75pt'><b><span style='font-size:13.5pt;font-family:Arial;
+  color:white'>Features</span></b>
+  </td>
+ </tr>
+</table>
+
+<p>Current Features</p>
+
+<ul type=disc>
+ <li>&nbsp;Object-oriented (implemented in C++) </li>
+ <li>&nbsp;Cross platform - currently runs on:</li>
+ <ul type=circle>
+  <li>&nbsp;Linux - g++ 3.x, 4.x</li>
+  <li>&nbsp;Windows - VC++ 8.0 (2005), 9.0 (2008), 10.0 (2010)</li>
+ </ul>
+ <li>&nbsp;Data Display Objects:</li>
+ <ul type=circle>
+  <li>&nbsp;Platforms.<br>&nbsp;&nbsp;&nbsp;Platform display objects represent
+      entities such as aircraft, ships, and buildings</li>
+  <li>&nbsp;Beams.<br>&nbsp;&nbsp;&nbsp;Beam display
+      objects can be used to visualize data from objects such as antennas,
+      FOVs, and RF/IR seekers.</li>
+  <li>&nbsp;Gates.<br>&nbsp;&nbsp;&nbsp;Gate display
+      objects can be used to visualize data from objects such as range track
+      gates and search volumes.</li>
+  <li>&nbsp;Generic Data.<br>&nbsp;&nbsp;&nbsp;Generic display objects can be used to textually display
+      any user-generated data.</li>
+ </ul>
+</ul>
+
+<table border=0 cellspacing=3 cellpadding=0 width="100%">
+ <tr>
+  <td style='background:#A0A0A0;padding:.75pt .75pt .75pt .75pt'><b><span style='font-size:13.5pt;font-family:Arial;
+  color:white'>Software Requirements and Recommendations</span></b>
+  </td>
+ </tr>
+</table>
+
+<p>DCS is supplied as source code only. This means that you have to compile the
+package for yourself.&nbsp; The following is a list of other software you will
+need or is recommended to build this package:</p>
+
+<p>This library is only distributed in C++ form.  To use this library, you must
+build it on your own machine.  The exact steps to build the source may vary based on the
+operating system and compiler, but the overall method is the same.  This page describes
+the steps required for the Plug-in API version 1.11 and later.
+<ol>
+<li>Download and extract the DCS2 Library ZIP or TGZ from the <a href="https://simdis.nrl.navy.mil">SIMDIS web site</a>.
+<li>Run CMake to configure and generate either a solution file (Visual Studio) or makefile (UNIX makefiles)
+ <ul>
+  <li>Start <a href="http://cmake.org">CMake</a>
+    <ul>
+     <li>Windows users should find a shortcut in their start menu after installation
+     <li>Linux users can run cmake-gui for the X-Windows interface, or ccmake for the curses interface
+    </ul>
+  <li>Locate the DCSSoftware/ directory in the field "Where is the source code"
+  <li>Specify a build location in "Where to build the binaries".  Note that CMake supports and encourages out-of-source builds, but it is not required.
+  <li>Click <b>Configure</b>.  You may be asked to select your compiler version
+   <ul>
+    <li>Windows users may wish to select one of:
+    <ul>
+     <li>Visual Studio 9 2008  <em>(win32_vc-9.0)</em>
+     <li>Visual Studio 9 2008 Win64  <em>(win64_vc-9.0)</em>
+     <li>Visual Studio 10  <em>(win32_vc-10.0)</em>
+     <li>Visual Studio 10 Win64  <em>(win64_vc-10.0)</em>
+    </ul>
+    <li>UNIX users may wish to select Unix Makefiles
+   </ul>
+  <li>Optionally set the CMAKE_INSTALL_PREFIX variable.  If run, the "make install" will copy headers
+      and libraries into this location.  You can ignore this if you do not plan on compiling the install target.
+  <li>Click <b>Configure</b> again to lock in any changes, then click <b>Generate</b>.
+ </ul>
+ <li>On Windows, a solution file is generated in the directory specified in "Where to build the binaries."  Run Visual Studio to build.
+ <li>On Linux, makefiles are generated in the directory specified in "Where to build the binaries."  Run make to build.
+</ol>
+
+<p>Programs designed to work with the DCS API are required to include the 'DCS.h' header
+file. &nbsp;This file includes all of the necessary DCS, NET, and other
+miscellaneous header files required for the implementation of a DCS
+application. &nbsp;These header files define all of the types and functions
+provided by the DCS API. &nbsp; Any C++ source file that makes use of the DCS
+API must include this line:</p>
+
+<div align=center>
+
+<table border=1 cellspacing=0 cellpadding=0 width=750 style='width:6.25in;
+ mso-cellspacing:0in;mso-padding-alt:1.2pt 1.2pt 1.2pt 1.2pt'>
+ <tr>
+  <td valign=top style='padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=MsoNormal><span style='color:#CC0000'>#include</span> &quot;<span
+  style='color:#663366'>DCS.h</span>&quot;<span style='font-family:"Arial Unicode MS"'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+<br>
+<p>Programs designed to work with the DCS API
+must also be linked with the proper DCS and NET library files. &nbsp;For
+Microsoft Windows based applications, these libraries are DCS.lib and NET.lib,
+and for UNIX based applications these libraries are libDCS.a and libNET.a.
+&nbsp;Microsoft Visual Studio users can link their applications with these
+libraries by adding them to the &quot;Object/library modules&quot; text field
+from the &quot;Link&quot; tab of the project settings dialog. &nbsp;UNIX
+makefile users can link their applications with these libraries by adding -lDCS
+and -lNET to the linker options.&nbsp;&nbsp;As an
+example, we have provided two sample server programs and a sample client
+program.&nbsp;&nbsp;These programs are found under
+<b>DCS2</b> in the following sub-directories:</p>
+
+  
+<ul type=disc>
+  <li>&nbsp;<b>examples/sclient</b></li>
+  <li>&nbsp;<b>examples/scserver</b></li>
+  <li>&nbsp;<b>examples/sserver</b></li>
+</ul>
+	
+	
+	
+
+<table border=0 cellspacing=3 cellpadding=0 width="100%">
+ <tr>
+  <td style='background:#A0A0A0;padding:.75pt .75pt .75pt .75pt'><b><span style='font-size:13.5pt;font-family:Arial;
+  color:white'>License</span></b>
+  </td>
+ </tr>
+</table>
+<b><font color="#ff0000">
+<p>IMPORTANT: PLEASE
+READ THE FOLLOWING AGREEMENT CAREFULLY.</p>
+
+<p>BY DOWNLOADING,
+COPYING, INSTALLING OR OTHERWISE USING THE DATA CLIENT SERVER (DCS) LIBRARY,
+YOU ARE DEEMED TO HAVE AGREED TO THE TERMS AND CONDITIONS OF THIS LICENSE
+AGREEMENT.</p>
+
+</font></b><font color="#ff0000">
+          <p><b>(C) Copyright 2002-2011 Naval Research Laboratory. &nbsp;The U.S. Government 
+            retains all rights to use, duplicate, distribute, disclose, or release 
+            this document.</b></p>
+
+          </font><b><font color="#ff0000">
+          <p>Redistribution and use in source and binary forms, with or without 
+            modification, are permitted provided that the following conditions 
+            are met:</p>
+          <ul type=disc>
+            <li>Redistributions of source code must retain the above copyright 
+              notice, this list of conditions and the following disclaimer.</li>
+            <li>Redistributions in binary form must reproduce the above copyright 
+              notice, this list of conditions and the following disclaimer in 
+              the documentation and/or other materials provided with the distribution.</li>
+            <li>Neither the name of the Naval Research Laboratory nor the names of its contributors may be used to endorse or promote 
+              products derived from this software without specific prior written 
+              permission.</li>
+          </ul>
+          <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+            &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, 
+            BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
+            FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL 
+            THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, 
+            INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+            BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS 
+            OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
+            AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+            OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+            OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF 
+            SUCH DAMAGE.</p>
+          </font></b> 
+</body>
+</html>
+
+
+

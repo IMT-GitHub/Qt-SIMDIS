@@ -1,0 +1,289 @@
+cmake_minimum_required(VERSION 3.14)
+
+message("CMakeList : SMSS start")
+project(SMSS LANGUAGES CXX)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+#find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
+#find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Network)
+find_package (Threads)
+
+if(WIN32)
+
+  set(SMSS_SRC_FILES
+    main.cpp
+    src/SmssManager.cpp
+  )
+
+  set(SMSS_INCLUDE_FILES
+    include/SmssManager.h
+  )
+
+  set(SMSS_COMMON_FILES
+    Common/datamngr.cpp
+    Common/datamngr.h
+    Common/DCSServer.cpp
+    Common/DCSServer.h
+    #Common/SMSSaux.cpp
+    #Common/SMSSaux.h
+    Common/PCAPComm.cpp
+    Common/PCAPComm.h
+
+  )
+
+
+
+  #################################################################################################
+  # KDIS
+  # *.h
+  SOURCE_GROUP(KDIS FILES ${KDIS_SRC_BASE_H})
+  SOURCE_GROUP(KDIS\\DataTypes FILES ${KDIS_SRC_DATATYPES_H})
+  SOURCE_GROUP(KDIS\\DataTypes\\Enums FILES ${KDIS_SRC_ENUMS_H})
+  SOURCE_GROUP(KDIS\\PDU FILES ${KDIS_SRC_PDU_BASE_H})
+  SOURCE_GROUP(KDIS\\PDU\\Distributed_Emission_Regeneration FILES ${KDIS_SRC_PDU_DER_H})
+  SOURCE_GROUP(KDIS\\PDU\\Entity_Info_Interaction FILES ${KDIS_SRC_PDU_EII_H})
+  SOURCE_GROUP(KDIS\\PDU\\Entity_Management FILES ${KDIS_SRC_PDU_EM_H})
+  SOURCE_GROUP(KDIS\\PDU\\Live_Entity FILES ${KDIS_SRC_PDU_LE_H})
+  SOURCE_GROUP(KDIS\\PDU\\Logistics FILES ${KDIS_SRC_PDU_L_H})
+  SOURCE_GROUP(KDIS\\PDU\\Minefield FILES ${KDIS_SRC_PDU_M_H})
+  SOURCE_GROUP(KDIS\\PDU\\Radio_Communications FILES ${KDIS_SRC_PDU_R_H})
+  SOURCE_GROUP(KDIS\\PDU\\Simulation_Management FILES ${KDIS_SRC_PDU_SM_H})
+  SOURCE_GROUP(KDIS\\PDU\\Simulation_Management_With_Reliability FILES ${KDIS_SRC_PDU_SMWR_H})
+  SOURCE_GROUP(KDIS\\PDU\\Synthetic_Environment FILES ${KDIS_SRC_PDU_SE_H})
+  SOURCE_GROUP(KDIS\\PDU\\Warfare FILES ${KDIS_SRC_PDU_W_H})
+  SOURCE_GROUP(KDIS\\PDU\\Information_Operations FILES ${KDIS_SRC_PDU_IO_H})
+  SOURCE_GROUP(KDIS\\Extras FILES ${KDIS_SRC_EX_H})
+  SOURCE_GROUP(KDIS\\Network FILES ${KDIS_SRC_NET_H})
+
+  # *.cpp
+  SOURCE_GROUP(KDIS FILES ${KDIS_SRC_BASE_CPP})
+  SOURCE_GROUP(KDIS\\DataTypes FILES ${KDIS_SRC_DATATYPES_CPP})
+  SOURCE_GROUP(KDIS\\DataTypes\\Enums FILES ${KDIS_SRC_ENUMS_CPP})
+  SOURCE_GROUP(KDIS\\PDU FILES ${KDIS_SRC_PDU_BASE_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Distributed_Emission_Regeneration FILES ${KDIS_SRC_PDU_DER_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Entity_Info_Interaction FILES ${KDIS_SRC_PDU_EII_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Entity_Management FILES ${KDIS_SRC_PDU_EM_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Live_Entity FILES ${KDIS_SRC_PDU_LE_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Logistics FILES ${KDIS_SRC_PDU_L_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Minefield FILES ${KDIS_SRC_PDU_M_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Radio_Communications FILES ${KDIS_SRC_PDU_R_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Simulation_Management FILES ${KDIS_SRC_PDU_SM_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Simulation_Management_With_Reliability FILES ${KDIS_SRC_PDU_SMWR_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Synthetic_Environment FILES ${KDIS_SRC_PDU_SE_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Warfare FILES ${KDIS_SRC_PDU_W_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Information_Operations FILES ${KDIS_SRC_PDU_IO_CPP})
+  SOURCE_GROUP(KDIS\\Extras FILES ${KDIS_SRC_EX_CPP})
+  SOURCE_GROUP(KDIS\\Network FILES ${KDIS_SRC_NET_CPP})
+
+  #Include directories in project settings
+
+  INCLUDE_DIRECTORIES(${KDIS_SOURCE_DIR})
+  INCLUDE_DIRECTORIES(${KDIS_SOURCE_DIR}/Examples)
+
+  include_directories("${SMSS_SOURCE_DIR}/../npcap-sdk-1.13/Include")
+
+  link_directories("${SMSS_SOURCE_DIR}/../npcap-sdk-1.13/Lib/x64")
+
+  #Create the project
+
+  SET(KDIS_FILES_H
+      ${KDIS_SRC_BASE_H} 
+      ${KDIS_SRC_DATATYPES_H} 
+      ${KDIS_SRC_ENUMS_H}
+      ${KDIS_SRC_PDU_BASE_H}
+      ${KDIS_SRC_PDU_DER_H}
+      ${KDIS_SRC_PDU_EII_H}
+      ${KDIS_SRC_PDU_EM_H}
+      ${KDIS_SRC_PDU_LE_H}
+      ${KDIS_SRC_PDU_L_H}
+      ${KDIS_SRC_PDU_M_H}
+      ${KDIS_SRC_PDU_R_H}
+      ${KDIS_SRC_PDU_SM_H}
+      ${KDIS_SRC_PDU_SMWR_H}
+      ${KDIS_SRC_PDU_SE_H}
+      ${KDIS_SRC_PDU_W_H}
+      ${KDIS_SRC_PDU_IO_H}
+      ${KDIS_SRC_EX_H}
+      ${KDIS_SRC_NET_H}
+  )
+  IF(DIS_VERSION MATCHES 6)
+    ADD_DEFINITIONS(-D "DIS_VERSION=6")
+  ENDIF(DIS_VERSION MATCHES 6)
+
+  IF(DIS_VERSION MATCHES 5)
+    ADD_DEFINITIONS(-D "DIS_VERSION=5")
+  ENDIF(DIS_VERSION MATCHES 5)
+
+  IF(DIS_VERSION MATCHES 7)
+    ADD_DEFINITIONS(-D "DIS_VERSION=7")
+  ENDIF(DIS_VERSION MATCHES 7)
+
+  IF(KDIS_USE_ENUM_DESCRIPTORS)
+    ADD_DEFINITIONS(-D "KDIS_USE_ENUM_DESCRIPTORS")
+  ENDIF(KDIS_USE_ENUM_DESCRIPTORS)
+
+  #################################################################################################
+
+
+  add_executable(LTSS_SMSS ${SMSS_SRC_FILES} ${SMSS_INCLUDE_FILES} ${SMSS_COMMON_FILES} ${KDIS_FILES_H} )
+
+  
+  target_link_libraries(LTSS_SMSS PRIVATE simCore simUtil simQt 
+  Qt${QT_VERSION_MAJOR}::Widgets 
+  Qt${QT_VERSION_MAJOR}::Network
+  DCS2 DCS2U NET Comm )
+
+else()
+
+  
+  #################################################################################################
+  # KDIS
+  # *.h
+  SOURCE_GROUP(KDIS FILES ${KDIS_SRC_BASE_H})
+  SOURCE_GROUP(KDIS\\DataTypes FILES ${KDIS_SRC_DATATYPES_H})
+  SOURCE_GROUP(KDIS\\DataTypes\\Enums FILES ${KDIS_SRC_ENUMS_H})
+  SOURCE_GROUP(KDIS\\PDU FILES ${KDIS_SRC_PDU_BASE_H})
+  SOURCE_GROUP(KDIS\\PDU\\Distributed_Emission_Regeneration FILES ${KDIS_SRC_PDU_DER_H})
+  SOURCE_GROUP(KDIS\\PDU\\Entity_Info_Interaction FILES ${KDIS_SRC_PDU_EII_H})
+  SOURCE_GROUP(KDIS\\PDU\\Entity_Management FILES ${KDIS_SRC_PDU_EM_H})
+  SOURCE_GROUP(KDIS\\PDU\\Live_Entity FILES ${KDIS_SRC_PDU_LE_H})
+  SOURCE_GROUP(KDIS\\PDU\\Logistics FILES ${KDIS_SRC_PDU_L_H})
+  SOURCE_GROUP(KDIS\\PDU\\Minefield FILES ${KDIS_SRC_PDU_M_H})
+  SOURCE_GROUP(KDIS\\PDU\\Radio_Communications FILES ${KDIS_SRC_PDU_R_H})
+  SOURCE_GROUP(KDIS\\PDU\\Simulation_Management FILES ${KDIS_SRC_PDU_SM_H})
+  SOURCE_GROUP(KDIS\\PDU\\Simulation_Management_With_Reliability FILES ${KDIS_SRC_PDU_SMWR_H})
+  SOURCE_GROUP(KDIS\\PDU\\Synthetic_Environment FILES ${KDIS_SRC_PDU_SE_H})
+  SOURCE_GROUP(KDIS\\PDU\\Warfare FILES ${KDIS_SRC_PDU_W_H})
+  SOURCE_GROUP(KDIS\\PDU\\Information_Operations FILES ${KDIS_SRC_PDU_IO_H})
+  SOURCE_GROUP(KDIS\\Extras FILES ${KDIS_SRC_EX_H})
+  SOURCE_GROUP(KDIS\\Network FILES ${KDIS_SRC_NET_H})
+
+  # *.cpp
+  SOURCE_GROUP(KDIS FILES ${KDIS_SRC_BASE_CPP})
+  SOURCE_GROUP(KDIS\\DataTypes FILES ${KDIS_SRC_DATATYPES_CPP})
+  SOURCE_GROUP(KDIS\\DataTypes\\Enums FILES ${KDIS_SRC_ENUMS_CPP})
+  SOURCE_GROUP(KDIS\\PDU FILES ${KDIS_SRC_PDU_BASE_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Distributed_Emission_Regeneration FILES ${KDIS_SRC_PDU_DER_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Entity_Info_Interaction FILES ${KDIS_SRC_PDU_EII_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Entity_Management FILES ${KDIS_SRC_PDU_EM_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Live_Entity FILES ${KDIS_SRC_PDU_LE_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Logistics FILES ${KDIS_SRC_PDU_L_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Minefield FILES ${KDIS_SRC_PDU_M_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Radio_Communications FILES ${KDIS_SRC_PDU_R_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Simulation_Management FILES ${KDIS_SRC_PDU_SM_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Simulation_Management_With_Reliability FILES ${KDIS_SRC_PDU_SMWR_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Synthetic_Environment FILES ${KDIS_SRC_PDU_SE_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Warfare FILES ${KDIS_SRC_PDU_W_CPP})
+  SOURCE_GROUP(KDIS\\PDU\\Information_Operations FILES ${KDIS_SRC_PDU_IO_CPP})
+  SOURCE_GROUP(KDIS\\Extras FILES ${KDIS_SRC_EX_CPP})
+  SOURCE_GROUP(KDIS\\Network FILES ${KDIS_SRC_NET_CPP})
+
+  #Include directories in project settings
+
+  INCLUDE_DIRECTORIES(${KDIS_SOURCE_DIR})
+  INCLUDE_DIRECTORIES(${KDIS_SOURCE_DIR}/Examples)
+
+    #Create the project
+
+  SET(KDIS_FILES_H
+  ${KDIS_SRC_BASE_H} 
+  ${KDIS_SRC_DATATYPES_H} 
+  ${KDIS_SRC_ENUMS_H}
+  ${KDIS_SRC_PDU_BASE_H}
+  ${KDIS_SRC_PDU_DER_H}
+  ${KDIS_SRC_PDU_EII_H}
+  ${KDIS_SRC_PDU_EM_H}
+  ${KDIS_SRC_PDU_LE_H}
+  ${KDIS_SRC_PDU_L_H}
+  ${KDIS_SRC_PDU_M_H}
+  ${KDIS_SRC_PDU_R_H}
+  ${KDIS_SRC_PDU_SM_H}
+  ${KDIS_SRC_PDU_SMWR_H}
+  ${KDIS_SRC_PDU_SE_H}
+  ${KDIS_SRC_PDU_W_H}
+  ${KDIS_SRC_PDU_IO_H}
+  ${KDIS_SRC_EX_H}
+  ${KDIS_SRC_NET_H}
+)
+IF(DIS_VERSION MATCHES 6)
+ADD_DEFINITIONS(-D "DIS_VERSION=6")
+ENDIF(DIS_VERSION MATCHES 6)
+
+IF(DIS_VERSION MATCHES 5)
+ADD_DEFINITIONS(-D "DIS_VERSION=5")
+ENDIF(DIS_VERSION MATCHES 5)
+
+IF(DIS_VERSION MATCHES 7)
+ADD_DEFINITIONS(-D "DIS_VERSION=7")
+ENDIF(DIS_VERSION MATCHES 7)
+
+IF(KDIS_USE_ENUM_DESCRIPTORS)
+ADD_DEFINITIONS(-D "KDIS_USE_ENUM_DESCRIPTORS")
+ENDIF(KDIS_USE_ENUM_DESCRIPTORS)
+
+  set(SMSS_SRC_FILES
+    main.cpp
+    src/SmssManager.cpp
+  )
+
+  set(SMSS_INCLUDE_FILES
+    include/SmssManager.h
+  )
+
+  set(SMSS_COMMON_FILES
+    Common/datamngr.cpp
+    Common/datamngr.h
+    Common/DCSServer.cpp
+    Common/DCSServer.h
+    #Common/SMSSaux.cpp
+    #Common/SMSSaux.h
+    Common/PCAPComm.cpp
+    Common/PCAPComm.h
+
+  )
+
+  add_executable(LTSS_SMSS ${SMSS_SRC_FILES} ${SMSS_INCLUDE_FILES} ${SMSS_COMMON_FILES} ${KDIS_FILES_H})
+
+  target_link_libraries(LTSS_SMSS PRIVATE simVis simCore simUtil simQt 
+  Qt${QT_VERSION_MAJOR}::Widgets 
+  Qt${QT_VERSION_MAJOR}::Network
+  DCS2 DCS2U NET Comm KDIS_LIB libpcap.a)
+
+endif()
+
+
+
+
+set_target_properties(LTSS_SMSS PROPERTIES
+    FOLDER "SMSS"
+    PROJECT_LABEL "LTSS_SMSS"
+)
+
+# Set installation paths
+install(TARGETS LTSS_SMSS
+    ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+set(SMSS_INCLUDE_PATH "${SMSS_SOURCE_DIR}/include" CACHE INTERNAL " SMSS Include Directory")
+
+install(TARGETS LTSS_SMSS LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(FILES $(RIPRIPS_INCLUDE_PATHS_INCLUDE_FILES) DESTINATION SMSS/include)
+install(FILES DESTINATION Comm/include)
+
+include_directories(${SMSS_INCLUDE_PATH})
+include_directories(${COMM_INCLUDE_PATH})
+include_directories(${DCS2_INCLUDE_PATH})
+include_directories(${STD_INCLUDE_PATH})
+include_directories(${NET_INCLUDE_PATH})
+message("CMakeList : SMSS end")
+# install(FILES ${DCS2_INCLUDE_FILES} DESTINATION DCS2/include)
+# install(FILES ${DCS2_CONSTANTS_INCLUDE_FILES} DESTINATION DCS2/include/Constants)
+# install(FILES ${DCS2U_INCLUDE_FILES} DESTINATION DCS2/extensions)
+#VSI_QT_USE_MODULES(SMSS LINK_PRIVATE Widgets OpenGL)

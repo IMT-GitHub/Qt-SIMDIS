@@ -1,0 +1,311 @@
+\section{\-Sock\-Multicast \-Class \-Reference}
+\label{classSockMulticast}\index{\-Sock\-Multicast@{\-Sock\-Multicast}}
+
+
+\-U\-D\-P multicast socket class.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-Multicast.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-Multicast\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classSockMulticast}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-Multicast} ()
+\begin{DoxyCompactList}\small\item\em \-Default multicast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Multicast} (uint16\-\_\-t port, \-T\-T\-L\-\_\-\-T ttl=1)
+\begin{DoxyCompactList}\small\item\em \-Multicast socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Multicast} (uint16\-\_\-t port, const char $\ast$group, const char $\ast$mciface=\-N\-U\-L\-L, \-T\-T\-L\-\_\-\-T ttl=1, bool {\bf attach}=true)
+\begin{DoxyCompactList}\small\item\em \-Multicast socket constructor. \end{DoxyCompactList}\item 
+bool {\bf open} ()
+\begin{DoxyCompactList}\small\item\em \-Open socket connection. \end{DoxyCompactList}\item 
+\-T\-T\-L\-\_\-\-T {\bf get\-T\-T\-L} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve \-T\-T\-L. \end{DoxyCompactList}\item 
+bool {\bf set\-T\-T\-L} (\-T\-T\-L\-\_\-\-T ttl)
+\begin{DoxyCompactList}\small\item\em \-Set \-T\-T\-L. \end{DoxyCompactList}\item 
+char $\ast$ {\bf get\-Mcast\-Iface} (char $\ast$iface, int32\-\_\-t len) const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve network interface value. \end{DoxyCompactList}\item 
+bool {\bf set\-Mcast\-Iface} (const char $\ast$iface)
+\begin{DoxyCompactList}\small\item\em \-Set network interface value. \end{DoxyCompactList}\item 
+bool {\bf join\-Group} (const char $\ast$group)
+\begin{DoxyCompactList}\small\item\em \-Join multicast group. \end{DoxyCompactList}\item 
+bool {\bf leave\-Group} (const char $\ast$group)
+\begin{DoxyCompactList}\small\item\em \-Leave multicast group. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\-T\-T\-L\-\_\-\-T {\bf ttl\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Time to live. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-U\-D\-P multicast socket class. 
+
+\-A socket that utilizes the network multicast protocol for data transmission. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!\-Sock\-Multicast@{\-Sock\-Multicast}}
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{\-Sock\-Multicast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Multicast\-::\-Sock\-Multicast} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockMulticast_ac2f1e9e3e705061c54a97c24ac2fad78}
+
+
+\-Default multicast socket constructor. 
+
+\-Creates a multicast socket object with default data values. \index{\-Sock\-Multicast@{\-Sock\-Multicast}!\-Sock\-Multicast@{\-Sock\-Multicast}}
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{\-Sock\-Multicast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Multicast\-::\-Sock\-Multicast} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{port, }
+\item[{\-T\-T\-L\-\_\-\-T}]{ttl = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\label{classSockMulticast_ae948f9d5c23ff7991620e9b6f6f86b6b}
+
+
+\-Multicast socket constructor. 
+
+\-Creates a multicast socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em port} & an unsigned 16-\/bit integer specifying the port to bind the multicast socket to. \\
+\hline
+{\em ttl} & an integer value specifying the time to live value to use for network transmission. \\
+\hline
+\end{DoxyParams}
+
+
+\-References \-Sock\-Inet\-::bind(), \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!\-Sock\-Multicast@{\-Sock\-Multicast}}
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{\-Sock\-Multicast}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Multicast\-::\-Sock\-Multicast} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{port, }
+\item[{const char $\ast$}]{group, }
+\item[{const char $\ast$}]{mciface = {\ttfamily \-N\-U\-L\-L}, }
+\item[{\-T\-T\-L\-\_\-\-T}]{ttl = {\ttfamily 1}, }
+\item[{bool}]{attach = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classSockMulticast_ac1ff54610cba2e9734a04bd824a6ac49}
+
+
+\-Multicast socket constructor. 
+
+\-Creates a multicast socket object with the specified data values, and connects it to a specified multicast address. \-When a multicast socket object is connected to a multicast address, data can be sent to that address with calls to 'write' rather than calls to 'write\-To'. \-When a multicast socket is connected it can only communicate on that multicast address. 
+\begin{DoxyParams}{\-Parameters}
+{\em port} & an unsigned 16-\/bit integer specifying the port to which the multicast socket should bind. \\
+\hline
+{\em group} & a character string specifying the multicast address to which the multicast socket should bind. \\
+\hline
+{\em mciface} & a character string specifying the network interface to use for network transmission. \\
+\hline
+{\em ttl} & an integer value specifying the time to live value to use for network transmission. \\
+\hline
+{\em attach} & a boolean value specifying whether the broadcast socket is to be attached to the peer or connected to the peer. \-When the socket is attached, the broadcast socket object stores the peerport and peeraddr values and uses them to call 'sendto'. \-If the socket is connected, the broadcast socket object links the socket to the peer on the kernel level with a call to the 'connect' function and sends data witn 'send'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-U\-D\-P\-::attached\-\_\-}{p.}{classSockUDP_aecd05663c9dc5ec0bb6112d563b819fb} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write}{p.}{classSockUDP_a4cf17cab6ebb6c3f0762c56aba40d158} 
+
+\doxyref{\-Sock\-U\-D\-P\-::write\-To}{p.}{classSockUDP_a6719fdc01c4227ba9152a07ba9caf052} 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-Inet\-::bind(), \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), join\-Group(), \-Sock\-Inet\-::localaddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), set\-Mcast\-Iface(), and \-Sock\-Inet\-::sockfd\-\_\-.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!get\-Mcast\-Iface@{get\-Mcast\-Iface}}
+\index{get\-Mcast\-Iface@{get\-Mcast\-Iface}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{get\-Mcast\-Iface}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ {\bf \-Sock\-Multicast\-::get\-Mcast\-Iface} (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{iface, }
+\item[{int32\-\_\-t}]{len}
+\end{DoxyParamCaption}
+) const}\label{classSockMulticast_a700a9876f55090f52aa87e9ee87d1126}
+
+
+\-Retrieve network interface value. 
+
+\-Returns value of network interface. 
+\begin{DoxyParams}{\-Parameters}
+{\em iface} & a character array to be filled with the \-I\-Pv4 network address associated with the network interface. \\
+\hline
+{\em len} & an integer specifying the size, in bytes, of 'addr'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pointer to an array of characters containing the \-I\-Pv4 network address for the associated network interface. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!get\-T\-T\-L@{get\-T\-T\-L}}
+\index{get\-T\-T\-L@{get\-T\-T\-L}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{get\-T\-T\-L}]{\setlength{\rightskip}{0pt plus 5cm}\-T\-T\-L\-\_\-\-T {\bf \-Sock\-Multicast\-::get\-T\-T\-L} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockMulticast_a8b826a0c28a7e6d9201bef95a7202e26}
+
+
+\-Retrieve \-T\-T\-L. 
+
+\-Returns the current multicast socket object's time to live value. \begin{DoxyReturn}{\-Returns}
+an integer specifying the socket's \-T\-T\-L. 
+\end{DoxyReturn}
+
+
+\-References ttl\-\_\-.
+
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!join\-Group@{join\-Group}}
+\index{join\-Group@{join\-Group}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{join\-Group}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Multicast\-::join\-Group} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{group}
+\end{DoxyParamCaption}
+)}\label{classSockMulticast_aec57ed9526292573a4d815a1f5531e1a}
+
+
+\-Join multicast group. 
+
+\-Joins a specified multicast group. 
+\begin{DoxyParams}{\-Parameters}
+{\em group} & a character string specifying the multicast address for the group to join. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the operation succeeded if true, failed if false. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Inet\-::sockfd\-\_\-.
+
+
+
+\-Referenced by \-Sock\-Multicast().
+
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!leave\-Group@{leave\-Group}}
+\index{leave\-Group@{leave\-Group}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{leave\-Group}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Multicast\-::leave\-Group} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{group}
+\end{DoxyParamCaption}
+)}\label{classSockMulticast_a28d46652d3d64c4558cdef25cf2015e7}
+
+
+\-Leave multicast group. 
+
+\-Leaves a specified multicast group. 
+\begin{DoxyParams}{\-Parameters}
+{\em group} & a character string specifying the multicast address for the group to leave. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the operation succeeded if true, failed if false. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!open@{open}}
+\index{open@{open}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Multicast\-::open} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockMulticast_a712eaedc182ee03d10e3d1f45b3bb490}
+
+
+\-Open socket connection. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::open}{p.}{classSockInet_a17d1128404b0d246c0fe70ec3cb82058} 
+\end{DoxySeeAlso}
+
+
+\-Implements {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_ac41fca14afb19f09e86e4fd45ceeed24}.
+
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!set\-Mcast\-Iface@{set\-Mcast\-Iface}}
+\index{set\-Mcast\-Iface@{set\-Mcast\-Iface}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{set\-Mcast\-Iface}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Multicast\-::set\-Mcast\-Iface} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{iface}
+\end{DoxyParamCaption}
+)}\label{classSockMulticast_a487dba02c5238ec5ed47e3efd30ed39d}
+
+
+\-Set network interface value. 
+
+\-Sets the value of the network interface. 
+\begin{DoxyParams}{\-Parameters}
+{\em iface} & a character string specifying the network interface to use for network transmission. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the operation succeeded if true, failed if false. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Inet\-::sockfd\-\_\-.
+
+
+
+\-Referenced by \-Sock\-Multicast().
+
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!set\-T\-T\-L@{set\-T\-T\-L}}
+\index{set\-T\-T\-L@{set\-T\-T\-L}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{set\-T\-T\-L}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Multicast\-::set\-T\-T\-L} (
+\begin{DoxyParamCaption}
+\item[{\-T\-T\-L\-\_\-\-T}]{ttl}
+\end{DoxyParamCaption}
+)}\label{classSockMulticast_ad7ddfad1eced3d084b3cbc5ab47fa290}
+
+
+\-Set \-T\-T\-L. 
+
+\-Sets the current multicast socket object's time to live value. 
+\begin{DoxyParams}{\-Parameters}
+{\em ttl} & an integer specifying the new \-T\-T\-L value to be used. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the operation succeeded if true, failed if false. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Inet\-::sockfd\-\_\-, and ttl\-\_\-.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\index{\-Sock\-Multicast@{\-Sock\-Multicast}!ttl\-\_\-@{ttl\-\_\-}}
+\index{ttl\-\_\-@{ttl\-\_\-}!SockMulticast@{\-Sock\-Multicast}}
+\subsubsection[{ttl\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\-T\-T\-L\-\_\-\-T {\bf \-Sock\-Multicast\-::ttl\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockMulticast_a52110fd49ed1cc9ed8bf31b9ed32625b}
+
+
+\-Time to live. 
+
+\-The time to live value for data transmissions. 
+
+\-Referenced by get\-T\-T\-L(), and set\-T\-T\-L().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-Multicast.\-h\item 
+\-Sock\-Multicast.\-cpp\end{DoxyCompactItemize}

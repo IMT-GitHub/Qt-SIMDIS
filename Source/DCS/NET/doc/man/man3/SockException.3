@@ -1,0 +1,74 @@
+.TH "SockException" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockException \- 
+.PP
+Socket exception class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockException\&.h>\fP
+.PP
+Inherited by \fBSockConnException\fP, \fBSockSupportException\fP, and \fBSockValueException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockException\fP ()"
+.br
+.RI "\fIDefault socket exception constructor\&. \fP"
+.ti -1c
+.RI "\fBSockException\fP (const char *msg)"
+.br
+.RI "\fISocket exception constructor\&. \fP"
+.ti -1c
+.RI "const char * \fBmessage\fP () const "
+.br
+.RI "\fIRetrieve error message\&. \fP"
+.ti -1c
+.RI "virtual \fB~SockException\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Socket exception class\&. 
+
+A generic socket exception class\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockException::SockException\fP ()\fC [inline]\fP"
+.PP
+Default socket exception constructor\&. Creates a socket exception object with a default message\&. 
+.SS "\fBSockException::SockException\fP (const char *msg)\fC [inline]\fP"
+.PP
+Socket exception constructor\&. Creates a socket exception object with a user specified error message\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImsg\fP a character string containing an error message\&. 
+.RE
+.PP
+
+.SS "virtual \fBSockException::~SockException\fP ()\fC [inline, virtual]\fP"
+.PP
+Destructor\&. Virtual destructor\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "const char* \fBSockException::message\fP () const\fC [inline]\fP"
+.PP
+Retrieve error message\&. Returns the socket exception's error message\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a charcter string containing an error message\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

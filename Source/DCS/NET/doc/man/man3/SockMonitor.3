@@ -1,0 +1,216 @@
+.TH "SockMonitor" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockMonitor \- 
+.PP
+Socket pending read, write, and error event monitoring class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockMonitor\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockMonitor\fP ()"
+.br
+.RI "\fIDefault socket monitor constructor\&. \fP"
+.ti -1c
+.RI "virtual \fB~SockMonitor\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "bool \fBaddReadMonitor\fP (\fBSockInet\fP *sock)"
+.br
+.ti -1c
+.RI "bool \fBaddWriteMonitor\fP (\fBSockInet\fP *sock)"
+.br
+.ti -1c
+.RI "bool \fBaddErrorMonitor\fP (\fBSockInet\fP *sock)"
+.br
+.ti -1c
+.RI "bool \fBremoveReadMonitor\fP (\fBSockInet\fP *sock)"
+.br
+.ti -1c
+.RI "bool \fBremoveWriteMonitor\fP (\fBSockInet\fP *sock)"
+.br
+.ti -1c
+.RI "bool \fBremoveErrorMonitor\fP (\fBSockInet\fP *sock)"
+.br
+.ti -1c
+.RI "void \fBgetReadSockets\fP (SocketList &socks) const "
+.br
+.ti -1c
+.RI "void \fBgetWriteSockets\fP (SocketList &socks) const "
+.br
+.ti -1c
+.RI "void \fBgetErrorSockets\fP (SocketList &socks) const "
+.br
+.ti -1c
+.RI "int32_t \fBwatchRead\fP (SocketList &readsocks, uint32_t sec=0, uint32_t usec=0)"
+.br
+.ti -1c
+.RI "int32_t \fBwatchWrite\fP (SocketList &writesocks, uint32_t sec=0, uint32_t usec=0)"
+.br
+.ti -1c
+.RI "int32_t \fBwatchError\fP (SocketList &errorsocks, uint32_t sec=0, uint32_t usec=0)"
+.br
+.ti -1c
+.RI "int32_t \fBwatchAll\fP (SocketList &readsocks, SocketList &writesocks, SocketList &errorsocks, uint32_t sec=0, uint32_t usec=0)"
+.br
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "typedef std::map< SOCKET, 
+.br
+\fBSockInet\fP * > \fBSocketMap\fP"
+.br
+.RI "\fIMaps a SOCKET structure to a \fBSockInet\fP for internal usage\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBSocketMap\fP \fBreadsocks_\fP"
+.br
+.RI "\fISockets to observe for read ready on select() \fP"
+.ti -1c
+.RI "\fBSocketMap\fP \fBwritesocks_\fP"
+.br
+.RI "\fISockets to observe for write ready on select() \fP"
+.ti -1c
+.RI "\fBSocketMap\fP \fBerrorsocks_\fP"
+.br
+.RI "\fISockets to observe for errors on select() \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Socket pending read, write, and error event monitoring class\&. 
+
+A class for monitoring multiple sockets for pending read, write, and error events\&. This serves as a cross-platform method for select() calls on multiple sockets\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockMonitor::SockMonitor\fP ()"
+.PP
+Default socket monitor constructor\&. Creates an empty socket monitor object\&. 
+.SS "\fBSockMonitor::~SockMonitor\fP ()\fC [virtual]\fP"
+.PP
+Destructor\&. Virtual destructor\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "bool \fBSockMonitor::addErrorMonitor\fP (\fBSockInet\fP *sock)"Add a socket to the list of sockets to monitor for errors 
+.PP
+References errorsocks_, and SockInet::getDescriptor()\&.
+.SS "bool \fBSockMonitor::addReadMonitor\fP (\fBSockInet\fP *sock)"Adds a socket to the list of sockets to watch for read ready 
+.PP
+References SockInet::getDescriptor(), and readsocks_\&.
+.SS "bool \fBSockMonitor::addWriteMonitor\fP (\fBSockInet\fP *sock)"Adds a socket to the list of sockets to watch for write ready 
+.PP
+References SockInet::getDescriptor(), and writesocks_\&.
+.SS "void \fBSockMonitor::getErrorSockets\fP (SocketList &socks) const"Retrieves sockets in the error monitoring list 
+.PP
+References errorsocks_\&.
+.SS "void \fBSockMonitor::getReadSockets\fP (SocketList &socks) const"Retrieves sockets in the read list 
+.PP
+References readsocks_\&.
+.SS "void \fBSockMonitor::getWriteSockets\fP (SocketList &socks) const"Retrieves sockets in the write list 
+.PP
+References writesocks_\&.
+.SS "bool \fBSockMonitor::removeErrorMonitor\fP (\fBSockInet\fP *sock)"Removes a socket from the error observation list 
+.PP
+References errorsocks_, and SockInet::getDescriptor()\&.
+.SS "bool \fBSockMonitor::removeReadMonitor\fP (\fBSockInet\fP *sock)"Removes a socket from the read list 
+.PP
+References SockInet::getDescriptor(), and readsocks_\&.
+.SS "bool \fBSockMonitor::removeWriteMonitor\fP (\fBSockInet\fP *sock)"Removes a socket from the write list 
+.PP
+References SockInet::getDescriptor(), and writesocks_\&.
+.SS "int32_t \fBSockMonitor::watchAll\fP (SocketList &readsocks, SocketList &writesocks, SocketList &errorsocks, uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP)"Watches read, write, and error sockets for appropriate conditions\&. Selected sockets get returned in appropriate list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreadsocks\fP User supplied list of sockets, that gets filled with sockets ready to read from 
+.br
+\fIwritesocks\fP User supplied list of sockets, that gets filled with sockets ready to write to 
+.br
+\fIerrorsocks\fP User supplied list of sockets, that gets filled with sockets with pending error conditions 
+.br
+\fIsec\fP Number of seconds to wait 
+.br
+\fIusec\fP Number of microseconds to wait 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Result of select() -- total number of bits set in the bit mask, or -1 for errors with errno set 
+.RE
+.PP
+
+.PP
+References errorsocks_, readsocks_, and writesocks_\&.
+.SS "int32_t \fBSockMonitor::watchError\fP (SocketList &errorsocks, uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP)"Watches for error conditions pending on error sockets for up to sec\&.usec time\&. Error-ready sockets get returned in errorsocks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIerrorsocks\fP User supplied list of sockets, that gets filled with sockets with pending error conditions 
+.br
+\fIsec\fP Number of seconds to wait 
+.br
+\fIusec\fP Number of microseconds to wait 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Result of select() -- total number of bits set in the bit mask, or -1 for errors with errno set 
+.RE
+.PP
+
+.PP
+References errorsocks_\&.
+.SS "int32_t \fBSockMonitor::watchRead\fP (SocketList &readsocks, uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP)"Watches for a read on all read sockets for up to sec\&.usec time\&. Ready sockets get returned in readsocks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreadsocks\fP User supplied list of sockets, that gets filled with sockets ready to read from 
+.br
+\fIsec\fP Number of seconds to wait for readReady 
+.br
+\fIusec\fP Number of microseconds to wait for readReady 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Result of select() -- total number of bits set in the bit mask, or -1 for errors with errno set 
+.RE
+.PP
+
+.PP
+References readsocks_\&.
+.SS "int32_t \fBSockMonitor::watchWrite\fP (SocketList &writesocks, uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP)"Watches for a write ready on all read sockets for up to sec\&.usec time\&. Ready sockets get returned in writesocks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwritesocks\fP User supplied list of sockets, that gets filled with sockets ready to write to 
+.br
+\fIsec\fP Number of seconds to wait for writeReady 
+.br
+\fIusec\fP Number of microseconds to wait for writeReady 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Result of select() -- total number of bits set in the bit mask, or -1 for errors with errno set 
+.RE
+.PP
+
+.PP
+References writesocks_\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

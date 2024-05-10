@@ -1,0 +1,772 @@
+\section{\-Sock\-Inet \-Class \-Reference}
+\label{classSockInet}\index{\-Sock\-Inet@{\-Sock\-Inet}}
+
+
+\-Internet socket socket class.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-Inet.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-Inet\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classSockInet}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-Inet} ()
+\begin{DoxyCompactList}\small\item\em \-Default socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Inet} (uint16\-\_\-t port, const char $\ast$iface=\-N\-U\-L\-L)
+\begin{DoxyCompactList}\small\item\em \-Socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Inet} (const {\bf \-Sock\-Addr\-Inet} $\ast$localaddr)
+\begin{DoxyCompactList}\small\item\em \-Socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Inet} (\-S\-O\-C\-K\-E\-T sockfd)
+\begin{DoxyCompactList}\small\item\em \-Socket constructor. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Sock\-Inet} ()
+\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\item 
+virtual bool {\bf is\-Valid} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates the socket handle references a valid kernel socket. \end{DoxyCompactList}\item 
+\-S\-O\-C\-K\-E\-T {\bf get\-Descriptor} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve the socket descriptor. \end{DoxyCompactList}\item 
+int32\-\_\-t {\bf get\-Family} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve the socket address family. \end{DoxyCompactList}\item 
+uint16\-\_\-t {\bf get\-Local\-Port} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve port value. \end{DoxyCompactList}\item 
+const char $\ast$ {\bf get\-Iface} (char $\ast$iface, int32\-\_\-t len) const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve network interface value. \end{DoxyCompactList}\item 
+bool {\bf get\-Sock\-Opt} (int32\-\_\-t level, int32\-\_\-t name, void $\ast$val, socklen\-\_\-t $\ast$size) const 
+\begin{DoxyCompactList}\small\item\em \-Get socket option. \end{DoxyCompactList}\item 
+bool {\bf set\-Sock\-Opt} (int32\-\_\-t level, int32\-\_\-t name, const void $\ast$val, socklen\-\_\-t size)
+\begin{DoxyCompactList}\small\item\em \-Set socket option. \end{DoxyCompactList}\item 
+bool {\bf is\-Blocking\-I\-O} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates blocking \-I/\-O mode. \end{DoxyCompactList}\item 
+bool {\bf set\-Blocking\-I\-O} (bool block)
+\begin{DoxyCompactList}\small\item\em \-Set blocking \-I/\-O mode. \end{DoxyCompactList}\item 
+int32\-\_\-t {\bf get\-Last\-Error} () const 
+\begin{DoxyCompactList}\small\item\em \-Get socket error code. \end{DoxyCompactList}\item 
+void {\bf set\-Last\-Error} (int32\-\_\-t error)
+\begin{DoxyCompactList}\small\item\em \-Set the socket error code. \end{DoxyCompactList}\item 
+virtual bool {\bf open} ()=0
+\begin{DoxyCompactList}\small\item\em \-Open socket. \end{DoxyCompactList}\item 
+virtual bool {\bf close} ()
+\begin{DoxyCompactList}\small\item\em \-Close socket. \end{DoxyCompactList}\item 
+virtual bool {\bf shutdown} (int32\-\_\-t howto)
+\begin{DoxyCompactList}\small\item\em \-Shutdown one or both of the socket communication streams (input/output). \end{DoxyCompactList}\item 
+bool {\bf bind} (uint16\-\_\-t port=\-E\-P\-H\-E\-M\-E\-R\-A\-L\-\_\-\-P\-O\-R\-T, const char $\ast$iface=\-N\-U\-L\-L)
+\begin{DoxyCompactList}\small\item\em \-Bind socket. \end{DoxyCompactList}\item 
+virtual bool {\bf bind} (const {\bf \-Sock\-Addr\-Inet} $\ast$localaddr)
+\begin{DoxyCompactList}\small\item\em \-Bind socket. \end{DoxyCompactList}\item 
+virtual bool {\bf read\-Ready} (uint32\-\_\-t sec=0, uint32\-\_\-t usec=0) const 
+\begin{DoxyCompactList}\small\item\em \-Indicates data is available for reading. \end{DoxyCompactList}\item 
+virtual bool {\bf write\-Ready} (uint32\-\_\-t sec=0, uint32\-\_\-t usec=0) const 
+\begin{DoxyCompactList}\small\item\em \-Indicates space is available for writing. \end{DoxyCompactList}\item 
+virtual bool {\bf error\-Check} (uint32\-\_\-t sec=0, uint32\-\_\-t usec=0) const 
+\begin{DoxyCompactList}\small\item\em \-Indicates that an error was encountered. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf read} (void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const 
+\begin{DoxyCompactList}\small\item\em \-Read data. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf write} (const void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const 
+\begin{DoxyCompactList}\small\item\em \-Write data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf block\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Use blocking \-I/\-O. \end{DoxyCompactList}\item 
+\-S\-O\-C\-K\-E\-T {\bf sockfd\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Socket handle. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Addr\-Inet} $\ast$ {\bf localaddr\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Local socket address settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Internet socket socket class. 
+
+\-An abstract class for a socket from the ineternet socket address family. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-Inet@{\-Sock\-Inet}!\-Sock\-Inet@{\-Sock\-Inet}}
+\index{\-Sock\-Inet@{\-Sock\-Inet}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{\-Sock\-Inet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Inet\-::\-Sock\-Inet} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockInet_a31c4a8c0980efed47511e8f1e9f1d026}
+
+
+\-Default socket constructor. 
+
+\-Creates an unconnected socket object with default data values. 
+
+\-References \-Sock\-Addr\-Factory\-::create(), and localaddr\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!\-Sock\-Inet@{\-Sock\-Inet}}
+\index{\-Sock\-Inet@{\-Sock\-Inet}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{\-Sock\-Inet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Inet\-::\-Sock\-Inet} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{port, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}\label{classSockInet_aec4a4833d89f1f02930bb2c494531910}
+
+
+\-Socket constructor. 
+
+\-Creates a socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em port} & an unsigned 16-\/bit integer specifying the local port with which to bind the socket. \\
+\hline
+{\em iface} & a character string specifying the network interface to use for network transmission. \\
+\hline
+\end{DoxyParams}
+
+
+\-References \-Sock\-Addr\-Factory\-::create(), localaddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), and \-Sock\-Addr\-Inet\-::set\-Port().
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!\-Sock\-Inet@{\-Sock\-Inet}}
+\index{\-Sock\-Inet@{\-Sock\-Inet}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{\-Sock\-Inet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Inet\-::\-Sock\-Inet} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr}
+\end{DoxyParamCaption}
+)}\label{classSockInet_a94e29c058daf670ea8969c2a20f33508}
+
+
+\-Socket constructor. 
+
+\-Creates a socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em localaddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information to be used when creating the socket. \\
+\hline
+\end{DoxyParams}
+
+
+\-References \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), and localaddr\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!\-Sock\-Inet@{\-Sock\-Inet}}
+\index{\-Sock\-Inet@{\-Sock\-Inet}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{\-Sock\-Inet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Inet\-::\-Sock\-Inet} (
+\begin{DoxyParamCaption}
+\item[{\-S\-O\-C\-K\-E\-T}]{sockfd}
+\end{DoxyParamCaption}
+)}\label{classSockInet_aa8ad254004a2b6288cfd28a3cfcc2f5f}
+
+
+\-Socket constructor. 
+
+\-Creates a socket object from the specified data value. 
+\begin{DoxyParams}{\-Parameters}
+{\em sockfd} & a handle to a previously created socket, to be used by the socket object. \\
+\hline
+\end{DoxyParams}
+
+
+\-References block\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), localaddr\-\_\-, set\-Blocking\-I\-O(), and sockfd\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!$\sim$\-Sock\-Inet@{$\sim$\-Sock\-Inet}}
+\index{$\sim$\-Sock\-Inet@{$\sim$\-Sock\-Inet}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{$\sim$\-Sock\-Inet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Inet\-::$\sim$\-Sock\-Inet} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_aab8de8cbb58b8d49e8b3177bf9bbd797}
+
+
+\-Destructor. 
+
+\-Virtual destructor. \-Will close an open/connected socket. 
+
+\-References close(), is\-Valid(), and localaddr\-\_\-.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-Inet@{\-Sock\-Inet}!bind@{bind}}
+\index{bind@{bind}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{bind}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::bind} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{port = {\ttfamily \-E\-P\-H\-E\-M\-E\-R\-A\-L\-\_\-\-P\-O\-R\-T}, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}\label{classSockInet_a68de1c5d2aea7b9a3397f1f0fd2dd36d}
+
+
+\-Bind socket. 
+
+\-Bind the socket to the specified port an network interface. 
+\begin{DoxyParams}{\-Parameters}
+{\em port} & an unsigned 16-\/bit integer specifying the port to bind to. \-To let kernel pick the port use '\-E\-P\-H\-E\-M\-E\-R\-A\-L\-\_\-\-P\-O\-R\-T'. \\
+\hline
+{\em iface} & a character string specifying the network address of the network interface to use for data transmission. \-To use any network interface (\-I\-N\-A\-D\-D\-R\-\_\-\-A\-N\-Y), set to \-N\-U\-L\-L. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), localaddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), \-Sock\-Addr\-Inet\-::set\-Port(), and sockfd\-\_\-.
+
+
+
+\-Referenced by bind(), \-Sock\-Broadcast\-::\-Sock\-Broadcast(), \-Sock\-Client\-::\-Sock\-Client(), \-Sock\-Multicast\-::\-Sock\-Multicast(), \-Sock\-Server\-::\-Sock\-Server(), and \-Sock\-Unicast\-::\-Sock\-Unicast().
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!bind@{bind}}
+\index{bind@{bind}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{bind}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::bind} (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_ac1f998f9d0d9c400034d033ab34e8740}
+
+
+\-Bind socket. 
+
+\-Bind the socket with the specified socket address data. 
+\begin{DoxyParams}{\-Parameters}
+{\em localaddr} & a socket address object specifying the values to be used when binding the socket. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-References bind(), \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), localaddr\-\_\-, and sockfd\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!close@{close}}
+\index{close@{close}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::close} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_a447db3597dc6769696667f5a1b079571}
+
+
+\-Close socket. 
+
+\-Close an open socket. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_af7e42882b6c0ac62e20aa71d37980125}.
+
+
+
+\-Reimplemented in {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_a2eaa291b4aea136e2a73908991b7055f}, {\bf \-Sock\-Client} \doxyref{}{p.}{classSockClient_a4431c13fac8052f1e6d027b0864dcce9}, and {\bf \-Sock\-Server} \doxyref{}{p.}{classSockServer_aaf79ee6a8f4ae887da6726da240af5e5}.
+
+
+
+\-References block\-\_\-, and sockfd\-\_\-.
+
+
+
+\-Referenced by $\sim$\-Sock\-Inet().
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!error\-Check@{error\-Check}}
+\index{error\-Check@{error\-Check}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{error\-Check}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::error\-Check} (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_a83b737fa755645eb08eea91cb927ced7}
+
+
+\-Indicates that an error was encountered. 
+
+\-Indicates that am error was encountered by the socket object. 
+\begin{DoxyParams}{\-Parameters}
+{\em sec} & an unsigned integer specifying the number of seconds to wait before returning. \\
+\hline
+{\em usec} & an unsinged integer specifying the number of milliseconds to wait before returning. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that an error was encountered if true, no error was encountered if false. \-Will always return false if the socket is invalid/not open. 
+\end{DoxyReturn}
+
+
+\-References is\-Valid(), and sockfd\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!get\-Descriptor@{get\-Descriptor}}
+\index{get\-Descriptor@{get\-Descriptor}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{get\-Descriptor}]{\setlength{\rightskip}{0pt plus 5cm}\-S\-O\-C\-K\-E\-T {\bf \-Sock\-Inet\-::get\-Descriptor} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockInet_a01153be616c1c20272a33380a2aa5bb2}
+
+
+\-Retrieve the socket descriptor. 
+
+\-Returns the socket descriptor. \begin{DoxyReturn}{\-Returns}
+a \-S\-O\-C\-K\-E\-T specifying the socket descriptor if a valid socket descriptor exists, or \-I\-N\-V\-A\-L\-I\-D\-\_\-\-S\-O\-C\-K\-E\-T if no valid socket descriptor exists. 
+\end{DoxyReturn}
+
+
+\-References sockfd\-\_\-.
+
+
+
+\-Referenced by \-Sock\-Monitor\-::add\-Error\-Monitor(), \-Sock\-Monitor\-::add\-Read\-Monitor(), \-Sock\-Monitor\-::add\-Write\-Monitor(), \-Sock\-Monitor\-::remove\-Error\-Monitor(), \-Sock\-Monitor\-::remove\-Read\-Monitor(), and \-Sock\-Monitor\-::remove\-Write\-Monitor().
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!get\-Family@{get\-Family}}
+\index{get\-Family@{get\-Family}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{get\-Family}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-Inet\-::get\-Family} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockInet_ac63cf3306a76c3ad861dc7467068b258}
+
+
+\-Retrieve the socket address family. 
+
+\-Returns the socket address family type. \begin{DoxyReturn}{\-Returns}
+an integer specifying the socket address family. \-Currently only \-A\-F\-\_\-\-I\-N\-E\-T is supported. 
+\end{DoxyReturn}
+\index{\-Sock\-Inet@{\-Sock\-Inet}!get\-Iface@{get\-Iface}}
+\index{get\-Iface@{get\-Iface}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{get\-Iface}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf \-Sock\-Inet\-::get\-Iface} (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{iface, }
+\item[{int32\-\_\-t}]{len}
+\end{DoxyParamCaption}
+) const}\label{classSockInet_a7298c9f95432066736f833ab326858a3}
+
+
+\-Retrieve network interface value. 
+
+\-Returns value of network interface. 
+\begin{DoxyParams}{\-Parameters}
+{\em iface} & a character array to be filled with the \-I\-Pv4 network address associated with the network interface. \\
+\hline
+{\em len} & an integer specifying the size, in bytes, of 'addr'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pointer to an array of characters containing the \-I\-Pv4 network address for the associated network interface. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Addr\-Inet\-::get\-Address(), and localaddr\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!get\-Last\-Error@{get\-Last\-Error}}
+\index{get\-Last\-Error@{get\-Last\-Error}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{get\-Last\-Error}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-Inet\-::get\-Last\-Error} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockInet_a443b34eaaaf1a19fef53eef07d86352d}
+
+
+\-Get socket error code. 
+
+\-Returns the last known network error value. \-This function is not specific to any one socket. \-The error value retrieved can be for any socket that is part of the overall application. \begin{DoxyReturn}{\-Returns}
+an error code indicating the reason for socket failure. 
+\end{DoxyReturn}
+\index{\-Sock\-Inet@{\-Sock\-Inet}!get\-Local\-Port@{get\-Local\-Port}}
+\index{get\-Local\-Port@{get\-Local\-Port}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{get\-Local\-Port}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf \-Sock\-Inet\-::get\-Local\-Port} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockInet_adf98f1d017a32b0c8429bfa608a535ee}
+
+
+\-Retrieve port value. 
+
+\-Returns value of port. \begin{DoxyReturn}{\-Returns}
+an unsigned 16-\/bit integer specifying a \-T\-C\-P port number for the socket object. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Addr\-Inet\-::get\-Port(), and localaddr\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!get\-Sock\-Opt@{get\-Sock\-Opt}}
+\index{get\-Sock\-Opt@{get\-Sock\-Opt}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{get\-Sock\-Opt}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::get\-Sock\-Opt} (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{level, }
+\item[{int32\-\_\-t}]{name, }
+\item[{void $\ast$}]{val, }
+\item[{socklen\-\_\-t $\ast$}]{size}
+\end{DoxyParamCaption}
+) const}\label{classSockInet_ae4dff683a8eb3bfc5f8899c8126dfd3c}
+
+
+\-Get socket option. 
+
+\-Retrieves the value associated with a specific socket option. \-This function uses the same arguments as the \-B\-S\-D socket function 'getsockopt'. \-See the 'getsockopt' man pages or \-M\-S\-D\-N documentation for details. 
+\begin{DoxyParams}{\-Parameters}
+{\em level} & an integer specifying the socket protocol level for the desired option. \\
+\hline
+{\em name} & an integer specifying the name of the desired option. \\
+\hline
+{\em val} & a void pointer referencing an object to be filled with the desired option's associated value. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'val'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating success if true, failure if false. 
+\end{DoxyReturn}
+
+
+\-References sockfd\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!is\-Blocking\-I\-O@{is\-Blocking\-I\-O}}
+\index{is\-Blocking\-I\-O@{is\-Blocking\-I\-O}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{is\-Blocking\-I\-O}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::is\-Blocking\-I\-O} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_a19647fcdd00ecfe9b07bc0d964a62a03}
+
+
+\-Indicates blocking \-I/\-O mode. 
+
+\-Indicates that the socket is or is not using blocking \-I/\-O. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the socket is using blocking \-I/\-O if true, is not using blocking \-I/\-O if false. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a29e5ca054cf2d89ee521b27cce592f86}.
+
+
+
+\-References block\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!is\-Valid@{is\-Valid}}
+\index{is\-Valid@{is\-Valid}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{is\-Valid}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::is\-Valid} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_a1373228fafb3d52156df4efacc34e6d6}
+
+
+\-Indicates the socket handle references a valid kernel socket. 
+
+\-Indicates that the socket object's socket handle is valid. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the socket handle is valid if true, and invalid if false. 
+\end{DoxyReturn}
+
+
+\-Reimplemented from {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a1a0f99ab5bf56b8d60bc82b969e35373}.
+
+
+
+\-References sockfd\-\_\-.
+
+
+
+\-Referenced by error\-Check(), read\-Ready(), set\-Blocking\-I\-O(), write\-Ready(), \-Sock\-Client\-::$\sim$\-Sock\-Client(), $\sim$\-Sock\-Inet(), and \-Sock\-U\-D\-P\-::$\sim$\-Sock\-U\-D\-P().
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!open@{open}}
+\index{open@{open}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-Inet\-::open} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockInet_a17d1128404b0d246c0fe70ec3cb82058}
+
+
+\-Open socket. 
+
+\-Binds socket and, depending on socket type, connects to peer or listens for connections. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a96b4a0d00839ca8ec607882f6719a31a}.
+
+
+
+\-Implemented in {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_ac41fca14afb19f09e86e4fd45ceeed24}, {\bf \-Sock\-Broadcast} \doxyref{}{p.}{classSockBroadcast_afbe9cb1436da01e56131ac378535e50b}, {\bf \-Sock\-Unicast} \doxyref{}{p.}{classSockUnicast_a7fc8972dcb38faad7d8a6ceed16d3daa}, {\bf \-Sock\-Client} \doxyref{}{p.}{classSockClient_a150d51c455e4ae9de611066bcedada91}, {\bf \-Sock\-Server} \doxyref{}{p.}{classSockServer_a20da4b5e09b3236cbf9213d614c6e074}, {\bf \-Sock\-Multicast} \doxyref{}{p.}{classSockMulticast_a712eaedc182ee03d10e3d1f45b3bb490}, and {\bf \-Sock\-T\-C\-P} \doxyref{}{p.}{classSockTCP_a4e40c3d6c6ac9cb240ed68d0eed2143b}.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!read@{read}}
+\index{read@{read}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-Inet\-::read} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_ac7382fc320ea9d312a5949a651244ec1}
+
+
+\-Read data. 
+
+\-Reads data that is available in the socket input buffer. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object to be filled with the data in the socket buffer. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when reading. \-These are the flags used by the \-B\-S\-D socket function 'recv'. \-See the 'recv' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes read. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a349b8ac90fc7ed97bd8c9ecbd37baefe}.
+
+
+
+\-Reimplemented in {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_a2d5da5a41b25abed0b70b2de74e800a2}.
+
+
+
+\-References sockfd\-\_\-.
+
+
+
+\-Referenced by \-Sock\-T\-C\-P\-::read\-All().
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!read\-Ready@{read\-Ready}}
+\index{read\-Ready@{read\-Ready}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{read\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::read\-Ready} (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_ae6b5ab6127bb64d46333f3c7def6e8cc}
+
+
+\-Indicates data is available for reading. 
+
+\-Indicates that data is avialable in the socket buffer for reading. 
+\begin{DoxyParams}{\-Parameters}
+{\em sec} & an unsigned integer specifying the number of seconds to wait before returning. \\
+\hline
+{\em usec} & an unsinged integer specifying the number of microseconds to wait before returning. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that data is available if true, no data is available if false. \-Will always return false if the socket is invalid/not open. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a20fabcd804f965e6bc87b334c711614f}.
+
+
+
+\-References is\-Valid(), and sockfd\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!set\-Blocking\-I\-O@{set\-Blocking\-I\-O}}
+\index{set\-Blocking\-I\-O@{set\-Blocking\-I\-O}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{set\-Blocking\-I\-O}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::set\-Blocking\-I\-O} (
+\begin{DoxyParamCaption}
+\item[{bool}]{block}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_a1d9564508210cea0fee2841cb4475998}
+
+
+\-Set blocking \-I/\-O mode. 
+
+\-Sets the socket's \-I/\-O mode to blocking or non-\/blocking. 
+\begin{DoxyParams}{\-Parameters}
+{\em block} & a boolean value indicating that the socket should use blocking \-I/\-O if true, non-\/blocking \-I/\-O if false. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that \-I/\-O mode was successfully changed if true, was not successfully changed if false. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_abe48a2e10dcf3356738be94caf6c86cd}.
+
+
+
+\-References block\-\_\-, is\-Valid(), and sockfd\-\_\-.
+
+
+
+\-Referenced by \-Sock\-Inet().
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!set\-Last\-Error@{set\-Last\-Error}}
+\index{set\-Last\-Error@{set\-Last\-Error}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{set\-Last\-Error}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Sock\-Inet\-::set\-Last\-Error} (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{error}
+\end{DoxyParamCaption}
+)}\label{classSockInet_a4ea3fbabff9590bfc090b4a526c2e273}
+
+
+\-Set the socket error code. 
+
+\-Sets the socket error code to the specified value. \-All sockets share the same instance of the error code. 
+\begin{DoxyParams}{\-Parameters}
+{\em error} & an integer specifying the value to which the error value is to be set. \\
+\hline
+\end{DoxyParams}
+\index{\-Sock\-Inet@{\-Sock\-Inet}!set\-Sock\-Opt@{set\-Sock\-Opt}}
+\index{set\-Sock\-Opt@{set\-Sock\-Opt}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{set\-Sock\-Opt}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::set\-Sock\-Opt} (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{level, }
+\item[{int32\-\_\-t}]{name, }
+\item[{const void $\ast$}]{val, }
+\item[{socklen\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}\label{classSockInet_aaf65de167899ba713cb11e6819e689f8}
+
+
+\-Set socket option. 
+
+\-Sets the value associated with a specific socket option. \-This function uses the same arguments as the \-B\-S\-D socket function 'setsockopt'. \-See the 'setsockopt' man pages or \-M\-S\-D\-N documentation for details. 
+\begin{DoxyParams}{\-Parameters}
+{\em level} & an integer specifying the socket protocol level for the desired option. \\
+\hline
+{\em name} & an integer specifying the name of the desired option. \\
+\hline
+{\em val} & a void pointer referencing an object filled with the value for the desired option. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'val'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating success if true, failure if false. 
+\end{DoxyReturn}
+
+
+\-References sockfd\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{shutdown}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::shutdown} (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{howto}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_a5e987bc3b98d08ffe7bd143681dadf2d}
+
+
+\-Shutdown one or both of the socket communication streams (input/output). 
+
+\-Shutdown either or both of the input and output streams of a socket, without closing the socket. 
+\begin{DoxyParams}{\-Parameters}
+{\em howto} & an integer indicating which stream to shutdown. \-S\-H\-U\-T\-\_\-\-R\-D for input, \-S\-H\-U\-T\-\_\-\-W\-R for output, \-S\-H\-U\-T\-R\-D\-W\-R for both. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-References sockfd\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!write@{write}}
+\index{write@{write}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-Inet\-::write} (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_aca8ce968725e5e513af0f2628a7cb061}
+
+
+\-Write data. 
+
+\-Writes data to the network. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object filled with the data to be written. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when writing. \-These are the flags used by the \-B\-S\-D socket function 'send'. \-See the 'send' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes written. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a05a074dd6e2350ff47eaed13e3e2579b}.
+
+
+
+\-Reimplemented in {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_a4cf17cab6ebb6c3f0762c56aba40d158}.
+
+
+
+\-References sockfd\-\_\-.
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!write\-Ready@{write\-Ready}}
+\index{write\-Ready@{write\-Ready}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{write\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::write\-Ready} (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockInet_a32e16819c7cbc5ad809751eac7b48c8f}
+
+
+\-Indicates space is available for writing. 
+
+\-Indicates that space in the socket buffer is avialable for writing. 
+\begin{DoxyParams}{\-Parameters}
+{\em sec} & an unsigned integer specifying the number of seconds to wait before returning. \\
+\hline
+{\em usec} & an unsinged integer specifying the number of milliseconds to wait before returning. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that space is available if true, no space is available if false. \-Will always return false if the socket is invalid/not open. 
+\end{DoxyReturn}
+
+
+\-Implements {\bf \-Sock\-I\-O} \doxyref{}{p.}{classSockIO_a8f5cf3db545874b17ff9101e79ef8a1f}.
+
+
+
+\-References is\-Valid(), and sockfd\-\_\-.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\index{\-Sock\-Inet@{\-Sock\-Inet}!block\-\_\-@{block\-\_\-}}
+\index{block\-\_\-@{block\-\_\-}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{block\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Inet\-::block\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockInet_a5a6e98ab24c2e78c86ef8ee032412ba9}
+
+
+\-Use blocking \-I/\-O. 
+
+\-A boolean value indicating that the socket is blocking/non-\/blocking. 
+
+\-Referenced by close(), \-Sock\-Client\-::connect(), is\-Blocking\-I\-O(), set\-Blocking\-I\-O(), and \-Sock\-Inet().
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!localaddr\-\_\-@{localaddr\-\_\-}}
+\index{localaddr\-\_\-@{localaddr\-\_\-}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{localaddr\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Addr\-Inet}$\ast$ {\bf \-Sock\-Inet\-::localaddr\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockInet_ad0edfcb591a1d6cd4e1a155dfda7489f}
+
+
+\-Local socket address settings. 
+
+\-A socket address object specifying the local settings for this object. 
+
+\-Referenced by bind(), \-Sock\-Client\-::connect(), \-Sock\-U\-D\-P\-::connect(), get\-Iface(), get\-Local\-Port(), \-Sock\-Broadcast\-::\-Sock\-Broadcast(), \-Sock\-Client\-::\-Sock\-Client(), \-Sock\-Inet(), \-Sock\-Multicast\-::\-Sock\-Multicast(), \-Sock\-Server\-::\-Sock\-Server(), \-Sock\-Unicast\-::\-Sock\-Unicast(), and $\sim$\-Sock\-Inet().
+
+\index{\-Sock\-Inet@{\-Sock\-Inet}!sockfd\-\_\-@{sockfd\-\_\-}}
+\index{sockfd\-\_\-@{sockfd\-\_\-}!SockInet@{\-Sock\-Inet}}
+\subsubsection[{sockfd\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\-S\-O\-C\-K\-E\-T {\bf \-Sock\-Inet\-::sockfd\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockInet_a12d862d045787e436392394c7434483a}
+
+
+\-Socket handle. 
+
+\-Handle to the socket used by this object. 
+
+\-Referenced by \-Sock\-Server\-::accept(), bind(), close(), \-Sock\-Client\-::connect(), \-Sock\-U\-D\-P\-::connect(), \-Sock\-U\-D\-P\-::disconnect(), error\-Check(), get\-Descriptor(), \-Sock\-Multicast\-::get\-Mcast\-Iface(), get\-Sock\-Opt(), is\-Valid(), \-Sock\-Multicast\-::join\-Group(), \-Sock\-Multicast\-::leave\-Group(), \-Sock\-Server\-::listen(), read(), \-Sock\-T\-C\-P\-::read\-All(), \-Sock\-U\-D\-P\-::read\-From(), read\-Ready(), set\-Blocking\-I\-O(), \-Sock\-Multicast\-::set\-Mcast\-Iface(), set\-Sock\-Opt(), \-Sock\-Multicast\-::set\-T\-T\-L(), shutdown(), \-Sock\-Broadcast\-::\-Sock\-Broadcast(), \-Sock\-Client\-::\-Sock\-Client(), \-Sock\-Inet(), \-Sock\-Multicast\-::\-Sock\-Multicast(), \-Sock\-Server\-::\-Sock\-Server(), \-Sock\-Unicast\-::\-Sock\-Unicast(), write(), \-Sock\-T\-C\-P\-::write\-All(), write\-Ready(), and \-Sock\-U\-D\-P\-::write\-To().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-Inet.\-h\item 
+\-Sock\-Inet.\-cpp\end{DoxyCompactItemize}

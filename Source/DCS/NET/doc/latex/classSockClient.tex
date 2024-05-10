@@ -1,0 +1,366 @@
+\section{\-Sock\-Client \-Class \-Reference}
+\label{classSockClient}\index{\-Sock\-Client@{\-Sock\-Client}}
+
+
+\-T\-C\-P client socket class.  
+
+
+
+
+{\ttfamily \#include $<$\-Sock\-Client.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-Client\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classSockClient}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-Client} ()
+\begin{DoxyCompactList}\small\item\em \-Default client socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Client} (uint16\-\_\-t peerport, const char $\ast$peeraddr, uint16\-\_\-t port=\-E\-P\-H\-E\-M\-E\-R\-A\-L\-\_\-\-P\-O\-R\-T, const char $\ast$iface=\-N\-U\-L\-L)
+\begin{DoxyCompactList}\small\item\em \-Client socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Client} ({\bf \-Sock\-Addr\-Inet} $\ast$peeraddr, {\bf \-Sock\-Addr\-Inet} $\ast$localaddr)
+\begin{DoxyCompactList}\small\item\em \-Client socket constructor. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Client} (\-S\-O\-C\-K\-E\-T sockfd)
+\begin{DoxyCompactList}\small\item\em \-Client socket constructor. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Sock\-Client} ()
+\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\item 
+virtual bool {\bf is\-Active} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates an active socket. \end{DoxyCompactList}\item 
+virtual bool {\bf is\-Connected} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates a connected socket. \end{DoxyCompactList}\item 
+uint16\-\_\-t {\bf get\-Port} () const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve peer's port value. \end{DoxyCompactList}\item 
+const char $\ast$ {\bf get\-Address} (char $\ast$peeraddr, int32\-\_\-t len) const 
+\begin{DoxyCompactList}\small\item\em \-Retrieve peer's network address value. \end{DoxyCompactList}\item 
+virtual bool {\bf open} ()
+\begin{DoxyCompactList}\small\item\em \-Open socket connection. \end{DoxyCompactList}\item 
+virtual bool {\bf close} ()
+\begin{DoxyCompactList}\small\item\em \-Close socket connection. \end{DoxyCompactList}\item 
+bool {\bf connect} (uint16\-\_\-t peerport, const char $\ast$peeraddr)
+\begin{DoxyCompactList}\small\item\em \-Connect to peer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf connected\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Connection indicator. \end{DoxyCompactList}\item 
+{\bf \-Sock\-Addr\-Inet} $\ast$ {\bf peeraddr\-\_\-}
+\begin{DoxyCompactList}\small\item\em \-Peer network address information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-T\-C\-P client socket class. 
+
+\-A \-T\-C\-P client socket that utilizes the \-T\-C\-P network protocol for reliable two-\/way network communication. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Sock\-Client@{\-Sock\-Client}!\-Sock\-Client@{\-Sock\-Client}}
+\index{\-Sock\-Client@{\-Sock\-Client}!SockClient@{\-Sock\-Client}}
+\subsubsection[{\-Sock\-Client}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Client\-::\-Sock\-Client} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classSockClient_a4891818f54ab7892885fa50fa9daf1e8}
+
+
+\-Default client socket constructor. 
+
+\-Creates an unconnected client socket object with default data values. 
+
+\-References \-Sock\-Addr\-Factory\-::create(), and peeraddr\-\_\-.
+
+\index{\-Sock\-Client@{\-Sock\-Client}!\-Sock\-Client@{\-Sock\-Client}}
+\index{\-Sock\-Client@{\-Sock\-Client}!SockClient@{\-Sock\-Client}}
+\subsubsection[{\-Sock\-Client}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Client\-::\-Sock\-Client} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{peerport, }
+\item[{const char $\ast$}]{peeraddr, }
+\item[{uint16\-\_\-t}]{port = {\ttfamily \-E\-P\-H\-E\-M\-E\-R\-A\-L\-\_\-\-P\-O\-R\-T}, }
+\item[{const char $\ast$}]{iface = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}\label{classSockClient_a2b0af22f3a8c1bde7a7040772c0145f9}
+
+
+\-Client socket constructor. 
+
+\-Creates a connected client socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em peerport} & an unsigned 16-\/bit integer specifying the port of the \-T\-C\-P server socket with which to connect. \\
+\hline
+{\em peeraddr} & a character string specifying the network address of the \-T\-C\-P server socket with which to connect. \\
+\hline
+{\em port} & an unsigned 16-\/bit integer specifying the local port with which to bind the client socket. \\
+\hline
+{\em iface} & a character string specifying the network interface to use for network transmission. \\
+\hline
+\end{DoxyParams}
+
+
+\-References \-Sock\-Inet\-::bind(), connect(), connected\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, peeraddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), \-Sock\-Addr\-Inet\-::set\-Port(), and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Client@{\-Sock\-Client}!\-Sock\-Client@{\-Sock\-Client}}
+\index{\-Sock\-Client@{\-Sock\-Client}!SockClient@{\-Sock\-Client}}
+\subsubsection[{\-Sock\-Client}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Client\-::\-Sock\-Client} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Sock\-Addr\-Inet} $\ast$}]{peeraddr, }
+\item[{{\bf \-Sock\-Addr\-Inet} $\ast$}]{localaddr}
+\end{DoxyParamCaption}
+)}\label{classSockClient_a1863288cec77a56e13f67bc2e751a621}
+
+
+\-Client socket constructor. 
+
+\-Creates a connected client socket object with the specified data values. 
+\begin{DoxyParams}{\-Parameters}
+{\em peeraddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information for the peer (\-T\-C\-P server socket) to connect with when creating the client socket. \\
+\hline
+{\em localaddr} & a \doxyref{\-Sock\-Addr\-Inet}{p.}{classSockAddrInet} object specifying the network information to be used when creating the client socket. \\
+\hline
+\end{DoxyParams}
+
+
+\-References \-Sock\-Inet\-::bind(), connect(), connected\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, peeraddr\-\_\-, and \-Sock\-Inet\-::sockfd\-\_\-.
+
+\index{\-Sock\-Client@{\-Sock\-Client}!\-Sock\-Client@{\-Sock\-Client}}
+\index{\-Sock\-Client@{\-Sock\-Client}!SockClient@{\-Sock\-Client}}
+\subsubsection[{\-Sock\-Client}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Client\-::\-Sock\-Client} (
+\begin{DoxyParamCaption}
+\item[{\-S\-O\-C\-K\-E\-T}]{sockfd}
+\end{DoxyParamCaption}
+)}\label{classSockClient_a43203a8ac7753e3709a8fc0aac6dfa7b}
+
+
+\-Client socket constructor. 
+
+\-Creates a client socket object from the specified data value. 
+\begin{DoxyParams}{\-Parameters}
+{\em sockfd} & a handle to a previously created socket, to be used by the client socket object. \\
+\hline
+\end{DoxyParams}
+
+
+\-References connected\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Factory\-::create(), and peeraddr\-\_\-.
+
+\index{\-Sock\-Client@{\-Sock\-Client}!$\sim$\-Sock\-Client@{$\sim$\-Sock\-Client}}
+\index{$\sim$\-Sock\-Client@{$\sim$\-Sock\-Client}!SockClient@{\-Sock\-Client}}
+\subsubsection[{$\sim$\-Sock\-Client}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Client\-::$\sim$\-Sock\-Client} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockClient_ab9420d639b404a839bb3ed5ea5048377}
+
+
+\-Destructor. 
+
+\-Virtual destructor. \-Will close an open/connected client socket. 
+
+\-References close(), \-Sock\-Inet\-::is\-Valid(), and peeraddr\-\_\-.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-Client@{\-Sock\-Client}!close@{close}}
+\index{close@{close}!SockClient@{\-Sock\-Client}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Client\-::close} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockClient_a4431c13fac8052f1e6d027b0864dcce9}
+
+
+\-Close socket connection. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::close}{p.}{classSockInet_a447db3597dc6769696667f5a1b079571} 
+\end{DoxySeeAlso}
+
+
+\-Reimplemented from {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a447db3597dc6769696667f5a1b079571}.
+
+
+
+\-References connected\-\_\-, peeraddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), and \-Sock\-Addr\-Inet\-::set\-Port().
+
+
+
+\-Referenced by $\sim$\-Sock\-Client().
+
+\index{\-Sock\-Client@{\-Sock\-Client}!connect@{connect}}
+\index{connect@{connect}!SockClient@{\-Sock\-Client}}
+\subsubsection[{connect}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Client\-::connect} (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{peerport, }
+\item[{const char $\ast$}]{peeraddr}
+\end{DoxyParamCaption}
+)}\label{classSockClient_a35f4b321ae6ec40df0cb01b51f10c51a}
+
+
+\-Connect to peer. 
+
+\-Connects socket to the specified \-T\-C\-P server socket. 
+\begin{DoxyParams}{\-Parameters}
+{\em peerport} & an unsigned 16-\/bit integer specifying the port of the \-T\-C\-P server socket with which to connect. \\
+\hline
+{\em peeraddr} & a character string specifying the network address of the \-T\-C\-P server socket with which to connect. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. \-If the operation was performed with non-\/blocking \-I/\-O and the function returned before the connection was established, the return value will be false but the \doxyref{is\-Connected()}{p.}{classSockClient_a8405755021bdc2dc166c108fe594475d} and \doxyref{is\-Active()}{p.}{classSockClient_a2223f9eccd35620b744350487f69dcce} functions will return true, indicating that the connection is pending. \-The \doxyref{read\-Ready()}{p.}{classSockInet_ae6b5ab6127bb64d46333f3c7def6e8cc} or \doxyref{write\-Ready()}{p.}{classSockInet_a32e16819c7cbc5ad809751eac7b48c8f} functions can be used to determine the completion of a pending non-\/blocking connect. \-When the non-\/blocking connection is completed, the get\-Sock\-Err() function can be used to determine that the connection was successful. \-If the non-\/blocking connect failed, the \doxyref{close()}{p.}{classSockClient_a4431c13fac8052f1e6d027b0864dcce9} function should be used to reset the socket state. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::read\-Ready}{p.}{classSockInet_ae6b5ab6127bb64d46333f3c7def6e8cc} 
+
+\doxyref{\-Sock\-Inet\-::write\-Ready}{p.}{classSockInet_a32e16819c7cbc5ad809751eac7b48c8f} 
+
+\doxyref{\-Sock\-Inet\-::is\-Blocking\-I\-O}{p.}{classSockInet_a19647fcdd00ecfe9b07bc0d964a62a03} 
+
+\doxyref{\-Sock\-Inet\-::set\-Blocking\-I\-O}{p.}{classSockInet_a1d9564508210cea0fee2841cb4475998} 
+
+\doxyref{\-Sock\-Inet\-::close}{p.}{classSockInet_a447db3597dc6769696667f5a1b079571} 
+
+get\-Sock\-Err 
+\end{DoxySeeAlso}
+
+
+\-References \-Sock\-Inet\-::block\-\_\-, connected\-\_\-, \-Sock\-Addr\-Inet\-::copy(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr(), \-Sock\-Addr\-Inet\-::get\-Sock\-Addr\-Len(), \-Sock\-Inet\-::localaddr\-\_\-, peeraddr\-\_\-, \-Sock\-Addr\-Inet\-::set\-Address(), \-Sock\-Addr\-Inet\-::set\-Port(), and \-Sock\-Inet\-::sockfd\-\_\-.
+
+
+
+\-Referenced by \-Sock\-Client().
+
+\index{\-Sock\-Client@{\-Sock\-Client}!get\-Address@{get\-Address}}
+\index{get\-Address@{get\-Address}!SockClient@{\-Sock\-Client}}
+\subsubsection[{get\-Address}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ {\bf \-Sock\-Client\-::get\-Address} (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{peeraddr, }
+\item[{int32\-\_\-t}]{len}
+\end{DoxyParamCaption}
+) const}\label{classSockClient_ade2911bbaa9e79bbe12a1915a5d48c6d}
+
+
+\-Retrieve peer's network address value. 
+
+\-Returns value of the network address for the server socket that the client is connected to. 
+\begin{DoxyParams}{\-Parameters}
+{\em peeraddr} & a character array to be filled with the server socket's \-I\-Pv4 network address. \\
+\hline
+{\em len} & an integer specifying the size, in bytes, of 'addr'. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pointer to an array of characters containing the \-T\-C\-P server socket's \-I\-Pv4 network address. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Addr\-Inet\-::get\-Address(), and peeraddr\-\_\-.
+
+\index{\-Sock\-Client@{\-Sock\-Client}!get\-Port@{get\-Port}}
+\index{get\-Port@{get\-Port}!SockClient@{\-Sock\-Client}}
+\subsubsection[{get\-Port}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf \-Sock\-Client\-::get\-Port} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classSockClient_a71fbb881c93ce3f80de4583918c25901}
+
+
+\-Retrieve peer's port value. 
+
+\-Returns value of the port for the server socket that the client is connected to. \begin{DoxyReturn}{\-Returns}
+an unsigned 16-\/bit integer specifying the \-T\-C\-P server socket's port number. 
+\end{DoxyReturn}
+
+
+\-References \-Sock\-Addr\-Inet\-::get\-Port(), and peeraddr\-\_\-.
+
+\index{\-Sock\-Client@{\-Sock\-Client}!is\-Active@{is\-Active}}
+\index{is\-Active@{is\-Active}!SockClient@{\-Sock\-Client}}
+\subsubsection[{is\-Active}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Client\-::is\-Active} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockClient_a2223f9eccd35620b744350487f69dcce}
+
+
+\-Indicates an active socket. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-T\-C\-P\-::is\-Active}{p.}{classSockTCP_af58644657d004a04ca84a669a4ed3cf9} 
+\end{DoxySeeAlso}
+
+
+\-Implements {\bf \-Sock\-T\-C\-P} \doxyref{}{p.}{classSockTCP_af58644657d004a04ca84a669a4ed3cf9}.
+
+
+
+\-References connected\-\_\-.
+
+\index{\-Sock\-Client@{\-Sock\-Client}!is\-Connected@{is\-Connected}}
+\index{is\-Connected@{is\-Connected}!SockClient@{\-Sock\-Client}}
+\subsubsection[{is\-Connected}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Client\-::is\-Connected} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockClient_a8405755021bdc2dc166c108fe594475d}
+
+
+\-Indicates a connected socket. 
+
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the socket is connected if true, and is not connected if false. 
+\end{DoxyReturn}
+
+
+\-References connected\-\_\-.
+
+\index{\-Sock\-Client@{\-Sock\-Client}!open@{open}}
+\index{open@{open}!SockClient@{\-Sock\-Client}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Client\-::open} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockClient_a150d51c455e4ae9de611066bcedada91}
+
+
+\-Open socket connection. 
+
+\begin{DoxySeeAlso}{\-See also}
+\doxyref{\-Sock\-Inet\-::open}{p.}{classSockInet_a17d1128404b0d246c0fe70ec3cb82058} 
+\end{DoxySeeAlso}
+
+
+\-Implements {\bf \-Sock\-T\-C\-P} \doxyref{}{p.}{classSockTCP_a4e40c3d6c6ac9cb240ed68d0eed2143b}.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\index{\-Sock\-Client@{\-Sock\-Client}!connected\-\_\-@{connected\-\_\-}}
+\index{connected\-\_\-@{connected\-\_\-}!SockClient@{\-Sock\-Client}}
+\subsubsection[{connected\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Sock\-Client\-::connected\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockClient_a5f10ce4ac73a521183bd10f71fb3c6e9}
+
+
+\-Connection indicator. 
+
+\-Indicates that the client socket is connected to a peer. 
+
+\-Referenced by close(), connect(), is\-Active(), is\-Connected(), and \-Sock\-Client().
+
+\index{\-Sock\-Client@{\-Sock\-Client}!peeraddr\-\_\-@{peeraddr\-\_\-}}
+\index{peeraddr\-\_\-@{peeraddr\-\_\-}!SockClient@{\-Sock\-Client}}
+\subsubsection[{peeraddr\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Sock\-Addr\-Inet}$\ast$ {\bf \-Sock\-Client\-::peeraddr\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classSockClient_aa128490661a2b64af594a8d498aa1b6d}
+
+
+\-Peer network address information. 
+
+\-Socket address object containig the information of the socket's peer. 
+
+\-Referenced by close(), connect(), get\-Address(), get\-Port(), \-Sock\-Client(), and $\sim$\-Sock\-Client().
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-Client.\-h\item 
+\-Sock\-Client.\-cpp\end{DoxyCompactItemize}

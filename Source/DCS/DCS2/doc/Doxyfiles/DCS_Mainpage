@@ -1,0 +1,36 @@
+/**
+ *  @mainpage
+ *
+ *  @section intro Introduction
+ *  The DCS API is a C++ software library developed by the Tactical Electronic Warfare 
+ *  Division at the Naval Research Laboratory.   The API is the software implementation 
+ *  of a system for sending data to SIMDIS for display, and is distributed as part of the 
+ *  SIMDIS 3D Visualization and Display package.  
+ *
+ *  This document is the DCS API reference.  It contains reference documentation
+ *  for all components of the DCS API, consisting of:
+ *  <ul>
+ *    <li> A list of all documented <a href="namespaces.html">namespaces</a>.</li>
+ *    <li> A documented class <a href="hierarchy.html">hierarchy</a>.</li>
+ *    <li> An <a href="annotated.html">annotated</a> list of all documented classes, structs, unions, and interfaces.</li>
+ *    <li> A list of all documented <a href="files.html">files</a>.</li>
+ *    <li> A list of all documented <a href="namespacemembers.html">namespace members</a>.  </li>
+ *    <li> A list of all documented <a href="functions.html">class members</a>.  </li>
+ *    <li> A list of all documented global <a href="globals.html">file members</a>.  </li>
+ *  </ul>
+ *
+ *  <br>
+ *  An in-depth user's manual is also available: 
+ *  <ul>
+ *  <li> @ref manual </li>
+ *  </ul>
+ *
+ *  <br>
+ *  And three sample programs are provided:
+ *  <ul>
+ *  <li> @ref sserver </li>
+ *  <li> @ref scserver </li>
+ *  <li> @ref sclient </li>
+ *  </ul>
+ *
+ */

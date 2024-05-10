@@ -1,0 +1,271 @@
+.TH "SockClient" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockClient \- 
+.PP
+TCP client socket class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockClient\&.h>\fP
+.PP
+Inherits \fBSockTCP\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockClient\fP ()"
+.br
+.RI "\fIDefault client socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockClient\fP (uint16_t peerport, const char *peeraddr, uint16_t port=EPHEMERAL_PORT, const char *iface=NULL)"
+.br
+.RI "\fIClient socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockClient\fP (\fBSockAddrInet\fP *peeraddr, \fBSockAddrInet\fP *localaddr)"
+.br
+.RI "\fIClient socket constructor\&. \fP"
+.ti -1c
+.RI "\fBSockClient\fP (SOCKET sockfd)"
+.br
+.RI "\fIClient socket constructor\&. \fP"
+.ti -1c
+.RI "virtual \fB~SockClient\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisActive\fP () const "
+.br
+.RI "\fIIndicates an active socket\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisConnected\fP () const "
+.br
+.RI "\fIIndicates a connected socket\&. \fP"
+.ti -1c
+.RI "uint16_t \fBgetPort\fP () const "
+.br
+.RI "\fIRetrieve peer's port value\&. \fP"
+.ti -1c
+.RI "const char * \fBgetAddress\fP (char *peeraddr, int32_t len) const "
+.br
+.RI "\fIRetrieve peer's network address value\&. \fP"
+.ti -1c
+.RI "virtual bool \fBopen\fP ()"
+.br
+.RI "\fIOpen socket connection\&. \fP"
+.ti -1c
+.RI "virtual bool \fBclose\fP ()"
+.br
+.RI "\fIClose socket connection\&. \fP"
+.ti -1c
+.RI "bool \fBconnect\fP (uint16_t peerport, const char *peeraddr)"
+.br
+.RI "\fIConnect to peer\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBconnected_\fP"
+.br
+.RI "\fIConnection indicator\&. \fP"
+.ti -1c
+.RI "\fBSockAddrInet\fP * \fBpeeraddr_\fP"
+.br
+.RI "\fIPeer network address information\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+TCP client socket class\&. 
+
+A TCP client socket that utilizes the TCP network protocol for reliable two-way network communication\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockClient::SockClient\fP ()"
+.PP
+Default client socket constructor\&. Creates an unconnected client socket object with default data values\&. 
+.PP
+References SockAddrFactory::create(), and peeraddr_\&.
+.SS "\fBSockClient::SockClient\fP (uint16_tpeerport, const char *peeraddr, uint16_tport = \fCEPHEMERAL_PORT\fP, const char *iface = \fCNULL\fP)"
+.PP
+Client socket constructor\&. Creates a connected client socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeerport\fP an unsigned 16-bit integer specifying the port of the TCP server socket with which to connect\&. 
+.br
+\fIpeeraddr\fP a character string specifying the network address of the TCP server socket with which to connect\&. 
+.br
+\fIport\fP an unsigned 16-bit integer specifying the local port with which to bind the client socket\&. 
+.br
+\fIiface\fP a character string specifying the network interface to use for network transmission\&. 
+.RE
+.PP
+
+.PP
+References SockInet::bind(), connect(), connected_, SockAddrInet::copy(), SockAddrFactory::create(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), SockInet::localaddr_, peeraddr_, SockAddrInet::setAddress(), SockAddrInet::setPort(), and SockInet::sockfd_\&.
+.SS "\fBSockClient::SockClient\fP (\fBSockAddrInet\fP *peeraddr, \fBSockAddrInet\fP *localaddr)"
+.PP
+Client socket constructor\&. Creates a connected client socket object with the specified data values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeeraddr\fP a \fBSockAddrInet\fP object specifying the network information for the peer (TCP server socket) to connect with when creating the client socket\&. 
+.br
+\fIlocaladdr\fP a \fBSockAddrInet\fP object specifying the network information to be used when creating the client socket\&. 
+.RE
+.PP
+
+.PP
+References SockInet::bind(), connect(), connected_, SockAddrInet::copy(), SockAddrFactory::create(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), SockInet::localaddr_, peeraddr_, and SockInet::sockfd_\&.
+.SS "\fBSockClient::SockClient\fP (SOCKETsockfd)"
+.PP
+Client socket constructor\&. Creates a client socket object from the specified data value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsockfd\fP a handle to a previously created socket, to be used by the client socket object\&. 
+.RE
+.PP
+
+.PP
+References connected_, SockAddrInet::copy(), SockAddrFactory::create(), and peeraddr_\&.
+.SS "\fBSockClient::~SockClient\fP ()\fC [virtual]\fP"
+.PP
+Destructor\&. Virtual destructor\&. Will close an open/connected client socket\&. 
+.PP
+References close(), SockInet::isValid(), and peeraddr_\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool \fBSockClient::close\fP ()\fC [virtual]\fP"
+.PP
+Close socket connection\&. \fBSee also:\fP
+.RS 4
+\fBSockInet::close\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBSockInet\fP\&.
+.PP
+References connected_, peeraddr_, SockAddrInet::setAddress(), and SockAddrInet::setPort()\&.
+.PP
+Referenced by ~SockClient()\&.
+.SS "bool \fBSockClient::connect\fP (uint16_tpeerport, const char *peeraddr)"
+.PP
+Connect to peer\&. Connects socket to the specified TCP server socket\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeerport\fP an unsigned 16-bit integer specifying the port of the TCP server socket with which to connect\&. 
+.br
+\fIpeeraddr\fP a character string specifying the network address of the TCP server socket with which to connect\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. If the operation was performed with non-blocking I/O and the function returned before the connection was established, the return value will be false but the \fBisConnected()\fP and \fBisActive()\fP functions will return true, indicating that the connection is pending\&. The \fBreadReady()\fP or \fBwriteReady()\fP functions can be used to determine the completion of a pending non-blocking connect\&. When the non-blocking connection is completed, the getSockErr() function can be used to determine that the connection was successful\&. If the non-blocking connect failed, the \fBclose()\fP function should be used to reset the socket state\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBSockInet::readReady\fP 
+.PP
+\fBSockInet::writeReady\fP 
+.PP
+\fBSockInet::isBlockingIO\fP 
+.PP
+\fBSockInet::setBlockingIO\fP 
+.PP
+\fBSockInet::close\fP 
+.PP
+getSockErr 
+.RE
+.PP
+
+.PP
+References SockInet::block_, connected_, SockAddrInet::copy(), SockAddrInet::getSockAddr(), SockAddrInet::getSockAddrLen(), SockInet::localaddr_, peeraddr_, SockAddrInet::setAddress(), SockAddrInet::setPort(), and SockInet::sockfd_\&.
+.PP
+Referenced by SockClient()\&.
+.SS "const char * \fBSockClient::getAddress\fP (char *peeraddr, int32_tlen) const"
+.PP
+Retrieve peer's network address value\&. Returns value of the network address for the server socket that the client is connected to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpeeraddr\fP a character array to be filled with the server socket's IPv4 network address\&. 
+.br
+\fIlen\fP an integer specifying the size, in bytes, of 'addr'\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a pointer to an array of characters containing the TCP server socket's IPv4 network address\&. 
+.RE
+.PP
+
+.PP
+References SockAddrInet::getAddress(), and peeraddr_\&.
+.SS "uint16_t \fBSockClient::getPort\fP () const"
+.PP
+Retrieve peer's port value\&. Returns value of the port for the server socket that the client is connected to\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an unsigned 16-bit integer specifying the TCP server socket's port number\&. 
+.RE
+.PP
+
+.PP
+References SockAddrInet::getPort(), and peeraddr_\&.
+.SS "bool \fBSockClient::isActive\fP () const\fC [virtual]\fP"
+.PP
+Indicates an active socket\&. \fBSee also:\fP
+.RS 4
+\fBSockTCP::isActive\fP 
+.RE
+.PP
+
+.PP
+Implements \fBSockTCP\fP\&.
+.PP
+References connected_\&.
+.SS "bool \fBSockClient::isConnected\fP () const\fC [virtual]\fP"
+.PP
+Indicates a connected socket\&. \fBReturns:\fP
+.RS 4
+a boolean value indicating that the socket is connected if true, and is not connected if false\&. 
+.RE
+.PP
+
+.PP
+References connected_\&.
+.SS "bool \fBSockClient::open\fP ()\fC [virtual]\fP"
+.PP
+Open socket connection\&. \fBSee also:\fP
+.RS 4
+\fBSockInet::open\fP 
+.RE
+.PP
+
+.PP
+Implements \fBSockTCP\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool \fBSockClient::connected_\fP\fC [protected]\fP"
+.PP
+Connection indicator\&. Indicates that the client socket is connected to a peer\&. 
+.PP
+Referenced by close(), connect(), isActive(), isConnected(), and SockClient()\&.
+.SS "\fBSockAddrInet\fP* \fBSockClient::peeraddr_\fP\fC [protected]\fP"
+.PP
+Peer network address information\&. Socket address object containig the information of the socket's peer\&. 
+.PP
+Referenced by close(), connect(), getAddress(), getPort(), SockClient(), and ~SockClient()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

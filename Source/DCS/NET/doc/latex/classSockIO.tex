@@ -1,0 +1,299 @@
+\section{\-Sock\-I\-O \-Class \-Reference}
+\label{classSockIO}\index{\-Sock\-I\-O@{\-Sock\-I\-O}}
+
+
+{\ttfamily \#include $<$\-Sock\-I\-O.\-h$>$}
+
+\-Inheritance diagram for \-Sock\-I\-O\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classSockIO}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Sock\-I\-O} ()\label{classSockIO_a3fbbad5459d9812f6d8cd4d5da847dda}
+
+\begin{DoxyCompactList}\small\item\em \-Creates an empty \doxyref{\-Sock\-I\-O}{p.}{classSockIO} object. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Sock\-I\-O} ()\label{classSockIO_ade9aa532d2f5a1b06e0c748abe877adc}
+
+\begin{DoxyCompactList}\small\item\em \-Destroys a \doxyref{\-Sock\-I\-O}{p.}{classSockIO} object. \end{DoxyCompactList}\item 
+virtual bool {\bf is\-Valid} () const 
+\begin{DoxyCompactList}\small\item\em \-Indicates the socket handle references a valid kernel socket. \end{DoxyCompactList}\item 
+virtual bool {\bf is\-Blocking\-I\-O} () const =0
+\begin{DoxyCompactList}\small\item\em \-Indicates blocking \-I/\-O mode. \end{DoxyCompactList}\item 
+virtual bool {\bf set\-Blocking\-I\-O} (bool block)=0
+\begin{DoxyCompactList}\small\item\em \-Set blocking \-I/\-O mode. \end{DoxyCompactList}\item 
+virtual bool {\bf open} ()=0
+\begin{DoxyCompactList}\small\item\em \-Open socket. \end{DoxyCompactList}\item 
+virtual bool {\bf close} ()=0
+\begin{DoxyCompactList}\small\item\em \-Close socket. \end{DoxyCompactList}\item 
+virtual bool {\bf read\-Ready} (uint32\-\_\-t sec=0, uint32\-\_\-t usec=0) const =0
+\begin{DoxyCompactList}\small\item\em \-Indicates data is available for reading. \end{DoxyCompactList}\item 
+virtual bool {\bf write\-Ready} (uint32\-\_\-t sec=0, uint32\-\_\-t usec=0) const =0
+\begin{DoxyCompactList}\small\item\em \-Indicates space is available for writing. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf read} (void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const =0
+\begin{DoxyCompactList}\small\item\em \-Read data. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf write} (const void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const =0
+\begin{DoxyCompactList}\small\item\em \-Write data. \end{DoxyCompactList}\item 
+virtual int32\-\_\-t {\bf write\-All} (const void $\ast$buffer, int32\-\_\-t size, int32\-\_\-t flags=0) const 
+\begin{DoxyCompactList}\small\item\em \-Write a fixed amount of data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Pure virtual class for writing to i/o sockets and devices 
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Sock\-I\-O@{\-Sock\-I\-O}!close@{close}}
+\index{close@{close}!SockIO@{\-Sock\-I\-O}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-I\-O\-::close} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockIO_af7e42882b6c0ac62e20aa71d37980125}
+
+
+\-Close socket. 
+
+\-Close an open socket. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-Implemented in {\bf \-Sock\-C\-O\-M} \doxyref{}{p.}{classSockCOM_ac194f4606bc169d6a0f07f007c4673ce}, {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_a2eaa291b4aea136e2a73908991b7055f}, {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a447db3597dc6769696667f5a1b079571}, {\bf \-Sock\-Client} \doxyref{}{p.}{classSockClient_a4431c13fac8052f1e6d027b0864dcce9}, and {\bf \-Sock\-Server} \doxyref{}{p.}{classSockServer_aaf79ee6a8f4ae887da6726da240af5e5}.
+
+\index{\-Sock\-I\-O@{\-Sock\-I\-O}!is\-Blocking\-I\-O@{is\-Blocking\-I\-O}}
+\index{is\-Blocking\-I\-O@{is\-Blocking\-I\-O}!SockIO@{\-Sock\-I\-O}}
+\subsubsection[{is\-Blocking\-I\-O}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-I\-O\-::is\-Blocking\-I\-O} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockIO_a29e5ca054cf2d89ee521b27cce592f86}
+
+
+\-Indicates blocking \-I/\-O mode. 
+
+\-Indicates that the socket is or is not using blocking \-I/\-O. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating that the socket is using blocking \-I/\-O if true, is not using blocking \-I/\-O if false. 
+\end{DoxyReturn}
+
+
+\-Implemented in {\bf \-Sock\-C\-O\-M} \doxyref{}{p.}{classSockCOM_aa334d7633913af88142ef0cc1c626b31}, and {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a19647fcdd00ecfe9b07bc0d964a62a03}.
+
+\index{\-Sock\-I\-O@{\-Sock\-I\-O}!is\-Valid@{is\-Valid}}
+\index{is\-Valid@{is\-Valid}!SockIO@{\-Sock\-I\-O}}
+\subsubsection[{is\-Valid}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-I\-O\-::is\-Valid} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classSockIO_a1a0f99ab5bf56b8d60bc82b969e35373}
+
+
+\-Indicates the socket handle references a valid kernel socket. 
+
+\-Indicates that the socket object's socket handle is valid. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the socket handle is valid if true, and invalid if false. 
+\end{DoxyReturn}
+
+
+\-Reimplemented in {\bf \-Sock\-C\-O\-M} \doxyref{}{p.}{classSockCOM_ac2bc78f466bade5384c2889a391ce513}, and {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a1373228fafb3d52156df4efacc34e6d6}.
+
+
+
+\-Referenced by write\-All().
+
+\index{\-Sock\-I\-O@{\-Sock\-I\-O}!open@{open}}
+\index{open@{open}!SockIO@{\-Sock\-I\-O}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-I\-O\-::open} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockIO_a96b4a0d00839ca8ec607882f6719a31a}
+
+
+\-Open socket. 
+
+\-Binds socket and, depending on socket type, connects to peer or listens for connections. \begin{DoxyReturn}{\-Returns}
+a boolean value indicating the operation was successful if true, was unsuccessful if false. 
+\end{DoxyReturn}
+
+
+\-Implemented in {\bf \-Sock\-C\-O\-M} \doxyref{}{p.}{classSockCOM_a264d8109d62865cbc974073b4818fce8}, {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_ac41fca14afb19f09e86e4fd45ceeed24}, {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a17d1128404b0d246c0fe70ec3cb82058}, {\bf \-Sock\-Broadcast} \doxyref{}{p.}{classSockBroadcast_afbe9cb1436da01e56131ac378535e50b}, {\bf \-Sock\-Unicast} \doxyref{}{p.}{classSockUnicast_a7fc8972dcb38faad7d8a6ceed16d3daa}, {\bf \-Sock\-Client} \doxyref{}{p.}{classSockClient_a150d51c455e4ae9de611066bcedada91}, {\bf \-Sock\-Server} \doxyref{}{p.}{classSockServer_a20da4b5e09b3236cbf9213d614c6e074}, {\bf \-Sock\-Multicast} \doxyref{}{p.}{classSockMulticast_a712eaedc182ee03d10e3d1f45b3bb490}, and {\bf \-Sock\-T\-C\-P} \doxyref{}{p.}{classSockTCP_a4e40c3d6c6ac9cb240ed68d0eed2143b}.
+
+\index{\-Sock\-I\-O@{\-Sock\-I\-O}!read@{read}}
+\index{read@{read}!SockIO@{\-Sock\-I\-O}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}virtual int32\-\_\-t {\bf \-Sock\-I\-O\-::read} (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockIO_a349b8ac90fc7ed97bd8c9ecbd37baefe}
+
+
+\-Read data. 
+
+\-Reads data that is available in the socket input buffer. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object to be filled with the data in the socket buffer. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when reading. \-These are the flags used by the \-B\-S\-D socket function 'recv'. \-See the 'recv' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes read. 
+\end{DoxyReturn}
+
+
+\-Implemented in {\bf \-Sock\-C\-O\-M} \doxyref{}{p.}{classSockCOM_a08a5b23f2fd9ea0a07c804648c7ebd5b}, {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_ac7382fc320ea9d312a5949a651244ec1}, and {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_a2d5da5a41b25abed0b70b2de74e800a2}.
+
+\index{\-Sock\-I\-O@{\-Sock\-I\-O}!read\-Ready@{read\-Ready}}
+\index{read\-Ready@{read\-Ready}!SockIO@{\-Sock\-I\-O}}
+\subsubsection[{read\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-I\-O\-::read\-Ready} (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockIO_a20fabcd804f965e6bc87b334c711614f}
+
+
+\-Indicates data is available for reading. 
+
+\-Indicates that data is avialable in the socket buffer for reading. 
+\begin{DoxyParams}{\-Parameters}
+{\em sec} & an unsigned integer specifying the number of seconds to wait before returning. \\
+\hline
+{\em usec} & an unsinged integer specifying the number of microseconds to wait before returning. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that data is available if true, no data is available if false. 
+\end{DoxyReturn}
+
+
+\-Implemented in {\bf \-Sock\-C\-O\-M} \doxyref{}{p.}{classSockCOM_a1ef27a549bd59986046d56ada2caf8d7}, and {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_ae6b5ab6127bb64d46333f3c7def6e8cc}.
+
+\index{\-Sock\-I\-O@{\-Sock\-I\-O}!set\-Blocking\-I\-O@{set\-Blocking\-I\-O}}
+\index{set\-Blocking\-I\-O@{set\-Blocking\-I\-O}!SockIO@{\-Sock\-I\-O}}
+\subsubsection[{set\-Blocking\-I\-O}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-I\-O\-::set\-Blocking\-I\-O} (
+\begin{DoxyParamCaption}
+\item[{bool}]{block}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockIO_abe48a2e10dcf3356738be94caf6c86cd}
+
+
+\-Set blocking \-I/\-O mode. 
+
+\-Sets the sockets \-I/\-O mode to blocking or non-\/blocking. 
+\begin{DoxyParams}{\-Parameters}
+{\em block} & a boolean value indicating that the socket should use blocking \-I/\-O if true, non-\/blocking \-I/\-O if false. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that \-I/\-O mode was successfully changed if true, was not successfully changed if false. 
+\end{DoxyReturn}
+
+
+\-Implemented in {\bf \-Sock\-C\-O\-M} \doxyref{}{p.}{classSockCOM_a69a4a49d20dad7a1cf0a04d3d15102ed}, and {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a1d9564508210cea0fee2841cb4475998}.
+
+\index{\-Sock\-I\-O@{\-Sock\-I\-O}!write@{write}}
+\index{write@{write}!SockIO@{\-Sock\-I\-O}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}virtual int32\-\_\-t {\bf \-Sock\-I\-O\-::write} (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockIO_a05a074dd6e2350ff47eaed13e3e2579b}
+
+
+\-Write data. 
+
+\-Writes data to the network. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object filled with the data to be written. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when writing. \-These are the flags used by the \-B\-S\-D socket function 'send'. \-See the 'send' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes written. 
+\end{DoxyReturn}
+
+
+\-Implemented in {\bf \-Sock\-C\-O\-M} \doxyref{}{p.}{classSockCOM_a8a28a9d56da1676d21e8e56e3d5a9625}, {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_aca8ce968725e5e513af0f2628a7cb061}, and {\bf \-Sock\-U\-D\-P} \doxyref{}{p.}{classSockUDP_a4cf17cab6ebb6c3f0762c56aba40d158}.
+
+
+
+\-Referenced by write\-All().
+
+\index{\-Sock\-I\-O@{\-Sock\-I\-O}!write\-All@{write\-All}}
+\index{write\-All@{write\-All}!SockIO@{\-Sock\-I\-O}}
+\subsubsection[{write\-All}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t {\bf \-Sock\-I\-O\-::write\-All} (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{buffer, }
+\item[{int32\-\_\-t}]{size, }
+\item[{int32\-\_\-t}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classSockIO_a3b34fcce08be5938263733f08f55a38a}
+
+
+\-Write a fixed amount of data. 
+
+\-Writes the total number of bytes specified. 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & a pointer to an object filled with the data to be written. \\
+\hline
+{\em size} & an integer specifying the size, in bytes, of 'buffer'. \-The function will not return until exactly this number of bytes has been written, or an error has been encountered. \\
+\hline
+{\em flags} & an integer specifying the bit flags to be passed to the socket when writing. \-These are the flags used by the \-B\-S\-D socket function 'send'. \-See the 'send' man pages or \-M\-S\-D\-N documentation for more details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the total number of bytes written. 
+\end{DoxyReturn}
+
+
+\-Reimplemented in {\bf \-Sock\-T\-C\-P} \doxyref{}{p.}{classSockTCP_a735506ceb3215435397aa3b79bb049ca}.
+
+
+
+\-References is\-Valid(), and write().
+
+\index{\-Sock\-I\-O@{\-Sock\-I\-O}!write\-Ready@{write\-Ready}}
+\index{write\-Ready@{write\-Ready}!SockIO@{\-Sock\-I\-O}}
+\subsubsection[{write\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool {\bf \-Sock\-I\-O\-::write\-Ready} (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{sec = {\ttfamily 0}, }
+\item[{uint32\-\_\-t}]{usec = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classSockIO_a8f5cf3db545874b17ff9101e79ef8a1f}
+
+
+\-Indicates space is available for writing. 
+
+\-Indicates that space in the socket buffer is avialable for writing. 
+\begin{DoxyParams}{\-Parameters}
+{\em sec} & an unsigned integer specifying the number of seconds to wait before returning. \\
+\hline
+{\em usec} & an unsinged integer specifying the number of milliseconds to wait before returning. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a boolean value indicating that space is available if true, no space is available if false. 
+\end{DoxyReturn}
+
+
+\-Implemented in {\bf \-Sock\-C\-O\-M} \doxyref{}{p.}{classSockCOM_abd136425b2dcdbbe3bb6bc00e8f51e11}, and {\bf \-Sock\-Inet} \doxyref{}{p.}{classSockInet_a32e16819c7cbc5ad809751eac7b48c8f}.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Sock\-I\-O.\-h\item 
+\-Sock\-I\-O.\-cpp\end{DoxyCompactItemize}

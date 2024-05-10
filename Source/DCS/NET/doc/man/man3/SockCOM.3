@@ -1,0 +1,442 @@
+.TH "SockCOM" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockCOM \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockCOM\&.h>\fP
+.PP
+Inherits \fBSockIO\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockCOM\fP (const std::string &comPort, unsigned int baudRate=SOCKCOM_BR9600, unsigned int dataBits=SOCKCOM_BITS8, unsigned int parity=SOCKCOM_PARITYNONE, unsigned int stopBits=SOCKCOM_STOPBITS1, unsigned int flowControl=SOCKCOM_FCNONE)"
+.br
+.RI "\fICreate a new \fBSockCOM\fP object bound to the specified device\&. \fP"
+.ti -1c
+.RI "\fBSockCOM\fP (unsigned int comPort=1, unsigned int baudRate=SOCKCOM_BR9600, unsigned int dataBits=SOCKCOM_BITS8, unsigned int parity=SOCKCOM_PARITYNONE, unsigned int stopBits=SOCKCOM_STOPBITS1, unsigned int flowControl=SOCKCOM_FCNONE)"
+.br
+.RI "\fICreate a new \fBSockCOM\fP object bound to the specific port\&. \fP"
+.ti -1c
+.RI "virtual \fB~SockCOM\fP ()"
+.br
+.RI "\fIVirtual destructor\&. \fP"
+.ti -1c
+.RI "SockCOMIOHandle \fBgetDescriptor\fP () const "
+.br
+.RI "\fIRetrieve handle to serial device\&. \fP"
+.ti -1c
+.RI "std::string \fBgetCOMPort\fP () const "
+.br
+.RI "\fIRetrieve name of serial device\&. \fP"
+.ti -1c
+.RI "unsigned int \fBgetBaudRate\fP () const "
+.br
+.RI "\fIRetrieve baud rate setting for the serial device\&. \fP"
+.ti -1c
+.RI "unsigned int \fBgetDataBits\fP () const "
+.br
+.RI "\fIRetrieve number of data bits setting for the serial device\&. \fP"
+.ti -1c
+.RI "unsigned int \fBgetParity\fP () const "
+.br
+.RI "\fIRetrieve parity setting for the serial device\&. \fP"
+.ti -1c
+.RI "unsigned int \fBgetStopBits\fP () const "
+.br
+.RI "\fIRetrieve number of stop bits setting for the serial device\&. \fP"
+.ti -1c
+.RI "unsigned int \fBgetFlowControl\fP () const "
+.br
+.RI "\fIRetrieve flow control setting for the serial device\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisValid\fP () const "
+.br
+.RI "\fIIndicates the handle references a valid (open) serial device\&. \fP"
+.ti -1c
+.RI "bool \fBisBlockingIO\fP () const "
+.br
+.RI "\fIIndicates blocking I/O mode\&. \fP"
+.ti -1c
+.RI "bool \fBsetBlockingIO\fP (bool block)"
+.br
+.RI "\fISet blocking I/O mode\&. \fP"
+.ti -1c
+.RI "int32_t \fBgetLastError\fP () const "
+.br
+.RI "\fIGet system error code\&. \fP"
+.ti -1c
+.RI "void \fBsetLastError\fP (int32_t error)"
+.br
+.RI "\fISet the system error code\&. \fP"
+.ti -1c
+.RI "virtual bool \fBopen\fP ()"
+.br
+.RI "\fIOpen serial device\&. \fP"
+.ti -1c
+.RI "virtual bool \fBclose\fP ()"
+.br
+.RI "\fIClose serial device\&. \fP"
+.ti -1c
+.RI "virtual bool \fBreadReady\fP (uint32_t sec=0, uint32_t usec=0) const "
+.br
+.RI "\fIIndicates data is available for reading\&. \fP"
+.ti -1c
+.RI "virtual bool \fBwriteReady\fP (uint32_t sec=0, uint32_t usec=0) const "
+.br
+.RI "\fIIndicates space is available for writing\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBread\fP (void *buffer, int32_t size, int32_t flags=0) const "
+.br
+.RI "\fIRead data\&. \fP"
+.ti -1c
+.RI "virtual int32_t \fBwrite\fP (const void *buffer, int32_t size, int32_t flags=0) const "
+.br
+.RI "\fIWrite data\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBcomPort_\fP"
+.br
+.RI "\fICurrent COM port\&. \fP"
+.ti -1c
+.RI "unsigned int \fBbaudRate_\fP"
+.br
+.RI "\fIBaud rate\&. \fP"
+.ti -1c
+.RI "unsigned int \fBdataBits_\fP"
+.br
+.RI "\fIData bits\&. \fP"
+.ti -1c
+.RI "unsigned int \fBparity_\fP"
+.br
+.RI "\fIParity\&. \fP"
+.ti -1c
+.RI "unsigned int \fBstopBits_\fP"
+.br
+.RI "\fIStop bits\&. \fP"
+.ti -1c
+.RI "unsigned int \fBflowControl_\fP"
+.br
+.RI "\fIFlow control\&. \fP"
+.ti -1c
+.RI "SockCOMIOHandle \fBioHandle_\fP"
+.br
+.RI "\fIHandle to the current port\&. \fP"
+.ti -1c
+.RI "int \fBcurrentState_\fP"
+.br
+.RI "\fICurrent state of the object\&. \fP"
+.ti -1c
+.RI "int \fBlastError_\fP"
+.br
+.RI "\fILast error reported\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Cross-platform library for reading and writing to COM ports\&. Can read and write to COM 1-n\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockCOM::SockCOM\fP (const std::string &comPort, unsigned intbaudRate = \fCSOCKCOM_BR9600\fP, unsigned intdataBits = \fCSOCKCOM_BITS8\fP, unsigned intparity = \fCSOCKCOM_PARITYNONE\fP, unsigned intstopBits = \fCSOCKCOM_STOPBITS1\fP, unsigned intflowControl = \fCSOCKCOM_FCNONE\fP)"
+.PP
+Create a new \fBSockCOM\fP object bound to the specified device\&. Create a new \fBSockCOM\fP object bound to the specified device\&. Intended for use with RS-232 devices with names that do not match the common pattern for an operating system, such as USB to serial adapter cables which are assigned names such as '/dev/ttyUSB0' on Linux systems 
+.PP
+References open()\&.
+.SS "\fBSockCOM::SockCOM\fP (unsigned intcomPort = \fC1\fP, unsigned intbaudRate = \fCSOCKCOM_BR9600\fP, unsigned intdataBits = \fCSOCKCOM_BITS8\fP, unsigned intparity = \fCSOCKCOM_PARITYNONE\fP, unsigned intstopBits = \fCSOCKCOM_STOPBITS1\fP, unsigned intflowControl = \fCSOCKCOM_FCNONE\fP)"
+.PP
+Create a new \fBSockCOM\fP object bound to the specific port\&. Create a new \fBSockCOM\fP object bound to the specific port\&. The device name is determind by appending the specified port number to the following strings: 'COM' + comPort for the Microsoft Windows operating system '/dev/ttyS' + comPort for Linux systems '/dev/term/' + (comPort + 'a') for SunOS systems '/dev/ttyf' + comPort for other UNIX systems 
+.PP
+References comPort_, and open()\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool \fBSockCOM::close\fP ()\fC [virtual]\fP"
+.PP
+Close serial device\&. Close an open serial device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References currentState_, ioHandle_, and isValid()\&.
+.PP
+Referenced by open(), and ~SockCOM()\&.
+.SS "unsigned int \fBSockCOM::getBaudRate\fP () const"
+.PP
+Retrieve baud rate setting for the serial device\&. Returns the baud rate associated with the serial device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an unsigned integer specifying the baud rate selected for the serial device\&. 
+.RE
+.PP
+
+.PP
+References baudRate_\&.
+.SS "std::string \fBSockCOM::getCOMPort\fP () const"
+.PP
+Retrieve name of serial device\&. Returns the name of the associated serial device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a string containing an operating system specific name of the associated serial device\&. 
+.RE
+.PP
+
+.PP
+References comPort_\&.
+.SS "unsigned int \fBSockCOM::getDataBits\fP () const"
+.PP
+Retrieve number of data bits setting for the serial device\&. Returns the number of data bits per byte associated with the serial device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an unsigned integer specifying the number of data bits per byte specified for the serial device\&. 
+.RE
+.PP
+
+.PP
+References dataBits_\&.
+.SS "SockCOMIOHandle \fBSockCOM::getDescriptor\fP () const"
+.PP
+Retrieve handle to serial device\&. Returns the file handle for the serial device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an operating system specific handle to the file descriptor associated with the serial device, or 0 if the device is closed\&. 
+.RE
+.PP
+
+.PP
+References ioHandle_\&.
+.SS "unsigned int \fBSockCOM::getFlowControl\fP () const"
+.PP
+Retrieve flow control setting for the serial device\&. Returns the clow control setting associated with the serial device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an unsigned integer specifying the flow control setting selected for the serial device\&. 
+.RE
+.PP
+
+.PP
+References flowControl_\&.
+.SS "int32_t \fBSockCOM::getLastError\fP () const"
+.PP
+Get system error code\&. Returns the last known system error value\&. This function is not specific to any one serial device\&. The error value retrieved can be for any socket that is part of the overall application\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an error code indicating the reason for serial device failure\&. 
+.RE
+.PP
+
+.PP
+References lastError_\&.
+.PP
+Referenced by open()\&.
+.SS "unsigned int \fBSockCOM::getParity\fP () const"
+.PP
+Retrieve parity setting for the serial device\&. Returns the parity setting associated with the serial device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an unsigned integer specifying the parity setting selected for the serial device\&. 
+.RE
+.PP
+
+.PP
+References parity_\&.
+.SS "unsigned int \fBSockCOM::getStopBits\fP () const"
+.PP
+Retrieve number of stop bits setting for the serial device\&. Returns the number of stop bits associated with the serial device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an unsigned integer specifying the number of stop bits specified for the serial device\&. 
+.RE
+.PP
+
+.PP
+References stopBits_\&.
+.SS "bool \fBSockCOM::isBlockingIO\fP () const\fC [virtual]\fP"
+.PP
+Indicates blocking I/O mode\&. Indicates that the serial device is or is not using blocking I/O\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that the serial device is using blocking I/O if true, is not using blocking I/O if false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References ioHandle_\&.
+.SS "bool \fBSockCOM::isValid\fP () const\fC [virtual]\fP"
+.PP
+Indicates the handle references a valid (open) serial device\&. Indicates that the serial object's handle is valid (open)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the serial device handle is valid if true, and invalid if false\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBSockIO\fP\&.
+.PP
+References ioHandle_\&.
+.PP
+Referenced by close(), read(), readReady(), write(), writeReady(), and ~SockCOM()\&.
+.SS "bool \fBSockCOM::open\fP ()\fC [virtual]\fP"
+.PP
+Open serial device\&. Opens the serial device for communication\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating the operation was successful if true, was unsuccessful if false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References baudRate_, close(), comPort_, currentState_, dataBits_, flowControl_, getLastError(), ioHandle_, parity_, setLastError(), and stopBits_\&.
+.PP
+Referenced by SockCOM()\&.
+.SS "int32_t \fBSockCOM::read\fP (void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Read data\&. Reads data that is available in the serial device's input buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object to be filled with the data in the socket buffer\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to network sockets when reading\&. Unused by serial devices\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes read\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References ioHandle_, and isValid()\&.
+.SS "bool \fBSockCOM::readReady\fP (uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Indicates data is available for reading\&. Indicates that data is avialable in the seral device's buffer for reading\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsec\fP an unsigned integer specifying the number of seconds to wait before returning\&. 
+.br
+\fIusec\fP an unsinged integer specifying the number of microseconds to wait before returning\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that data is available if true, no data is available if false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References ioHandle_, and isValid()\&.
+.SS "bool \fBSockCOM::setBlockingIO\fP (boolblock)\fC [virtual]\fP"
+.PP
+Set blocking I/O mode\&. Sets the serial device's I/O mode to blocking or non-blocking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIblock\fP a boolean value indicating that the serial device should use blocking I/O if true, non-blocking I/O if false\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that I/O mode was successfully changed if true, was not successfully changed if false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References ioHandle_\&.
+.SS "void \fBSockCOM::setLastError\fP (int32_terror)"
+.PP
+Set the system error code\&. Sets the serial device's error code to the specified value\&. All serial devices share the same instance of the error code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIerror\fP an integer specifying the value to which the error value is to be set\&. 
+.RE
+.PP
+
+.PP
+References lastError_\&.
+.PP
+Referenced by open()\&.
+.SS "int32_t \fBSockCOM::write\fP (const void *buffer, int32_tsize, int32_tflags = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Write data\&. Writes data to the network\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP a pointer to an object filled with the data to be written\&. 
+.br
+\fIsize\fP an integer specifying the size, in bytes, of 'buffer'\&. 
+.br
+\fIflags\fP an integer specifying the bit flags to be passed to network sockets when writing\&. Unused by serial devices\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the total number of bytes written\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References ioHandle_, and isValid()\&.
+.SS "bool \fBSockCOM::writeReady\fP (uint32_tsec = \fC0\fP, uint32_tusec = \fC0\fP) const\fC [virtual]\fP"
+.PP
+Indicates space is available for writing\&. Indicates that space in the serial device's buffer is avialable for writing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsec\fP an unsigned integer specifying the number of seconds to wait before returning\&. 
+.br
+\fIusec\fP an unsinged integer specifying the number of milliseconds to wait before returning\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a boolean value indicating that space is available if true, no space is available if false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBSockIO\fP\&.
+.PP
+References ioHandle_, and isValid()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

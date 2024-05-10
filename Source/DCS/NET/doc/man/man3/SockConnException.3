@@ -1,0 +1,51 @@
+.TH "SockConnException" 3 "Mon Mar 26 2012" "Version 1.0" "NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SockConnException \- 
+.PP
+Socket connection exception class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SockException\&.h>\fP
+.PP
+Inherits \fBSockException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSockConnException\fP ()"
+.br
+.RI "\fIDefault socket connection exception constructor\&. \fP"
+.ti -1c
+.RI "\fBSockConnException\fP (const char *msg)"
+.br
+.RI "\fISocket connection exception constructor\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Socket connection exception class\&. 
+
+A socket connection exception class\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBSockConnException::SockConnException\fP ()\fC [inline]\fP"
+.PP
+Default socket connection exception constructor\&. Creates a socket connection exception object with a default message\&. 
+.SS "\fBSockConnException::SockConnException\fP (const char *msg)\fC [inline]\fP"
+.PP
+Socket connection exception constructor\&. Creates a socket connection exception object with a user specified error message\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImsg\fP a character string containing an error message\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NET from the source code\&.

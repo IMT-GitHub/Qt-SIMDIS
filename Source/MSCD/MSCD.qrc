@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>res/BTNSIZE_N.png</file>
+        <file>res/BTNSIZE_P.png</file>
+        <file>res/BTNSIZE_SN.png</file>
+        <file>res/BTNSIZE_SP.png</file>
+        <file>res/BTNEXIT_N.png</file>
+        <file>res/BTNEXIT_P.png</file>
+        <file>res/BTNREFRESH.png</file>
+    </qresource>
+    <qresource prefix="/file">
+        <file>MSCD.qss</file>
+    </qresource>
+</RCC>
